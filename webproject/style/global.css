@@ -1,0 +1,241 @@
+/* global.css - 디자인 시스템 CSS 변수 */
+
+:root {
+  /* line 색상(dark 변동 없음) */
+  --color-line-primary: #D4382E;
+  --color-line-secondary: #E5D4D4;
+  --color-line-offline: #E5BF33; 
+  --color-line-firefighter: #D4382E;
+
+  /* line + text */
+  --color-police: #B82929;
+  --color-rescure: #216BD1;
+  --color-medical: #219652;
+  --color-gover: #E08A1A;
+  --color-civil: #7338A6;
+  
+  /* 배경 색 */
+  --color-background-primary: #FAF5F5;
+  --color-background-secondary: #F7EBEB;
+  --color-background-offline: #FCF2DB; /* 응급실 포함 */
+  --color-background-box: #FCFAFA;
+  --color-background-mark: #F7EBEB;
+  --color-background-btn: #D4382E;
+  --color-background-search: #F0E8E8; /* 비활성화 버튼 포함 */
+  --color-background-select: #B82929; /* 검색 버튼 포함 */
+  --color-background-hover: #FAF5F5;
+  --color-background-dropdown: #FCEBEB;
+  --color-background-hospital: #FCF0ED;
+  --color-background-pharmacy: #E0F7E8; /* 영업 및 진료중 포함 */
+  --color-white: #FFFFFF;
+  --color-black: #000000;
+  
+  /* 글자색 */
+  --color-text-primary: #211414;
+  --color-text-secondary: #B82929;
+  --color-text-third: #D4382E;
+  --color-text-sub1: #6B4D4D;
+  --color-text-sub2: #9E8080;
+  --color-text-sub3: #FFFFFF;
+  --color-text-online: #219652;
+  --color-text-offline: #E08A1A;
+
+  /* ========== Semantic Colors ========== */
+  --color-error: #F44336;
+  --color-error-dark: #D32F2F;
+  --color-error-light: #FFCDD2;
+  --color-error-alpha-10: rgba(244, 67, 54, 0.1);
+  
+  --color-success: #4CAF50;
+  --color-success-dark: #388E3C;
+  --color-success-light: #C8E6C9;
+  --color-success-alpha-10: rgba(76, 175, 80, 0.1);
+  
+  --color-warning: #FF9800;
+  --color-warning-dark: #F57C00;
+  --color-warning-light: #FFE0B2;
+  --color-warning-alpha-10: rgba(255, 152, 0, 0.1);
+  
+  --color-info: #2196F3;
+  --color-info-dark: #1976D2;
+  --color-info-light: #BBDEFB;
+  --color-info-alpha-10: rgba(33, 150, 243, 0.1);
+  
+  /* ========== Special Purpose ========== */
+  --color-overlay: rgba(0, 0, 0, 0.5);
+  --color-overlay-light: rgba(0, 0, 0, 0.3);
+  --color-disabled: rgba(0, 0, 0, 0.26);
+  --color-focus: rgba(26, 188, 156, 0.2);
+  
+  /* ========== Spacing ========== */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-xxl: 48px;
+  --spacing-xxxl: 64px;
+  
+  /* ========== Border Radius ========== */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-xxl: 24px;
+  --radius-round: 50%;
+  --radius-pill: 999px;
+  
+  /* ========== Shadows ========== */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12);
+  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.2);
+  --shadow-xl: 0 8px 24px rgba(0, 0, 0, 0.25);
+  --shadow-inset: inset 0 2px 4px rgba(0, 0, 0, 0.06);
+  --shadow-none: none;
+  
+  /* ========== Transitions ========== */
+  --transition-fast: 0.15s ease;
+  --transition-default: 0.2s ease;
+  --transition-slow: 0.3s ease;
+  --transition-very-slow: 0.5s ease;
+  
+  /* ========== Typography ========== */
+  --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-base: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 24px;
+  --font-size-xxl: 32px;
+  --font-size-xxxl: 40px;
+  
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+  --line-height-loose: 2;
+  
+  /* ========== Z-Index ========== */
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+  --z-toast: 1080;
+}
+
+/* ========== 다크 테마 (옵션) ========== */
+[data-theme="dark"] {
+  --color-text-primary: #FFF2F2;
+  --color-text-secondary: #FFF2F2;
+  --color-text-sub1: #BF9999;
+  --color-text-sub2: #BF9999;
+  --color-text-sub3: #FFF2F2;
+  
+  --color-background-primary: #170A0A;
+  --color-background-secondary: #241212;
+  --color-background-offline: #4D260D; /* 응급실 포함 */
+  --color-background-box: #FCFAFA; /* 여기부터 해야함 */ 
+  --color-background-mark: #F7EBEB;
+  --color-background-btn: #D4382E;
+  --color-background-search: #F0E8E8; /* 비활성화 버튼 포함 */
+  --color-background-select: #B82929; /* 검색 버튼 포함 */
+  --color-background-hover: #FAF5F5;
+  --color-background-dropdown: #FCEBEB;
+  --color-background-hospital: #FCF0ED;
+  --color-background-pharmacy: #E0F7E8; /* 영업 및 진료중 포함 */
+  --color-white: #FFFFFF;
+  --color-black: #000000;
+  --color-icon-default: #FFFFFF;
+  --color-icon-secondary: #B0B0B0;
+  --color-icon-disabled: #666666;
+  
+  --color-border: #333333;
+  --color-border-dark: #222222;
+  --color-border-light: #444444;
+  
+  --color-overlay: rgba(0, 0, 0, 0.7);
+  --color-overlay-light: rgba(0, 0, 0, 0.5);
+}
+
+/* ========== 전역 스타일 초기화 ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-primary);
+  background-color: var(--color-background);
+}
+
+/* ========== 유틸리티 클래스 ========== */
+
+/* Text Colors */
+.text-primary { color: var(--color-text-primary); }
+.text-secondary { color: var(--color-text-secondary); }
+.text-disabled { color: var(--color-text-disabled); }
+.text-error { color: var(--color-error); }
+.text-success { color: var(--color-success); }
+.text-warning { color: var(--color-warning); }
+.text-info { color: var(--color-info); }
+
+/* Background Colors */
+.bg-primary { background-color: var(--color-primary); }
+.bg-secondary { background-color: var(--color-secondary); }
+.bg-surface { background-color: var(--color-surface); }
+.bg-background { background-color: var(--color-background); }
+
+/* Border */
+.border { border: 1px solid var(--color-border); }
+.rounded-sm { border-radius: var(--radius-sm); }
+.rounded-md { border-radius: var(--radius-md); }
+.rounded-lg { border-radius: var(--radius-lg); }
+
+/* Shadows */
+.shadow-sm { box-shadow: var(--shadow-sm); }
+.shadow-md { box-shadow: var(--shadow-md); }
+.shadow-lg { box-shadow: var(--shadow-lg); }
+
+/* ========== 지도 경로 ========== */
+
+/* desktop-path */
+.mobile-path {
+  display: none;
+}
+
+.desktop-path {
+  display: block;
+}
+
+/* mobile-path */
+@media (max-width: 768px) {
+  .mobile-path {
+    display: block;
+  }
+
+  .desktop-path {
+    display: none;
+  }
+}
