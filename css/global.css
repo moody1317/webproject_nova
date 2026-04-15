@@ -165,6 +165,7 @@ main {
 footer {
   height: 36px;
   background-color: var(--color-background);
+  color: var(--color-text-sub2);
   font-size: var(--font-size-xs);
   display: flex;
   align-items: center;
