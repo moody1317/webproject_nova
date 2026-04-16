@@ -145,6 +145,18 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
+nav {
+  height: 68;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--color-background);
+  color: var(--color-text-sub1);
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+}
+
 body {
   min-height: 100vh;
   display: flex;
@@ -174,33 +186,6 @@ footer {
   border-top: 1px solid var(--color-line-secondary);
 }
 
-/* ========== 유틸리티 클래스 ========== */
-
-/* 글자 색 */
-.text-primary { color: var(--color-text-primary); }
-.text-secondary { color: var(--color-text-secondary); }
-.text-third { color: var(--color-text-third); }
-.text-sub1 { color: var(--color-text-sub1); }
-.text-sub2 { color: var(--color-text-sub2); }
-.text-sub3 { color: var(--color-text-sub3); }
-.text-online { color: var(--color-text-online); }
-.text-offline { color: var(--color-text-offline); }
-
-/* 배경 색 */
-.bg-primary { background-color: var(--color-background-primary); }
-.bg-secondary { background-color: var(--color-background-secondary); }
-.bg-offline { background-color: var(--color-background-offline); }
-.bg-online { background-color: var(--color-background-online); }
-.bg-box { background-color: var(--color-background-box); }
-.bg-nav { background-color: var(--color-background-nav); }
-.bg-btn { background-color: var(--color-background-btn); }
-.bg-search { background-color: var(--color-background-search); }
-.bg-hover { background-color: var(--color-background-hover); }
-.bg-dropdown { background-color: var(--color-background-dropdown); }
-.bg-hospital { background-color: var(--color-background-hospital); }
-.bg-pharmacy { background-color: var(--color-background-pharmacy); }
-
-
 /* Border */
 .border { border: 1px solid var(--color-border); }
 .rounded-xs { border-radius: var(--radius-xs); }
@@ -210,10 +195,6 @@ footer {
 .rounded-xl { border-radius: var(--radius-xl); }
 .rounded-xxl { border-radius: var(--radius-xxl); }
 
-/* Shadows */
-.shadow-sm { box-shadow: var(--shadow-sm); }
-.shadow-md { box-shadow: var(--shadow-md); }
-.shadow-lg { box-shadow: var(--shadow-lg); }
 
 /* mobile-path */
 @media (max-width: 768px) {
