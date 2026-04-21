@@ -90,27 +90,32 @@
 }
 
 /* 다크 테마 */
-[data-theme="dark"] {
-  --color-text-primary: #FFF2F2;
-  --color-text-secondary: #FFF2F2;
-  --color-text-sub1: #BF9999;
-  --color-text-sub2: #BF9999;
-  --color-text-sub3: #FFF2F2;
-  
-  --color-background-primary: #170A0A;
-  --color-background-secondary: #241212;
-  --color-background-offline: #4D260D; /* 응급실 포함 */
-  --color-background-online: #1F471F;
-  --color-background-box: #331A1A; 
-  /* --color-background-nav: #F7EBEB;  다크모드에선 어차피 어두으니까 배경은 하지말고 라인만 보여줘도..(아님 색상해도되는데 어떤 색상이 어울리지를 모르겠숨다..) */
-  --color-background-btn: #BF382E;
-  --color-background-search: #2E1717; /* 비활성화 버튼 포함 */
-  --color-background-hover: #9E8080;
-  --color-background-dropdown: #331A1A; /* 의약품 상세보기 */
-  --color-background-hospital: #260809;
-  --color-background-pharmacy: #0B1C15; /* 영업 및 진료중 포함 */
-  --color-white: #FFFFFF;
-  --color-black: #000000;
+@media(prefers-color-scheme: dark) {
+  :root{
+    --color-text-primary: #FFF2F2;
+    --color-text-secondary: #FFF2F2;
+    --color-text-sub1: #BF9999;
+    --color-text-sub2: #BF9999;
+    --color-text-sub3: #FFF2F2;
+    
+    --color-background: #241212;
+    --color-background-primary: #170A0A;
+    --color-background-secondary: #241212;
+    --color-background-offline: #4D260D; /* 응급실 포함 */
+    --color-background-online: #1F471F;
+    --color-background-box: #331A1A; 
+    /* --color-background-nav: #F7EBEB;  다크모드에선 어차피 어두으니까 배경은 하지말고 라인만 보여줘도..(아님 색상해도되는데 어떤 색상이 어울리지를 모르겠숨다..) */
+    --color-background-btn: #BF382E;
+    --color-background-search: #2E1717; /* 비활성화 버튼 포함 */
+    --color-background-hover: #564040;
+    --color-background-dropdown: #331A1A; /* 의약품 상세보기 */
+    --color-background-hospital: #260809;
+    --color-background-pharmacy: #0B1C15; /* 영업 및 진료중 포함 */
+    --color-white: #FFFFFF;
+    --color-black: #000000;
+
+    --color-line-secondary: #241212;
+  }
 }
 
 * {
@@ -120,7 +125,6 @@
 }
 
 html {
-  font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
