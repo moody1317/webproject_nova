@@ -189,12 +189,23 @@ footer {
 .rounded-xxl { border-radius: var(--radius-xxl); }
 
 
-/* mobile-path */
+/* 모바일 */
 @media (max-width: 768px) {
+  :root {
+    --font-size-xl: 18px;
+    --font-size-xxl: 20px;
+    --font-size-xxxl: 24px;
+
+    --spacing-lg: 20px;
+    --spacing-xl: 24px;
+    --spacing-xxl: 32px;
+    --spacing-xxxl: 40px;
+  }
+
   .mobile-path {
     display: block;
   }
-
+  
   .desktop-path {
     display: none;
   }
