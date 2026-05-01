@@ -60,3 +60,59 @@ a.menu:hover {
     background-color: var(--color-background-offline);
     color: var(--color-text-offline);
 }
+
+.menu-wrapper {
+    display: contents;
+}
+
+.hamburger {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .nav-link {
+        display: none;
+    }
+
+    .nav-link.open {
+        display: flex;
+        flex-direction: row;
+        top: 68px;
+        left: 0px;
+        width: 100%;
+        position: absolute;
+        background-color: var(--color-background);
+        z-index: var(--z-dropdown);
+    }
+
+    .nav-right {
+        display: none;
+    }
+
+    a.menu {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        padding: 10px;
+        color: var(--color-text-sub1);
+        width: 150px;
+    }
+
+    a.menu.active {
+        background-color: var(--color-background-secondary);
+        color: var(--color-text-secondary);
+        font-weight: bold;
+    }
+
+    .hamburger {
+        font-size: 2rem;
+        color: var(--color-text-sub1);
+        display: block;
+        margin-right: 5px;
+        align-items: center;
+        background-color: var(--color-background);
+        border: none;
+        cursor: pointer;
+    }       
+}
