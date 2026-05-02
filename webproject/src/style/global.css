@@ -136,6 +136,7 @@ body {
 }
 
 footer {
+  margin-top: auto;
   height: 36px;
   background-color: var(--color-background);
   color: var(--color-text-sub2);
@@ -151,7 +152,7 @@ footer {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 
 .background-white { background-color: var(--color-background); }
