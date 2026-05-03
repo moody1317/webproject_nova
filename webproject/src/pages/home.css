@@ -98,19 +98,19 @@
     gap: 15px;
 }
 .emergency-contacts-119-icons {
-    background-color: #FFF0ED;
+    background-color: var(--color-background-firefighter);
     border-radius: var(--radius-xl);
     padding: 10px 15px;
 }
 
 /* 112 */
 .emergency-contacts-card-112 {
-    color: var(--color-text-secondary);
+    color: var(--color-police);
     font-size: var(--font-size-xxxl);
 }
 .emergency-contacts-112 {
     background-color: var(--color-background);
-    border-top: 3px solid var(--color-text-secondary);
+    border-top: 3px solid var(--color-police);
     padding: 20px 30px;
     text-align: center;
     border-radius: var(--radius-xl);
@@ -120,7 +120,7 @@
     gap: 15px;
 }
 .emergency-contacts-112-icons {
-    background-color:  var(--color-background-secondary);
+    background-color:  var(--color-background-police);
     border-radius: var(--radius-xl);
     padding: 10px 15px;
 }
@@ -142,7 +142,7 @@
     gap: 15px;
 }
 .emergency-contacts-122-icons {
-    background-color: #E0EDFC;
+    background-color: var(--color-background-sea);
     border-radius: var(--radius-xl);
     padding: 10px 15px;
 }
@@ -208,7 +208,7 @@
     gap: 15px;
 }
 .emergency-contacts-020-icons {
-    background-color: #f2e8fc;
+    background-color: var(--color-background-civil);
     border-radius: var(--radius-xl);
     padding: 10px 15px;
 }
