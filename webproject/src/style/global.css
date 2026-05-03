@@ -7,7 +7,7 @@
   --color-line-offline: #E5BF33; 
 
   /* line + text(dark 변동 없을 거같음) */
-  --color-line-firefighter: #D4382E;
+  --color-firefighter: #D4382E;
   --color-police: #B82929;
   --color-rescure: #216BD1;
   --color-medical: #219652;
@@ -26,8 +26,12 @@
   --color-background-search: #F0E8E8; /* 비활성화 버튼 포함 */
   --color-background-hover: #FAF5F5;
   --color-background-dropdown: #FCEBEB;
+  --color-background-firefighter: #FFF0ED;
+  --color-background-police: #F7EBEB;
   --color-background-hospital: #FCF0ED;
+  --color-background-sea: #E0EDFC;
   --color-background-pharmacy: #E0F7E8; /* 영업 및 진료중 포함 */
+  --color-background-civil: #F2E8FC;
   --color-white: #FFFFFF;
   --color-black: #000000;
   
@@ -108,8 +112,12 @@
     --color-background-search: #2E1717; /* 비활성화 버튼 포함 */
     --color-background-hover: #564040;
     --color-background-dropdown: #331A1A; /* 의약품 상세보기 */
+    --color-background-firefighter: #4D1612;
+    --color-background-police: #380D0D;
+    --color-background-sea: #1A385C;
     --color-background-hospital: #260809;
     --color-background-pharmacy: #0B1C15; /* 영업 및 진료중 포함 */
+    --color-background-civil: #290A0A;
 
     --color-line-secondary: #241212;
   }
