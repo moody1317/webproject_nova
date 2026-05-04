@@ -4,14 +4,6 @@ import './home.css';
 import homeFrameImg from '../assets/homeFrame.svg';
 
 function Home() {
-    const Emergency_contacts = [
-        {num: "119", name: "소방·구급", des: "화재·응급·구조", color: "var(--color-text-third)"},
-        {num: "112", name: "경찰", des: "범죄 테러·치안", color: "var(--color-text-secondary"},
-        {num: "122", name: "해양 구조", des: "해상 사고·조난", color: "var(--color-rescure"},
-        {num: "1339", name: "의료 상담", des: "응급 의료 정보", color: "var(--color-medical"},
-        {num: "110", name: "정부 민원", des: "재난 민원 안내", color: "var(--color-gover"},
-        {num: "020", name: "민방위", des: "공습·대피령", color: "var(--color-civil"},
-    ];
     return (
         <>
         <section className="home-hero">
@@ -33,10 +25,10 @@ function Home() {
             <div className="emergency-contacts-grid">
                 <div className="emergency-contacts-119">
                     <div className="emergency-contacts-inner">
-                        <div class="emergency-contacts-119-icons">
+                        <div className="emergency-contacts-119-icons">
                             <i className="bi bi-fire" style={{fontSize: 'var(--font-size-xxxl'}}></i>
                         </div>
-                        <div className="emergency-contacts-119-info">
+                        <div className="emergency-contacts-info">
                             <h1 className="emergency-contacts-card-119">119</h1>
                             <p className="emergency-contacts-card-title">소방·구급</p>
                         </div>
@@ -46,7 +38,7 @@ function Home() {
 
                 <div className="emergency-contacts-112">
                     <div className="emergency-contacts-inner">
-                        <div class="emergency-contacts-112-icons">
+                        <div className="emergency-contacts-112-icons">
                             <i className="bi bi-taxi-front" style={{fontSize: 'var(--font-size-xxxl'}}></i>
                         </div>
                         <div className="emergency-contacts-info">
@@ -59,7 +51,7 @@ function Home() {
 
                 <div className="emergency-contacts-122">
                     <div className="emergency-contacts-inner">
-                        <div class="emergency-contacts-122-icons">
+                        <div className="emergency-contacts-122-icons">
                             <i className="bi bi-droplet" style={{fontSize: 'var(--font-size-xxxl'}}></i>
                         </div>
                         <div className="emergency-contacts-info">
@@ -72,7 +64,7 @@ function Home() {
 
                 <div className="emergency-contacts-1339">
                     <div className="emergency-contacts-inner">
-                        <div class="emergency-contacts-1339-icons">
+                        <div className="emergency-contacts-1339-icons">
                             <i className="bi bi-hospital" style={{fontSize: 'var(--font-size-xxxl'}}></i>
                         </div>
                         <div className="emergency-contacts-info">
@@ -85,7 +77,7 @@ function Home() {
 
                 <div className="emergency-contacts-110">
                     <div className="emergency-contacts-inner">
-                        <div class="emergency-contacts-110-icons">
+                        <div className="emergency-contacts-110-icons">
                             <i className="bi bi-bank" style={{fontSize: 'var(--font-size-xxxl'}}></i>
                         </div>
                         <div className="emergency-contacts-info">
@@ -98,7 +90,7 @@ function Home() {
 
                 <div className="emergency-contacts-020">
                     <div className="emergency-contacts-inner">
-                        <div class="emergency-contacts-020-icons">
+                        <div className="emergency-contacts-020-icons">
                             <i className="bi bi-shield-shaded" style={{fontSize: 'var(--font-size-xxxl'}}></i>
                         </div>
                         <div className="emergency-contacts-info">
