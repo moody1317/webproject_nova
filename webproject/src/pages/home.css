@@ -33,7 +33,7 @@
 /* 긴급 연락처 공통*/
 .emergency-contacts {
     width: 100%;
-    padding: 28 var(--spacing-xxxl);
+    padding: 28px var(--spacing-xxxl);
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -213,3 +213,116 @@
     padding: 10px 15px;
 }
  
+/* 페이지 이동 */
+.direct {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 30px var(--spacing-xxxl);
+    gap: 32px;
+}
+.direct-content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.direct-title {
+    color: var(--color-text-primary);
+    font-size: var(--font-size-xxxl);
+}
+.direct-text {
+    color: var(--color-text-sub1);
+    font-size: var(--font-size-lg);
+    margin: 0 0 var(--spacing-xs);
+}
+.direct-box {
+    background-color: var(--color-background);
+    border-radius: var(--radius-xl);
+    display: flex;
+    min-height: 100px;
+    max-width: 475px;
+    padding: 20px 20px; 
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 15px;
+}
+.direct-icon {
+    background-color: var(--color-background-firefighter);
+    width: 56px;
+    height: 56px;
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.direct-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    width: 100%;
+    padding-left: 80px;
+}
+.direct-info h3 {
+    color: var(--color-text-primary);
+}
+.direct-info p {
+    color: var(--color-text-sub1);
+    font-size: var(--font-size-sm);
+    padding: 3px 0px;
+}
+.direct-onoff {
+    display: flex;
+    background-color: var(--color-background-dropdown);
+    border-radius: var(--radius-lg);
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    height: 18px;
+    width: 72px;
+}
+.direct-onoff p {
+    color: var(--color-text-third);
+    font-size: var(--font-size-xs);
+}
+.direct-arrow {
+    cursor: pointer;
+    font-size: var(--font-size-xxxl);
+    padding-top: 10px;
+    margin-left: auto;
+}
+.move {
+    color: var(--color-text-third);
+}
+.move.active {
+    color: var(--color-text-third);
+}
+@media (max-width: 768px) {
+    .direct-box {
+        min-height: 60px;
+        max-width: 240px;
+        padding: 10px 10px;
+    }
+    .direct-icon {
+        display: none;
+    }
+    .direct-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        width: 100%;
+        padding-left: 0px;
+    }
+    .direct-info h3 {
+        font-size: var(--font-size-base);
+    }
+    .direct-info p {
+        color: var(--color-text-sub1);
+        font-size: var(--font-size-xs);
+        padding: 3px 0px;
+    }
+    .direct-onoff p {
+        color: var(--color-text-third);
+        font-size: var(--font-size-xs);
+    }
+}
