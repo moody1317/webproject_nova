@@ -130,7 +130,7 @@ function Home() {
                         </div>
                     </div>
                     <div className='direct-arrow'>
-                        <NavLink to="/" end className='move'><i className='bi bi-arrow-right'></i></NavLink>
+                        <NavLink to="/firstaid" end className='move'><i className='bi bi-arrow-right'></i></NavLink>
                     </div>
                 </div>
                 <div className="direct-box">
