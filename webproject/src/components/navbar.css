@@ -8,6 +8,9 @@ nav {
   font-weight: var(--font-weight-normal);
   border-bottom: 2px solid var(--color-line-secondary);
   background-color: var(--color-background);
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
 }
 
 .nav-link {
@@ -69,7 +72,7 @@ a.menu:hover {
     display: none;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     .nav-link {
         display: none;
     }

@@ -81,9 +81,9 @@ function Navbar() {
                 <div className={`nav-link ${isOpen ? "open" : ""}`}>
                     <NavLink to="/" end className="menu">홈</NavLink>
                     <NavLink to="/firstaid" className="menu">응급처치</NavLink>
-                    <NavLink to="/hospital" className="menu">병원 · 약국 찾기</NavLink>
                     <NavLink to="/shelter" className="menu">대피소 찾기</NavLink>
                     <NavLink to="/medicine" className="menu">의약품 찾기</NavLink>
+                    <NavLink to="/hospital" className="menu">병원 · 약국 찾기</NavLink>
                 </div>
             </div>
             
