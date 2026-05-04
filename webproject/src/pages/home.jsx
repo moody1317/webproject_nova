@@ -111,6 +111,75 @@ function Home() {
             </div>
 
         </section>
+
+        <section className="direct">
+            <div className="direct-content">
+                <p className="direct-text">주요 기능</p>
+                <h2 className="direct-title">필요한 순간 즉시 이용하세요</h2>
+            </div>
+            <div className="direct-grid">
+                <div className="direct-box">
+                    <div className="direct-icon">
+                        <i className="bi bi-capsule" style={{fontSize: 'var(--font-size-xxl)'}}></i>
+                    </div>
+                    <div className='direct-info'>
+                        <h3>응급처치 가이드</h3>
+                        <p>CPR · 하임리히법 · 지혈법 등 <br/>단계별 안내</p>
+                        <div className='direct-onoff'>
+                            <p><b>오프라인 지원</b></p>
+                        </div>
+                    </div>
+                    <div className='direct-arrow'>
+                        <NavLink to="/" end className='move'><i className='bi bi-arrow-right'></i></NavLink>
+                    </div>
+                </div>
+                <div className="direct-box">
+                    <div className="direct-icon">
+                        <i className="bi bi-map" style={{fontSize: 'var(--font-size-xxl)'}}></i>
+                    </div>
+                    <div className='direct-info'>
+                        <h3>대피소 찾기</h3>
+                        <p>근처 대피소 위치 안내 <br/>오프라인 지도 포함</p>
+                        <div className='direct-onoff'>
+                            <p><b>오프라인 지원</b></p>
+                        </div>
+                    </div>
+                    <div className='direct-arrow'>
+                        <NavLink to="/shelter" end className='move'><i className='bi bi-arrow-right'></i></NavLink>
+                    </div>
+                </div>
+                <div className='direct-box'>
+                    <div className='direct-icon'>
+                        <i className='bi bi-capsule-pill' style={{fontSize: 'var(--font-size-xxl)'}}></i>
+                    </div>
+                    <div className='direct-info'>
+                        <h3>의약품 검색</h3>
+                        <p>약품 효능 및 복용법<br/>상세 안내 제공</p>
+                        <div className='direct-onoff'>
+                            <p><b>온라인 전용</b></p>
+                        </div>
+                    </div>
+                    <div className='direct-arrow'>
+                        <NavLink to="/medicine" end className='move'><i className='bi bi-arrow-right'></i></NavLink>
+                    </div>
+                </div>
+                <div className='direct-box'>
+                    <div className='direct-icon'>
+                        <i className='bi bi-hospital' style={{fontSize: 'var(--font-size-xxl)'}}></i>
+                    </div>
+                    <div className='direct-info'>
+                        <h3>병원·약국 찾기</h3>
+                        <p>근처 병원·약국 위치 안내<br/>온라인 지도 포함</p>
+                        <div className='direct-onoff'>
+                            <p><b>온라인 전용</b></p>
+                        </div>
+                    </div>
+                    <div className='direct-arrow'>
+                        <NavLink to="/hospital" end className='move'><i className='bi bi-arrow-right'></i></NavLink>
+                    </div>
+                </div>
+            </div>
+        </section>
         </>
     );
 }
