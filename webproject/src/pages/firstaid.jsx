@@ -22,16 +22,19 @@ function Firstaid() {
                 <p>{ item.name }</p>
             </div>
             <div className={ index === selectedIndex ? 'inventory-line active-line' : 'inventory-line'}></div>
-        </div>
-        
-    )
+        </div>   
+    );
+
     return (
-        <>
-        <section className='category'>
-            <h5>응급처치 유형</h5>
-            { inventoryList }
-        </section>
-        </>
+        <div className='page'>
+            <section className='category'>
+                <h5>응급처치 유형</h5>
+                { inventoryList }
+            </section>
+            <section className='content'>
+                <h1>{ firstaid[selectedIndex].name }</h1>
+            </section>
+        </div>
     )
 }
 
