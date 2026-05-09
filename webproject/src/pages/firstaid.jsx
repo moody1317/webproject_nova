@@ -21,7 +21,7 @@ function Firstaid() {
                 <i className={ item.icon }></i>
                 <p>{ item.name }</p>
             </div>
-            <div className='inventory-line'></div>
+            <div className={ index === selectedIndex ? 'inventory-line active-line' : 'inventory-line'}></div>
         </div>
         
     )
