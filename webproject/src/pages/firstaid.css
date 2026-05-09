@@ -53,6 +53,6 @@
     background-color: var(--color-background-hover);
 }
 
-.inventory-line.active {
+.inventory-line.active-line {
     display: none;
 }
