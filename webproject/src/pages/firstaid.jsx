@@ -13,6 +13,7 @@ const firstaid = [
 ];
 
 function Firstaid() {
+    const [isOpen, setIsOpen] = useState(false);
     const [selectedIndex, setSelectedIndex] = useState(0);
     
     const inventoryList = firstaid.map((item, index) => 
@@ -27,9 +28,14 @@ function Firstaid() {
 
     return (
         <div className='page'>
-            <section className='category'>
+            <button className={ isOpen ? 'hamburgers-closed' : 'hamburgers'} onClick={() => setIsOpen(!isOpen)}>
+                <i className={`bi ${isOpen ? 'bi-x-lg' : 'bi-list'}`}></i>
+            </button>
+            <section className={ isOpen ? 'category-closed' : 'category'}>
                 <h5>응급처치 유형</h5>
-                { inventoryList }
+                <div className={ isOpen ? 'sidebar' : 'sidebar-show'}>
+                    { inventoryList }
+                </div>
             </section>
             <section className='content'>
                 <h1>{ firstaid[selectedIndex].name }</h1>
