@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { useRef, useState, useEffect } from 'react';
 import './navbar.css';
 
@@ -21,7 +21,7 @@ function Navbar() {
 
     return (
         <nav>
-            <NavLink to="/" end>
+            <Link to="/" end>
                 <svg width="143" height="65" viewBox="0 0 143 67" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g clipPath="url(#clip0_269_1672)">
                         <path d="M0 0H142.898V67H0V0Z" fill="var(--color-background)"/>
@@ -71,7 +71,7 @@ function Navbar() {
                         </clipPath>
                     </defs>
                 </svg>
-            </NavLink>
+            </Link>
 
             <div className="menu-wrapper" ref={menuRef}>
                 <button onClick={() => setIsOpen(!isOpen)} className="hamburger">
