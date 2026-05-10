@@ -18,6 +18,7 @@
   --color-background: #FFFFFF;
   --color-background-primary: #FAF5F5;
   --color-background-secondary: #F7EBEB;
+  --color-background-search: #F5F0F0;
   --color-background-offline: #FCF2DB; /* 응급실 포함 */
   --color-background-online: #E0F7E8;
   --color-background-box: #FCFAFA;
@@ -105,6 +106,7 @@
     --color-background: #241212;
     --color-background-primary: #170A0A;
     --color-background-secondary: #241212;
+    --color-background-search: #331A1A;
     --color-background-offline: #4D260D; /* 응급실 포함 */
     --color-background-online: #1F471F;
     --color-background-box: #331A1A; 
