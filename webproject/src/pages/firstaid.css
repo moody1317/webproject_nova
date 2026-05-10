@@ -128,6 +128,7 @@
         display: flex;
         position: absolute;
         background-color: var(--color-background);
+        color: var(--color-text-sub1);
         border: none;
         font-size: var(--font-size-xxl);
         transition: var(--transition-slow);
