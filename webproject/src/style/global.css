@@ -4,7 +4,11 @@
   /* line 색상(dark 변동 없음) */
   --color-line-primary: #D4382E;
   --color-line-secondary: #E5D4D4;
-  --color-line-offline: #E5BF33; 
+  --color-line-offline: #E5BF33;
+  
+  --color-line-hospital: #D4382E;
+  --color-line-pharmacy: #219652;
+  --color-line-emergency: #E08A1A;
 
   /* line + text(dark 변동 없을 거같음) */
   --color-firefighter: #D4382E;
@@ -122,6 +126,9 @@
     --color-background-civil: #290A0A;
 
     --color-line-secondary: #241212;
+    --color-line-hospital: #BF382E;
+    --coloro-line-pharmacy: #38B86B;
+    --color-line-emergency: #F2B233;
   }
 }
 
