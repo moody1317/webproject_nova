@@ -21,7 +21,7 @@ function Navbar() {
 
     return (
         <nav>
-            <Link to="/" end>
+            <Link to="/" end="true">
                 <svg width="143" height="65" viewBox="0 0 143 67" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g clipPath="url(#clip0_269_1672)">
                         <path d="M0 0H142.898V67H0V0Z" fill="var(--color-background)"/>
@@ -79,7 +79,7 @@ function Navbar() {
                 </button>
 
                 <div className={`nav-link ${isOpen ? "open" : ""}`}>
-                    <NavLink to="/" end className="menu">홈</NavLink>
+                    <NavLink to="/" end="true" className="menu">홈</NavLink>
                     <NavLink to="/firstaid" className="menu">응급처치</NavLink>
                     <NavLink to="/shelter" className="menu">대피소 찾기</NavLink>
                     <NavLink to="/medicine" className="menu">의약품 찾기</NavLink>
