@@ -1,0 +1,5 @@
+.firstaid-content h1 {
+    color: var(--color-text-primary);
+    margin-top: var(--spacing-lg);
+    margin-left: var(--spacing-xl);
+}
