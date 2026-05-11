@@ -64,7 +64,7 @@
     border: none;
     border-radius: var(--radius-pill);
     font-size: var(--font-size-xs);
-    padding: var(--spacing-xs);
+    padding: var(--spacing-xs) var(--spacing-sm);
     align-items: center;
     justify-content: center;
 }
@@ -113,7 +113,7 @@
     justify-content: center;
     align-items: center;
     width: fit-content;
-    padding: var(--spacing-xs);
+    padding: var(--spacing-xs) var(--spacing-sm);
     border: none;
     border-radius: var(--spacing-sm);
     font-size: var(--font-size-md);
