@@ -1,3 +1,4 @@
+// 필요없지만 혹시 모르니
 const firstaid = [
     { name: 'CPR(심폐소생술)', icon: 'bi bi-heart-pulse-fill' },
     { name: '하임리히법', icon: 'bi bi-emoji-dizzy-fill' },
