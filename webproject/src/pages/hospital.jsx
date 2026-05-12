@@ -1,11 +1,20 @@
 import { MapContainer, TileLayer, useMap, Marker, Popup } from 'react-leaflet';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import L from 'leaflet';
 import HospitalCard from '../components/hospitalCard';
+import { currentIcon } from '../components/mapMarker';
 import 'leaflet/dist/leaflet.css';
 import './hospital.css';
 
+function MoveMap({ position }) {
+    useMap().setView(position, 20);
+}
+
 function Hospital() {
     const [sortType, setSortType] = useState('distance');
+    const [curPosition, setCurPosition] = useState([37.5665, 126.9780]);
+
+    useEffect(() => { navigator.geolocation.getCurrentPosition( position => {setCurPosition([position.coords.latitude, position.coords.longitude])}) }, []);
 
     return (
         <>
@@ -22,17 +31,18 @@ function Hospital() {
         </section>
         <div className='hospital-content'>
             <section className='hospital-map'>
-                <MapContainer center={[37.5665, 126.9780]} zoom={13} scrollWheelZoom={false} style={{height: '100%', width: '100%'}}>
+                <MapContainer center={curPosition } zoom={20} scrollWheelZoom={false} style={{height: '100%', width: '100%'}}>
+                    <MoveMap position={ curPosition }/>
                     <TileLayer
                         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; CARTO'
                         url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
                     />
-                    <Marker position={[37.5665, 126.9780]}>
+                    <Marker position={ curPosition } icon={ currentIcon }>
                         <Popup>
                         A pretty CSS3 popup. <br /> Easily customizable.
                         </Popup>
                     </Marker>
-                    </MapContainer>
+                </MapContainer>
             </section>
             <section className='hospital-panel'>
                 <div className='hospital-panel-top'>
