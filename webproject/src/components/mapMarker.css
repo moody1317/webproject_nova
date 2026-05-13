@@ -14,3 +14,15 @@
     width: 10px;
     height: 10px;
 }
+
+.hospital-mark {
+    background-color: var(--color-firefighter);
+}
+
+.pharmacy-mark {
+    background-color: var(--color-medical);
+}
+
+.emergency-mark {
+    background-color: var(--color-gover);
+}
