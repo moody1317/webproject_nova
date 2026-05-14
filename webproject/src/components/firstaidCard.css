@@ -13,6 +13,11 @@
     display: flex;
     margin-top: var(--spacing-md);
     margin-left: var(--spacing-sm);
+    justify-content: space-between;
+}
+
+.step-head-left {
+    display: flex;
 }
 
 .step-num {
@@ -38,6 +43,11 @@
     font-size: var(--font-size-xl);
 }
 
+.step-icon {
+    font-size: var(--font-size-xl);
+    padding-right: var(--spacing-lg);
+}
+
 .step-main {
     margin-top: var(--spacing-md);
     margin-left: var(--spacing-lg);
@@ -58,21 +68,32 @@
 
 @media (max-width: 768px) {
     .step-card {
-        width: 250px;
-        height: 150px;
+        width: 150px;
+        height: auto;
+    }
+
+    .open {
+        width: 200px;
     }
 
     .step-title {
         padding-left: var(--spacing-sm);
-        font-size: var(--font-size-base);
+        font-size: var(--font-size-sm);
+    }
+
+    .step-icon {
+        display: none;
     }
 
     .step-main {
-        height: 50px;
+        width: 120px;
+    }
+
+    .step-main p {
+        word-wrap: break-word;
     }
 
     .step-border {
-        width: 200px;
-        margin-top: var(--spacing-md);
+        display: none;
     }
 }
