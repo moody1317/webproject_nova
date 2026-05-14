@@ -1,4 +1,4 @@
-.hero {
+.hospital-hero {
     width: auto;
     height: 116px;
     background-color: var(--color-background);
@@ -8,18 +8,18 @@
     justify-content: space-between;
 }
 
-.hero h1 {
+.hospital-hero h1 {
     color: var(--color-text-primary);
     margin-left: var(--spacing-xl);
 }
 
-.hero p {
+.hospital-hero p {
     color: var(--color-text-sub1);
     font-size: var(--font-size-base);
     margin-left: var(--spacing-xl);
 }
 
-.search {
+.hospital-search {
     display: flex;
     width: 400px;
     height: 60px;
@@ -31,10 +31,96 @@
     margin-right: var(--spacing-xxl);
 }
 
-.search i {
+.hospital-search i {
     padding: 10px;
     color: var(--color-text-sub2);
     cursor: pointer;
+}
+
+.hospital-content {
+    display: flex;
+    min-height: 505px;
+    flex-grow: 1;
+}
+
+.hospital-map {
+    width: 50%;
+    height: 588px;
+}
+
+.hospital-panel {
+    width: 50%;
+    height: 100%;
+}
+
+.hospital-panel-top {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 20px;
+}
+
+.hospital-panel-right {
+    display: flex;
+}
+
+.hospital-panel-right h1 {
+    color: var(--color-text-primary);
+    font-size: var(--font-size-xxl);
+    margin-top: var(--spacing-xs);
+}
+
+.hospital-panel-right h3 {
+    display: flex;
+    background-color: var(--color-background-dropdown);
+    color: var(--color-text-third);
+    border: none;
+    border-radius: var(--radius-pill);
+    width: 44px;
+    height: 22px;
+    font-size: var(--font-size-sm);
+    align-items: center;
+    justify-content: center;
+    margin-left: var(--spacing-sm);
+    margin-top: var(--spacing-md);
+}
+
+.hospital-panel-left {
+    display: flex;
+}
+
+.hospital-sort-btn {
+    display: flex;
+    width: 78px;
+    height: 26px;
+    background-color: var(--color-background-search);
+    color: var(--color-text-sub1);
+    border: none;
+    border-radius: var(--radius-pill);
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-size-sm);
+    margin-top: var(--spacing-md);
+    margin-left: var(--spacing-xs);
+    margin-right: var(--spacing-lg);
+    cursor: pointer;
+}
+
+.active {
+    background-color: var(--color-background-btn);
+    color: var(--color-text-sub3);
+}
+
+.hospital-panel-list {
+    display: flex;
+    justify-content: center;
+    background-color: var(--color-background);
+    border: none;
+    border-radius: var(--spacing-md);
+    margin: 0 auto; 
+    width: 90%;
+    height: 488px;
+    padding-top: var(--spacing-sm);
+    overflow-y: auto;
 }
 
 #txt-search {
@@ -61,7 +147,7 @@
 }
 
 @media (max-width: 768px) {
-    .hero {
+    .hospital-hero {
         width: auto;
         height: 100px;
         background-color: var(--color-background);
@@ -69,24 +155,63 @@
         display: block;
     }    
 
-    .hero h1 {
+    .hospital-hero h1 {
         font-size: var(--font-size-base);
         margin-left: var(--spacing-sm);
         margin-top: var(--spacing-sm);
     }
 
-    .hero p {
+    .hospital-hero p {
         color: var(--color-text-sub1);
         font-size: var(--font-size-sm);
         margin-left: var(--spacing-sm);
     }
 
-    .search {
+    .hospita-search {
         width: 300px;
         height: 40px;
         font-size: var(--font-size-xl);
         margin-top: var(--spacing-sm);
         margin-left: var(--spacing-md);
+    }
+
+    .hospital-content {
+        display: block;
+        width: 100%;
+        min-height: 200px;
+    }
+
+    .hospital-map {
+        width: 100%;
+        height: 300px;
+    }
+
+    .hospital-panel {
+        width: 100%;
+    }
+
+    .hospital-panel-top {
+        padding: 10px 3px;
+    }
+
+    .hospital-panel-right h1 {
+        font-size: var(--font-size-xl);
+        margin-top: var(--spacing-xs);
+    }
+
+    .hospital-panel-right h3 {
+        width: 30px;
+        font-size: var(--font-size-xs);
+        margin-left: var(--spacing-xs);
+        margin-top: var(--spacing-xs);
+    }
+
+    .hospital-sort-btn {
+        width: 50px;
+        font-size: var(--font-size-xs);
+        margin-top: 5px;
+        margin-left: var(--spacing-xs);
+        margin-right: var(--spacing-sm);
     }
 
     #txt-search::placeholder {

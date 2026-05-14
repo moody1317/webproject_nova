@@ -1,22 +1,28 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './firstaid.css';
-
-const firstaid = [
-    { name: 'CPR(심폐소생술)', icon: 'bi bi-heart-pulse-fill' },
-    { name: '하임리히법', icon: 'bi bi-emoji-dizzy-fill' },
-    { name: '지혈법', icon: 'bi bi-droplet-fill'},
-    { name: '골절 처치', icon:  'bi bi-person-wheelchair'},
-    { name: '화상 처치', icon: 'bi bi-fire'},
-    { name: '독극물 중독', icon: 'bi bi-virus' },
-    { name: '익수자 처치', icon: 'bi bi-water'},
-    { name: '전기 쇼크', icon: 'bi bi-lightning-charge-fill'}
-];
+import FirstaidContent from '../components/firstaidContent';
 
 function Firstaid() {
     const [isOpen, setIsOpen] = useState(false);
     const [selectedIndex, setSelectedIndex] = useState(0);
-    
-    const inventoryList = firstaid.map((item, index) => 
+    const [getfirstaid, setGetFirstaid] = useState([]);
+
+    useEffect (() => {
+        fetch('/api/firstaid', {headers: {'ngrok-skip-browser-warning': 'true'}}).then(response => response.json()).then(data => setGetFirstaid(data))
+        .catch(error => console.log(error));
+    }, []);
+
+    useEffect (() => {
+        const Resize = () => { 
+            if (window.innerWidth > 768) {
+                setIsOpen(false);
+            }
+        }
+        window.addEventListener('resize', Resize);
+        return () => window.removeEventListener('resize', Resize);
+    }, [])
+
+    const inventoryList = getfirstaid.map((item, index) => 
         <div className={ index === selectedIndex ? 'inventory active' : 'inventory' } key={index}>
             <div className='inventory-content' onClick={() => setSelectedIndex(index)}>
                 <i className={ item.icon }></i>
@@ -37,9 +43,7 @@ function Firstaid() {
                     { inventoryList }
                 </div>
             </section>
-            <section className='content'>
-                <h1>{ firstaid[selectedIndex].name }</h1>
-            </section>
+            <FirstaidContent selectedIndex={selectedIndex} selectedData={getfirstaid[selectedIndex]} isOpen={isOpen} />
         </div>
     )
 }

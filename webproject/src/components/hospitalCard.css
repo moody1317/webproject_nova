@@ -1,0 +1,144 @@
+.hCard {
+    display: flex;
+    width: 95%;
+    height: 90px;
+    background-color: var(--color-background-box);
+    border-radius: var(--radius-xl);
+    justify-content: space-between;
+}
+
+.hospital-card {
+    border-top: 3px solid var(--color-line-hospital);
+}
+
+.pharmacy-card {
+    border-top: 3px solid var(--color-line-pharmacy);
+}
+
+.emergency-card {
+    border-top: 3px solid var(--color-line-emergency);
+}
+
+.hcard-left {
+    display: flex;
+}
+
+.hcard-icon {
+    display: flex;
+    width: 44px;
+    height: 44px;
+    border: none;
+    border-radius: var(--radius-lg);
+    align-items: center;
+    justify-content: center;
+    margin-top: var(--spacing-md);
+    margin-left: var(--spacing-md);
+    font-size: var(--font-size-xxl);
+}
+
+.hospital-background {
+    background-color: var(--color-background-hospital);
+}
+
+.pharmacy-background {
+    background-color: var(--color-background-pharmacy);
+}
+
+.emergency-background {
+    background-color: var(--color-background-offline);
+}
+
+.hcard-title {
+    margin-left: var(--spacing-sm);
+    margin-top: var(--spacing-sm);
+}
+
+.hcard-title h3{
+    color: var(--color-text-primary);
+    font-size: var(--font-size-lg);
+}
+
+.hcard-tag {
+    display: flex;
+    width: fit-content;
+    border: none;
+    border-radius: var(--radius-pill);
+    font-size: var(--font-size-xs);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    align-items: center;
+    justify-content: center;
+}
+
+.hospital-text {
+    color: var(--color-line-hospital);
+}
+
+.pharmacy-text {
+    color: var(--color-line-pharmacy);
+}
+
+.emergency-text {
+    color: var(--color-line-emergency);
+}
+
+.hcard-detail {
+    display: flex;
+    padding-top: var(--spacing-xs);
+    padding-right: var(--spacing-sm);
+    color: var(--color-text-sub1);
+    font-size: var(--font-size-sm);
+    gap: var(--spacing-sm);
+}
+
+.hcard-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: var(--spacing-md);
+    gap: var(--spacing-sm);
+}
+
+.isopen {
+    background-color: var(--color-background-pharmacy);
+    color: var(--color-line-pharmacy);
+}
+
+.isnotopen {
+    background-color: var(--color-background-offline);
+    color: var(--color-line-emergency);
+}
+
+.hcard-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border: none;
+    border-radius: var(--spacing-sm);
+    font-size: var(--font-size-md);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.hcard-call {
+    background-color: var(--color-background-sea);
+    color: var(--color-rescure);
+    
+}
+
+.hcard-road {
+    background-color: var(--color-background-btn);
+    color: var(--color-text-sub3);
+}
+
+@media (max-width: 768px) {
+    .hcard-tag {
+        font-weight: lighter;
+    }
+
+    .hcard-btn {
+        font-size: var(--font-size-sm);
+        font-weight: 200;
+    }
+}

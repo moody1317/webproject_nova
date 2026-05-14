@@ -67,12 +67,6 @@
     display: none;
 }
 
-.content h1 {
-    color: var(--color-text-primary);
-    margin-top: var(--spacing-lg);
-    margin-left: var(--spacing-xl);
-}
-
 @media (max-width: 768px) {
     .page {
         position: relative;
