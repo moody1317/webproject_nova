@@ -26,3 +26,7 @@
 .emergency-mark {
     background-color: var(--color-gover);
 }
+
+.clinic-mark {
+    background-color: var(--color-rescure);
+}
