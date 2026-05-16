@@ -24,3 +24,9 @@ export const emergencyMarker = L.divIcon({
     className: 'emergency-marker',
     html: '<div class="emergency-mark"></div>'
 });
+
+export const clinicMarker = L.divIcon({
+    iconSize: [20, 20],
+    className: 'clinic-marker',
+    html: '<div class="clinic-mark"></div>'
+})
