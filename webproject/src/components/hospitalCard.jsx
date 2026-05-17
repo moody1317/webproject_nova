@@ -7,7 +7,7 @@ const placeConfig = {
     emergency: { icon: 'bi-heart-pulse' }
 }
 
-function HospitalCard({ name, tagname, distance, time, isOpen, placeType, latitude, longitude }) {
+function HospitalCard({ name, tagname, distance, time, isOpen, placeType, latitude, longitude, tel }) {
 
     const getClassName = (type) => {
         if (type === 'hospital') {
@@ -54,6 +54,17 @@ function HospitalCard({ name, tagname, distance, time, isOpen, placeType, latitu
         }
     }
 
+    const CallClick = () => {
+        const user = navigator.userAgent;
+
+        if (user.indexOf("iPhone") > -1 || user.indexOf("Android") > -1 ) {
+            location.href=`tel: ${ tel }`
+        }
+        else {
+            alert(`tel: ${ tel }`);
+        }
+    }
+
     const Directions = () => {
         window.open("https://map.kakao.com/link/to/카카오판교아지트,37.3952969470752,127.110449292622", "_blank");
     }
@@ -75,7 +86,7 @@ function HospitalCard({ name, tagname, distance, time, isOpen, placeType, latitu
             </div>
             <div className='hcard-right'>
                 <h3 className={`hcard-tag ${getIsOpenClassName(isOpen)}`}>{ isOpen }</h3>
-                <button className='hcard-btn hcard-call'>전화</button>
+                <button className='hcard-btn hcard-call' onClick={() => CallClick()}>전화</button>
                 <button className='hcard-btn hcard-road' onClick={() => Directions() }>길 찾기</button>
             </div>
         </section>
