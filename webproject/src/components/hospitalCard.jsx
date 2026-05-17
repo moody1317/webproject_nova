@@ -7,7 +7,7 @@ const placeConfig = {
     emergency: { icon: 'bi-heart-pulse' }
 }
 
-function HospitalCard({ name, tagname, distance, time, isOpen, placeType }) {
+function HospitalCard({ name, tagname, distance, time, isOpen, placeType, latitude, longitude }) {
 
     const getClassName = (type) => {
         if (type === 'hospital') {
@@ -54,6 +54,10 @@ function HospitalCard({ name, tagname, distance, time, isOpen, placeType }) {
         }
     }
 
+    const Directions = () => {
+        window.open("https://map.kakao.com/link/to/카카오판교아지트,37.3952969470752,127.110449292622", "_blank");
+    }
+
     return (
         <section className={`hCard ${getClassName(placeType)}`}>
             <div className='hcard-left'>
@@ -72,7 +76,7 @@ function HospitalCard({ name, tagname, distance, time, isOpen, placeType }) {
             <div className='hcard-right'>
                 <h3 className={`hcard-tag ${getIsOpenClassName(isOpen)}`}>{ isOpen }</h3>
                 <button className='hcard-btn hcard-call'>전화</button>
-                <button className='hcard-btn hcard-road'>길 찾기</button>
+                <button className='hcard-btn hcard-road' onClick={() => Directions() }>길 찾기</button>
             </div>
         </section>
     );
