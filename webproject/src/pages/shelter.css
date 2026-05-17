@@ -1,0 +1,54 @@
+.medicine-page {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+}
+
+.shelter-category {
+    height: 52px;
+    background-color: var(--color-background);
+    width: 100%;
+    padding: 0 20px;
+}
+
+.shelter-inventory {
+    display: flex;
+    width: 120px;
+    height: 52px;
+    cursor: pointer;
+    flex-direction: column ;
+    padding: 0 20px;
+}
+
+.shelter-inventory-content {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+}
+
+.shelter-content p {
+    color: var(--color-text-sub1);
+    font-size: var( --font-size-base);
+    padding: 12px 35px;
+}
+
+.shelter-inventory-active {
+    background-color: var( --color-background-secondary);
+    border-bottom: 4px solid var(--color-line-primary);
+}
+
+.shelter-inventory-active p {
+    color: var(--color-text-secondary);
+    font-weight: bold;
+}
+
+.shelter-inventory:hover {
+    background-color: var(--color-background-hover);
+}
+
+.shelter-sidebar-show {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}

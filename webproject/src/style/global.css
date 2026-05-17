@@ -39,6 +39,9 @@
   --color-background-civil: #F2E8FC;
   --color-white: #FFFFFF;
   --color-black: #000000;
+  --color-background-exit: #EDE0E0; /*대피소 지역 추가 나가기 버튼 */
+  --color-background-loc: #FAF5F5; /*저장된 지역 섹션 배경 */
+  --color-background-drag: #D1BDBD;
   
   /* 글자색 */
   --color-text-primary: #211414;

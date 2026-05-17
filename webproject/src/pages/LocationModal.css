@@ -1,0 +1,216 @@
+.modal-overlay {
+    background-color: rgba(0, 0, 0, 0.6);
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    top: 0;
+    left: 0;
+}
+
+.modal-container {
+    background-color: var(--color-background);
+    border-radius: 20px;
+    width: 1200px;
+    height: 700px;
+    overflow-y: auto;
+}
+
+.modal-hero {
+    background-color: var(--color-background-secondary);
+    width: 100%;
+    height: 70px;
+    align-items: center;
+    border-bottom: 1px solid var(--color-line-secondary);
+}
+
+.modal-hero-inner {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-hero-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 20px;
+}
+
+.modal-hero h1 {
+    font-size: var(--font-size-xl);
+    color: var(--color-text-primary);
+}
+
+.modal-hero p {
+    font-size: var(--font-size-sm);
+    color: var( --color-text-sub1);
+    padding: 0 10px;
+}
+
+#btn-modal-exit {
+    background-color: var(--color-background-exit);
+    border-radius: var(--radius-round);
+    border: 0px;
+    width: 30px;
+    height: 30px;
+}
+
+.modal-saveloc{
+    background-color: #FAF5F5;
+    width: 30%;
+    height: 100%;
+    border-right: 1px solid var(--color-line-secondary);
+}
+
+.modal-saveloc-inner {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.modal-saveloc-inner h4 {
+    color: var(--color-text-primary);
+    font-size: var(--font-size-lg);
+    padding: 18px 25px;
+}
+
+.modal-locCount {
+    color: var(--color-text-sub2);
+    font-size: var(--font-size-sm);
+    padding: 18px 50px;
+}
+
+.modal-loc-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-loc-item {
+    display: flex;
+    align-items: center;
+    background-color: var(--color-background);
+    border-radius: var(--radius-xxl);
+    width: 330px;
+    height: 90px;
+    padding: 8px;
+    border: 2px solid var(--color-line-secondary);
+    border-top: 4px solid var(--color-line-secondary);
+    padding: 0;
+    flex-direction: column;
+}
+
+.modal-loc-item-top {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%
+}
+.modal-loc-item-top .bi-list {
+    font-size: var(--font-size-xxxl);
+    color: var(--color-background-drag);
+    cursor: grab;
+    padding: 0 5px;
+    align-self: center;
+}
+
+.modal-loc-item-active {
+    border: 2px solid var( --color-line-primary);
+    border-top: 4px solid var( --color-line-primary);
+}
+
+.modal-loc-item-inner {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    padding: 5px;
+}
+
+.modal-loc-item-inner i {
+    font-size: var(--font-size-xxl);
+}
+
+.modal-loc-item-inner p {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-sub1);
+}
+
+.modal-loc-info {
+    display: flex;
+    flex-direction: column;
+}
+.modal-loc-item i {
+
+}
+
+.modal-loc-info h4 {
+    color: var(--color-text-primary);
+    font-size: var(--font-size-lg);
+}
+
+.modal-loc-info p {
+    color: var(--color-text-sub1: #6B4D4D);
+    font-size: var(--font-size-xs);
+}
+
+.modal-loc-badge {
+    background-color: var( --color-background-secondary);
+    color: var( --color-text-third);
+    border-radius: var(--radius-md);
+    text-align: center;
+    font-size: var(--font-size-xs);
+    font-weight: bold;
+    width: 33px;
+    height: 17px;
+}
+
+.modal-loc-btn {
+    display: flex;
+    gap: 8px;
+    padding-left: 80px;
+    align-items: center;
+    padding-bottom: 30px;
+}
+#btn-loc-change {
+    background-color: var(--color-background-sea);
+    color: var( --color-rescure);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-background-sea);
+    font-size: var(--font-size-xs);
+    font-weight: bold;
+    width: 40px;
+    cursor: pointer;
+}
+
+#btn-loc-delete {
+    background-color: var(--color-background-dropdown);
+    color: var(--color-text-third);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-background-dropdown);
+    font-size: var(--font-size-xs);
+    font-weight: bold;
+    width: 40px;
+    cursor: pointer;
+}
+
+.modal-loc-drag {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-sub2);
+    padding-right: 120px;
+    padding-bottom: 7px;
+}
+
+.modal-loc-drag p {
+
+}
+.modal-loc-info {
+
+}
+
+
+.modal-loc-add-btn {
+
+}
