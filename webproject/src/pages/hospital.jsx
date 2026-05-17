@@ -63,6 +63,9 @@ function Hospital() {
                             distance="0.7km"
                             time="09~18시"
                             isOpen="Open"
+                            latitude={37.3952969470752}
+                            longitude={127.110449292622}
+                            tel="010-1234-5678"
                         />
                 </div>
             </section>
