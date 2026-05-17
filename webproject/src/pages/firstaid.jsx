@@ -5,10 +5,10 @@ import FirstaidContent from '../components/firstaidContent';
 function Firstaid() {
     const [isOpen, setIsOpen] = useState(false);
     const [selectedIndex, setSelectedIndex] = useState(0);
-    const [firstaids, getFirstaid] = useState([]);
+    const [firstaids, setFirstaid] = useState([]);
 
     useEffect (() => {
-        fetch('/api/firstaid', {headers: {'ngrok-skip-browser-warning': 'true'}}).then(response => response.json()).then(data => getFirstaid(data))
+        fetch('/api/firstaid', {headers: {'ngrok-skip-browser-warning': 'true'}}).then(response => response.json()).then(data => setFirstaid(data))
         .catch(error => console.log(error));
     }, []);
 
