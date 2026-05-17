@@ -5,10 +5,10 @@ import FirstaidContent from '../components/firstaidContent';
 function Firstaid() {
     const [isOpen, setIsOpen] = useState(false);
     const [selectedIndex, setSelectedIndex] = useState(0);
-    const [getfirstaid, setGetFirstaid] = useState([]);
+    const [firstaids, getFirstaid] = useState([]);
 
     useEffect (() => {
-        fetch('/api/firstaid', {headers: {'ngrok-skip-browser-warning': 'true'}}).then(response => response.json()).then(data => setGetFirstaid(data))
+        fetch('/api/firstaid', {headers: {'ngrok-skip-browser-warning': 'true'}}).then(response => response.json()).then(data => getFirstaid(data))
         .catch(error => console.log(error));
     }, []);
 
@@ -22,7 +22,7 @@ function Firstaid() {
         return () => window.removeEventListener('resize', Resize);
     }, [])
 
-    const inventoryList = getfirstaid.map((item, index) => 
+    const inventoryList = firstaids.map((item, index) => 
         <div className={ index === selectedIndex ? 'inventory active' : 'inventory' } key={index}>
             <div className='inventory-content' onClick={() => setSelectedIndex(index)}>
                 <i className={ item.icon }></i>
@@ -43,7 +43,7 @@ function Firstaid() {
                     { inventoryList }
                 </div>
             </section>
-            <FirstaidContent selectedIndex={selectedIndex} selectedData={getfirstaid[selectedIndex]} isOpen={isOpen} />
+            <FirstaidContent selectedIndex={selectedIndex} selectedData={firstaids[selectedIndex]} isOpen={isOpen} />
         </div>
     )
 }
