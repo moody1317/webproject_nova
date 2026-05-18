@@ -1,10 +1,12 @@
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, useLocation } from 'react-router-dom';
 import { useRef, useState, useEffect } from 'react';
 import './navbar.css';
 
 function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const menuRef = useRef();
+    const location = useLocation();
+    const isHome = location.pathname === '/';
 
     useEffect(() => {
         function handleClickOutside(event) {
@@ -20,7 +22,7 @@ function Navbar() {
     }, [menuRef]);
 
     return (
-        <nav>
+        <nav className={ isHome ? 'nav-hidden': ''}>
             <Link to="/" end="true">
                 <svg width="143" height="65" viewBox="0 0 143 67" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g clipPath="url(#clip0_269_1672)">
