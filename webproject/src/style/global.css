@@ -229,10 +229,13 @@ footer {
     --font-size-xxl: 25px;
     --font-size-xxxl: 50px;
 
-    --spacing-lg: 20px;
-    --spacing-xl: 24px;
-    --spacing-xxl: 32px;
-    --spacing-xxxl: 40px;
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 11px;
+    --spacing-lg: 21px;
+    --spacing-xl: 30px;
+    --spacing-xxl: 33px; /* 위 아래 xxl + xxxl */
+    --spacing-xxxl: 55px;
   }
 
   .mobile-path {
