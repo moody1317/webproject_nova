@@ -83,7 +83,7 @@ a.menu:hover {
 
     .nav-link.open {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         top: 68px;
         left: 0px;
         width: 100%;
@@ -101,15 +101,13 @@ a.menu:hover {
         align-items: center;
         justify-content: center;
         text-decoration: none;
-        padding: 10px;
-        color: var(--color-text-sub1);
-        width: 150px;
+        padding: var(--spacing-md);
+        font-size: var(--font-size-lg);
+        width: 100%;
     }
 
     a.menu.active {
-        background-color: var(--color-background-secondary);
-        color: var(--color-text-secondary);
-        font-weight: bold;
+        border-bottom: none;
     }
 
     .hamburger {
