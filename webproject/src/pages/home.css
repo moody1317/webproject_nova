@@ -79,7 +79,7 @@
 .emergency-contacts-card-text {
     color: var(--color-text-sub2);
     font-size: var(--font-size-sm);
-    padding: 0 8px;
+    padding: 0 10px;
 }
 
 /* 119 */
@@ -249,59 +249,6 @@
     align-items: center;
     justify-content: center;
 }
-@media (max-width: 768px) {
-
-
-    .emergency-contacts-119-icons {
-        display: none;
-    }
-    .emergency-contacts-card-119 {
-        font-size: 30px;
-    }
-
-    .emergency-contacts-112-icons {
-        display: none;
-    }
-    .emergency-contacts-card-112 {
-        font-size: 30px;
-    }
-
-    .emergency-contacts-122-icons {
-        display: none;
-    }
-    .emergency-contacts-card-122 {
-        font-size: 30px;
-    }
-
-    .emergency-contacts-1339-icons {
-        display: none;
-    }
-    .emergency-contacts-card-1339 {
-        font-size: 30px;
-    }
-
-    .emergency-contacts-110-icons {
-        display: none;
-    }.emergency-contacts-card-110 {
-        font-size: 30px;
-    }
-
-    .emergency-contacts-020-icons {
-        display: none;
-    }
-    .emergency-contacts-card-020 {
-        font-size: 30px;
-    }
-    
-
-    .emergency-contacts-card-title {
-        font-size: var(--font-size-sm);        
-    }
-    .emergency-contacts-card-text {
-        font-size: 10px;
-        padding: 0 5px;
-    }
-}
  
 /* 페이지 이동 */
 .direct {
@@ -387,32 +334,101 @@
 .move.active {
     color: var(--color-text-third);
 }
+.mobile-only {
+    display: none;
+}
+
 @media (max-width: 768px) {
-    .direct-box {
-        min-height: 60px;
-        max-width: 240px;
-        padding: 10px 10px;
-    }
-    .direct-icon {
+    .home-hero {
         display: none;
     }
-    .direct-grid {
+
+    .emergency-contacts {
+        display: none;
+    }
+
+    .direct {
+        display: none;
+    }
+
+    .mobile-only {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .mobile-only > h1 {
+        font-size: var(--font-size-xxxl);
+        color: var(--color-text-secondary);
+        margin-top: var(--spacing-xxl);
+    }
+
+    .mobile-only > p {
+        font-size: var(--font-size-xxl);
+        color: var(--color-text-sub2);
+        padding-bottom: var(--spacing-xl);
+        margin-top: var(--spacing-lg);
+    }
+
+    .nav-mobile {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .nav-mobile.active {
+        color: inherit;
+    }
+
+    .mobile-grid {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
         gap: 20px;
         width: 100%;
-        padding-left: 0px;
     }
-    .direct-info h3 {
-        font-size: var(--font-size-base);
+
+    .nav-card {
+        display: flex;
+        flex-direction: column;
+        width: 163px;
+        height: 197px;
+        border-radius: 12px;
+        border-top: 3px solid var(--color-line-primary);
+        margin: var(--spacing-xxl) var(--spacing-xxl);
+        background-color: var(--color-background);
+        box-shadow: 0px 4px 4px rgb(0,0,0,0.25);
+        display: center;
+        align-items: center;
+        text-align: center;
     }
-    .direct-info p {
-        color: var(--color-text-sub1);
-        font-size: var(--font-size-xs);
-        padding: 3px 0px;
+
+    .nav-card > h3 {
+        font-size: var(--font-size-xl);
+        color: var(--color-text-primary);
+        margin-top: var(--spacing-lg);
     }
-    .direct-onoff p {
+
+    .nav-card-icon {
+        display: flex;
+        background-color: var(--color-background-firefighter);
+        width: 70px;
+        height: 70px;
+        border: none;
+        border-radius: 12px;
+        font-size: 30px;
+        align-items: center;
+        justify-content: center;
+        margin-top: var(--spacing-lg);
+    }
+
+    .onoff-tag {
+        background-color: var(--color-background-dropdown);
         color: var(--color-text-third);
+        width: 64px;
+        height: 18px;
+        margin-top: var(--spacing-lg);
+        border: none;
+        border-radius: 12px;
         font-size: var(--font-size-xs);
     }
 }
