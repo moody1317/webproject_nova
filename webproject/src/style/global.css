@@ -9,6 +9,8 @@
   --color-line-hospital: #D4382E;
   --color-line-pharmacy: #219652;
   --color-line-emergency: #E08A1A;
+  --color-line-clinic: #7338A6;
+  --color-line-healthcenter: #216BD1;
 
   /* line + text(dark 변동 없을 거같음) */
   --color-firefighter: #D4382E;
@@ -36,12 +38,14 @@
   --color-background-hospital: #FCF0ED;
   --color-background-sea: #E0EDFC;
   --color-background-pharmacy: #E0F7E8; /* 영업 및 진료중 포함 */
+  --color-background-clinic: #f4e9fe;
+  --color-backgruond-healthcenter: #b9cbe6;
   --color-background-civil: #F2E8FC;
-  --color-white: #FFFFFF;
-  --color-black: #000000;
   --color-background-exit: #EDE0E0; /*대피소 지역 추가 나가기 버튼 */
   --color-background-loc: #FAF5F5; /*저장된 지역 섹션 배경 */
   --color-background-drag: #D1BDBD;
+  --color-white: #FFFFFF;
+  --color-black: #000000;
   
   /* 글자색 */
   --color-text-primary: #211414;
@@ -126,12 +130,19 @@
     --color-background-sea: #1A385C;
     --color-background-hospital: #260809;
     --color-background-pharmacy: #0B1C15; /* 영업 및 진료중 포함 */
+    --color-background-clinic: #180d22;
+    --color-backgruond-healthcenter: #131d2b;
     --color-background-civil: #290A0A;
+    --color-background-exit: #4D2626;
+    --color-background-loc: #2B1717;
+    --color-background-drag: #592E2E;
 
     --color-line-secondary: #241212;
     --color-line-hospital: #BF382E;
     --coloro-line-pharmacy: #38B86B;
     --color-line-emergency: #F2B233;
+    --color-line-clinic: #994fda;
+    --color-line-healthcenter: #346cbc;
   }
 }
 
