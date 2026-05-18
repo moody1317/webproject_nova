@@ -172,6 +172,57 @@ function Home() {
                 </div>
             </div>
         </section>
+
+        <section className='mobile-only'>
+            <h1>SafeGuard</h1>
+            <p>주요 기능 바로가기</p>
+            <div className='mobile-grid'>
+                <NavLink to="/firstaid" end className='nav-mobile'>
+                    <div className='nav-card'>
+                        <div className='nav-card-icon'>
+                            <i className="bi bi-capsule"></i>
+                        </div>
+                        <h3>응급처치 가이드</h3>
+                        <div className='onoff-tag'>
+                            <p>온/오프 지원</p>
+                        </div>
+                    </div>
+                </NavLink>
+                <NavLink to="/shelter" end className='nav-mobile'>
+                    <div className='nav-card'>
+                        <div className='nav-card-icon'>
+                            <i className="bi bi-map"></i>
+                        </div>
+                        <h3>대피소 찾기</h3>
+                        <div className='onoff-tag'>
+                            <p>온/오프 지원</p>
+                        </div>
+                    </div>
+                </NavLink>
+                <NavLink to="/medicine" end className='nav-mobile'>
+                    <div className='nav-card'>
+                        <div className='nav-card-icon'>
+                            <i className="bi bi-capsule-pill"></i>
+                        </div>
+                        <h3>의약품 검색</h3>
+                        <div className='onoff-tag'>
+                            <p>온/오프 지원</p>
+                        </div>
+                    </div>
+                </NavLink>
+                <NavLink to="/hospital" end className='nav-mobile'>
+                    <div className='nav-card'>
+                        <div className='nav-card-icon'>
+                            <i className="bi bi-hospital"></i>
+                        </div>
+                        <h3>병원·약국 찾기</h3>
+                        <div className='onoff-tag'>
+                            <p>온/오프 지원</p>
+                        </div>
+                    </div>
+                </NavLink>
+            </div>
+        </section>
         </>
     );
 }
