@@ -73,6 +73,10 @@ a.menu:hover {
 }
 
 @media (max-width: 1024px) {
+    .nav-hidden {
+        display: none;
+    }
+
     .nav-link {
         display: none;
     }
