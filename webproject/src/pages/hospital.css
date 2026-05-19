@@ -44,8 +44,53 @@
 }
 
 .hospital-map {
+    position: relative;
     width: 50%;
     height: 588px;
+}
+
+.hospital-legend {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: var(--z-modal);
+    width: fit-content;
+    height: fit-content;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    background-color: rgb(255, 255, 255, 0.5);
+    border-radius: var(--radius-xl);
+}
+
+.hospital-marker-list > li:nth-child(1)::marker {
+    color: var(--color-firefighter);
+}
+
+.hospital-marker-list > li:nth-child(1) {
+    color: var(--color-firefighter);
+}
+
+.hospital-marker-list > li:nth-child(2)::marker {
+    color: var(--color-medical);
+}
+
+.hospital-marker-list > li:nth-child(2) {
+    color: var(--color-medical);
+}
+
+.hospital-marker-list > li:nth-child(3)::marker {
+    color: var(--color-gover);
+}
+
+.hospital-marker-list > li:nth-child(3) {
+    color: var(--color-gover);
+}
+
+.hospital-marker-list > li:nth-child(4)::marker {
+    color: var(--color-rescure);
+}
+
+.hospital-marker-list > li:nth-child(4) {
+    color: var(--color-rescure);
 }
 
 .hospital-panel {
@@ -123,6 +168,10 @@
     overflow-y: auto;
 }
 
+.hospital-bottomsheet {
+    display: none;
+}
+
 #txt-search {
     color: var(--color-text-primary);
     background-color: transparent;
@@ -148,82 +197,15 @@
 
 @media (max-width: 768px) {
     .hospital-hero {
-        width: auto;
-        height: 100px;
-        background-color: var(--color-background);
-        border-left: 2px solid var(--color-line-primary);
-        display: block;
-    }    
-
-    .hospital-hero h1 {
-        font-size: var(--font-size-base);
-        margin-left: var(--spacing-sm);
-        margin-top: var(--spacing-sm);
-    }
-
-    .hospital-hero p {
-        color: var(--color-text-sub1);
-        font-size: var(--font-size-sm);
-        margin-left: var(--spacing-sm);
-    }
-
-    .hospita-search {
-        width: 300px;
-        height: 40px;
-        font-size: var(--font-size-xl);
-        margin-top: var(--spacing-sm);
-        margin-left: var(--spacing-md);
+        display: none;
     }
 
     .hospital-content {
-        display: block;
         width: 100%;
-        min-height: 200px;
-    }
-
-    .hospital-map {
-        width: 100%;
-        height: 300px;
+        height: 100%;
     }
 
     .hospital-panel {
-        width: 100%;
-    }
-
-    .hospital-panel-top {
-        padding: 10px 3px;
-    }
-
-    .hospital-panel-right h1 {
-        font-size: var(--font-size-xl);
-        margin-top: var(--spacing-xs);
-    }
-
-    .hospital-panel-right h3 {
-        width: 30px;
-        font-size: var(--font-size-xs);
-        margin-left: var(--spacing-xs);
-        margin-top: var(--spacing-xs);
-    }
-
-    .hospital-sort-btn {
-        width: 50px;
-        font-size: var(--font-size-xs);
-        margin-top: 5px;
-        margin-left: var(--spacing-xs);
-        margin-right: var(--spacing-sm);
-    }
-
-    #txt-search::placeholder {
-        color: var(--color-text-sub2);
-        font-size: var(--font-size-sm);
-    }
-
-    #btn-search {
-        width: 60px;
-        height: 30px;
-        font-size: var(--font-size-sm);
-        margin-right: var(--spacing-sm);
-        cursor: pointer;
+        display: none;
     }
 }
