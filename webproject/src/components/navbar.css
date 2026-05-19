@@ -108,6 +108,7 @@ a.menu:hover {
 
     a.menu.active {
         border-bottom: none;
+        border-left: 3px solid var(--color-line-primary);
     }
 
     .hamburger {
