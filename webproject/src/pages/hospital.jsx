@@ -2,7 +2,7 @@ import { MapContainer, TileLayer, useMap, Marker, Popup } from 'react-leaflet';
 import { useState, useEffect } from 'react';
 import L from 'leaflet';
 import HospitalCard from '../components/hospitalCard';
-import { currentMarker } from '../components/mapMarker';
+import { currentMarker, hospitalMarker, pharmacyMarker, emergencyMarker, clinicMarker } from '../components/mapMarker';
 import 'leaflet/dist/leaflet.css';
 import './hospital.css';
 
@@ -13,8 +13,27 @@ function MoveMap({ position }) {
 function Hospital() {
     const [sortType, setSortType] = useState('distance');
     const [curPosition, setCurPosition] = useState([37.5665, 126.9780]);
+    const [hospitals, setHospitals] = useState([]);
+    const [searchKeyword, setSearchKeyword] = useState('');
 
-    useEffect(() => { navigator.geolocation.getCurrentPosition( position => {setCurPosition([position.coords.latitude, position.coords.longitude])}, null, { enableHighAccuracy: true}) }, []);
+    useEffect(() => { 
+        navigator.geolocation.getCurrentPosition( position => {
+            setCurPosition([position.coords.latitude, position.coords.longitude])
+        }, null, { enableHighAccuracy: true}) 
+    }, []);
+
+    useEffect(() => {
+        fetch(`/api/hospital?lat=${curPosition[0]}&lng=${curPosition[1]}`, {headers: {'ngrok-skip-browser-warning': 'true'}}).then(response => response.json()).then(data => setHospitals(data))
+        .catch(error => console.log(error));
+    }, [curPosition]);
+
+    const filteredHospital = hospitals.filter(item =>
+        item.tagname.toLowerCase().includes(searchKeyword.toLowerCase())
+    );
+
+    const handleSearch = (event) => {
+        setSearchKeyword(event.target.value);
+    };
 
     return (
         <>
@@ -25,12 +44,20 @@ function Hospital() {
             </div>
             <div className='hospital-search'>
                 <i className='bi bi-search'></i>
-                <input type='text' id='txt-search' placeholder='진료 과목으로 검색...'></input>
+                <input type='text' id='txt-search' placeholder='진료 과목으로 검색...' onChange={ handleSearch }></input>
                 <input type='button' id='btn-search' value='검색'></input>
             </div>
         </section>
         <div className='hospital-content'>
             <section className='hospital-map'>
+                <div className='hospital-legend'>
+                    <ul className='hospital-marker-list'>
+                        <li>병원, 보건소, 종합병원</li>
+                        <li>약국</li>
+                        <li>응급실</li>
+                        <li>의원</li>
+                    </ul>
+                </div>
                 <MapContainer center={curPosition } zoom={20} scrollWheelZoom={false} style={{height: '100%', width: '100%'}} >
                     <MoveMap position={ curPosition } />
                     <TileLayer
@@ -56,18 +83,25 @@ function Hospital() {
                     </div>
                 </div>
                 <div  className='hospital-panel-list'>
-                    <HospitalCard
-                            placeType="hospital"
-                            name="서원의원"
-                            tagname="내과"
-                            distance="0.7km"
-                            time="09~18시"
-                            isOpen="Open"
-                            latitude={37.3952969470752}
-                            longitude={127.110449292622}
-                            tel="010-1234-5678"
+                    {filteredHospital.map((item, index) => (
+                        <HospitalCard
+                            placeType={ item.placeType }
+                            name={ item.name }
+                            tagname={ item.tagname}
+                            distance={ item.distance }
+                            time={ item.time }
+                            isOpen={ item.isOpen }
+                            latitude={ item.latitude }
+                            longitude={ item.longitude}
+                            tel={ item.tel }
+                            current={ curPosition }
+                            key={ index }
                         />
+                    ))}
                 </div>
+            </section>
+            <section className='hospital-bottomsheet'>
+                
             </section>
         </div>
         </>
