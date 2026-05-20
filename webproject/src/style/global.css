@@ -44,6 +44,7 @@
   --color-background-exit: #EDE0E0; /*대피소 지역 추가 나가기 버튼 */
   --color-background-loc: #FAF5F5; /*저장된 지역 섹션 배경 */
   --color-background-drag: #D1BDBD;
+  --color-background-banner: #FCF2DB;
   --color-white: #FFFFFF;
   --color-black: #000000;
   
@@ -56,6 +57,7 @@
   --color-text-sub3: #FFFFFF;
   --color-text-online: #219652;
   --color-text-offline: #E08A1A;
+  --color-text-banner: #805905;
   
   /* 간격 */
   --spacing-xs: 4px;
@@ -113,6 +115,7 @@
     --color-text-sub1: #BF9999;
     --color-text-sub2: #BF9999;
     --color-text-sub3: #FFF2F2;
+    --color-text-banner: #FFF2F2;
     
     --color-background: #241212;
     --color-background-primary: #170A0A;
@@ -136,6 +139,7 @@
     --color-background-exit: #4D2626;
     --color-background-loc: #2B1717;
     --color-background-drag: #592E2E;
+    --color-background-banner: #661A1A;
 
     --color-line-secondary: #241212;
     --color-line-hospital: #BF382E;
