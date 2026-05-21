@@ -2,7 +2,8 @@ import { MapContainer, TileLayer, useMap, Marker, Popup } from 'react-leaflet';
 import { useState, useEffect } from 'react';
 import L from 'leaflet';
 import HospitalCard from '../components/hospitalCard';
-import { currentMarker, hospitalMarker, pharmacyMarker, emergencyMarker, clinicMarker } from '../components/mapMarker';
+import BottomSheet from '../components/bottomsheet';
+import { currentMarker, markers } from '../components/mapMarker';
 import 'leaflet/dist/leaflet.css';
 import './hospital.css';
 
@@ -15,6 +16,18 @@ function Hospital() {
     const [curPosition, setCurPosition] = useState([37.5665, 126.9780]);
     const [hospitals, setHospitals] = useState([]);
     const [searchKeyword, setSearchKeyword] = useState('');
+    const [inputValue, setInputValue] = useState('');
+    
+    /*
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = (today.getMonth() + 1).toString().padStart(2, '0');
+    const date = (today.getDate()).toString().padStart(2, '0');
+    const day = ((today.getDay() + 6) % 7) + 1;
+    const hours = today.getHours().toString().padStart(2, '0');
+    const min = today.getMinutes().toString().padStart(2, '0');
+    */
+
 
     useEffect(() => { 
         navigator.geolocation.getCurrentPosition( position => {
@@ -31,8 +44,14 @@ function Hospital() {
         item.tagname.toLowerCase().includes(searchKeyword.toLowerCase())
     );
 
-    const handleSearch = (event) => {
-        setSearchKeyword(event.target.value);
+    const handleSearch = (e) => {
+        setSearchKeyword(inputValue);
+    };
+
+    const handleEnter = (e) => {
+        if (e.key === 'Enter') {
+            handleSearch();
+        }
     };
 
     return (
@@ -43,9 +62,9 @@ function Hospital() {
                 <p>현재 위치 기준 가까운 병원, 응급실, 약국 정보를 실시간으로 제공합니다.</p>
             </div>
             <div className='hospital-search'>
-                <i className='bi bi-search'></i>
-                <input type='text' id='txt-search' placeholder='진료 과목으로 검색...' onChange={ handleSearch }></input>
-                <input type='button' id='btn-search' value='검색'></input>
+                <i className='bi bi-search' onClick={ handleSearch }></i>
+                <input type='text' id='txt-search' placeholder='진료 과목으로 검색...' onChange={(e) => setInputValue(e.target.value)} onKeyDown={ handleEnter }></input>
+                <input type='button' id='btn-search' value='검색' onClick={ handleSearch }></input>
             </div>
         </section>
         <div className='hospital-content'>
@@ -64,11 +83,10 @@ function Hospital() {
                         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; CARTO'
                         url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
                     />
-                    <Marker position={ curPosition } icon={ currentMarker }>
-                        <Popup>
-                        A pretty CSS3 popup. <br /> Easily customizable.
-                        </Popup>
-                    </Marker>
+                    <Marker position={ curPosition } icon={ currentMarker }></Marker>
+                    { hospitals.map((item, index) => (
+                        <Marker position={ [item.latitude, item.longitude]} icon={ markers[item.placeType] } key={ index }></Marker>
+                    ))}
                 </MapContainer>
             </section>
             <section className='hospital-panel'>
@@ -100,9 +118,31 @@ function Hospital() {
                     ))}
                 </div>
             </section>
-            <section className='hospital-bottomsheet'>
-                
-            </section>
+            <BottomSheet>
+                <div className='hospital-search'>
+                    <i className='bi bi-search' onClick={ handleSearch }></i>
+                    <input type='text' id='txt-search' placeholder='진료 과목으로 검색...' onChange={(e) => setInputValue(e.target.value)} onKeyDown={ handleEnter }></input>
+                    <input type='button' id='btn-search' value='검색' onClick={ handleSearch }></input>
+                </div>
+                <div className='hospital-panel-list'>
+                    {filteredHospital.map((item, index) => (
+                        <HospitalCard
+                            placeType={ item.placeType }
+                            name={ item.name }
+                            tagname={ item.tagname}
+                            distance={ item.distance }
+                            openTime={ item.openTime }
+                            closeTime={ item.closeTime}
+                            isOpen={ item.isOpen }
+                            latitude={ item.latitude }
+                            longitude={ item.longitude}
+                            tel={ item.tel }
+                            current={ curPosition }
+                            key={ index }
+                        />
+                    ))}
+                </div>
+            </BottomSheet>
         </div>
         </>
     )
