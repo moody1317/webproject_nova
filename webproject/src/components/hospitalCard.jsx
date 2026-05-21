@@ -4,10 +4,12 @@ import './hospitalCard.css';
 const placeConfig = {
     hospital: { icon: 'bi-hospital' },
     pharmacy: { icon: 'bi-capsule-pill' },
-    emergency: { icon: 'bi-heart-pulse' }
+    emergency: { icon: 'bi-heart-pulse' },
+    clinic: { icon: 'bi-hospital' },
+    healthcenter: { icon: 'bi-hospital' }
 }
 
-function HospitalCard({ name, tagname, distance, time, isOpen, placeType, latitude, longitude, tel }) {
+function HospitalCard({ name, tagname, distance, openTime, closeTime, isOpen, placeType, latitude, longitude, tel, current }) {
 
     const getClassName = (type) => {
         if (type === 'hospital') {
@@ -16,8 +18,14 @@ function HospitalCard({ name, tagname, distance, time, isOpen, placeType, latitu
         else if (type === 'pharmacy') {
             return 'pharmacy-card';
         }
-        else {
+        else if (type === 'emergency') {
             return 'emergency-card';
+        }
+        else if (type === 'clinic') {
+            return 'clinic-card';
+        }
+        else if (type === 'healthcenter') {
+            return 'healthcenter-card';
         }
     }
 
@@ -28,8 +36,14 @@ function HospitalCard({ name, tagname, distance, time, isOpen, placeType, latitu
         else if (type === 'pharmacy') {
             return 'pharmacy-background';
         }
-        else {
+        else if (type === 'emergency') {
             return 'emergency-background';
+        }
+        else if (type === 'clinic') {
+            return 'clinic-background';
+        }
+        else if (type === 'healthcenter') {
+            return 'healthcenter-background';
         }
     }
 
@@ -40,8 +54,14 @@ function HospitalCard({ name, tagname, distance, time, isOpen, placeType, latitu
         else if (type === 'pharmacy') {
             return 'pharmacy-text';
         }
-        else {
+        else if (type === 'emergency') {
             return 'emergency-text';
+        }
+        else if (type === 'clinic') {
+            return 'clinic-text';
+        }
+        else if (type === 'healthcenter') {
+            return 'healthcenter-text';
         }
     }
 
@@ -66,7 +86,7 @@ function HospitalCard({ name, tagname, distance, time, isOpen, placeType, latitu
     }
 
     const Directions = () => {
-        window.open("https://map.kakao.com/link/to/카카오판교아지트,37.3952969470752,127.110449292622", "_blank");
+        window.open(`https://map.kakao.com/link/from/내위치,${current[0]},${current[1]}/to/${ name },${ latitude },${ longitude }`, "_blank");
     }
 
     return (
