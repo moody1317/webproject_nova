@@ -1,6 +1,6 @@
 .bottomsheet {
     display: none;
-    z-index: var(--z-toast);
+    z-index: var(--z-tooltip);
     transition: height 0.3s ease;
     overflow: hidden;
     user-select: none;
@@ -32,6 +32,12 @@
     background-color: var(--color-background);
     width: 100%;
     height: calc(100% - 20px);
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+.bottomsheet-body::-webkit-scrollbar {
+    display: none;
 }
 
 .bottomsheet-body-content {
