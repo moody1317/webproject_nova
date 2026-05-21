@@ -105,6 +105,7 @@
   --z-popover: 1060;
   --z-tooltip: 1070;
   --z-toast: 1080;
+  --z-navbar: 1000000;
 }
 
 /* 다크 테마 */
@@ -247,6 +248,10 @@ footer {
   }
   
   .desktop-path {
+    display: none;
+  }
+
+  footer {
     display: none;
   }
 }
