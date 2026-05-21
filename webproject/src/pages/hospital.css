@@ -157,16 +157,22 @@
 
 .hospital-panel-list {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
     background-color: var(--color-background);
     border: none;
-    border-radius: var(--spacing-md);
+    border-radius: var(--radius-lg);
     margin: 0 auto; 
     width: 90%;
     height: 488px;
     padding-top: var(--spacing-sm);
+    padding-bottom: var(--spacing-md);
     overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-line-secondary);
 }
+
 
 #txt-search {
     color: var(--color-text-primary);
@@ -219,8 +225,6 @@
 
     .hospital-panel-list {
         flex: 1;
-        overflow-y: scroll;
-        scrollbar-width: none;
     }
 
     #btn-search {
