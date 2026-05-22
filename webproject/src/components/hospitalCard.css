@@ -201,6 +201,9 @@
         display: none;
     }
 
+    .hcard-title h3{
+        font-size: var(--font-size-md);
+    }
 
     .hcard-btn {
         font-size: var(--font-size-sm);
