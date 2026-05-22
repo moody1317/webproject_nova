@@ -168,7 +168,7 @@
     height: 488px;
     padding-top: var(--spacing-sm);
     padding-bottom: var(--spacing-md);
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 
@@ -257,6 +257,7 @@
         width: 15%;
         height: 30px;
         margin-right: var(--spacing-md);
-        font-size: var(--font-size-base);
+        padding: 0 var(--spacing-xs);
+        font-size: var(--font-size-sm);
     }
 }
