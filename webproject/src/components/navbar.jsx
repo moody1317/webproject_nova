@@ -23,7 +23,7 @@ function Navbar({ isOffline }) {
 
     return (
         <>
-        <nav className={ isHome ? 'nav-hidden': ''}>
+        <nav className={ isHome && !isOffline ? 'nav-hidden': ''}>
             <Link to={isOffline? "/firstaid": "/"} end="true">
                 <svg width="143" height="65" viewBox="0 0 143 67" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g clipPath="url(#clip0_269_1672)">
@@ -82,11 +82,11 @@ function Navbar({ isOffline }) {
                 </button>
 
                 <div className={`nav-link ${isOpen ? "open" : ""}`}>
-                    <NavLink to="/" end="true" className={`menu ${isOffline ? 'menu-online-only' : ''}`}>홈</NavLink>
-                    <NavLink to="/firstaid" className={`menu ${isOffline ? 'menu-main' : ''}`}>응급처치</NavLink>
-                    <NavLink to="/shelter" className="menu">대피소 찾기</NavLink>
-                    <NavLink to="/medicine" className={`menu ${isOffline ? 'menu-online-only' : ''}`}>의약품 검색</NavLink>
-                    <NavLink to="/hospital" className={`menu ${isOffline ? 'menu-online-only' : ''}`}>병원 · 약국 찾기</NavLink>
+                    <NavLink to="/" end="true" className={`menu ${isOffline ? 'menu-online-only' : ''}`} onClick={() => setIsOpen(false)}>홈</NavLink>
+                    <NavLink to="/firstaid" className={`menu ${isOffline ? 'menu-main' : ''}`} onClick={() => setIsOpen(false)}>응급처치</NavLink>
+                    <NavLink to="/shelter" className="menu" onClick={() => setIsOpen(false)}>대피소 찾기</NavLink>
+                    <NavLink to="/medicine" className={`menu ${isOffline ? 'menu-online-only' : ''}`} onClick={() => setIsOpen(false)}>의약품 검색</NavLink>
+                    <NavLink to="/hospital" className={`menu ${isOffline ? 'menu-online-only' : ''}`} onClick={() => setIsOpen(false)}>병원 · 약국 찾기</NavLink>
                 </div>
             </div>
             
