@@ -16,7 +16,7 @@ const hospitals = [
             distance: '0.3km',
             openTime: '09:00',
             closeTime: '18:00',
-            isOpen: 'Open',
+            isOpen: true,
             latitude: 37.5665,
             longitude: 126.9780,
             tel: '02-1234-5678'
@@ -28,7 +28,7 @@ const hospitals = [
             distance: '0.5km',
             openTime: '09:00',
             closeTime: '21:00',
-            isOpen: 'Open',
+            isOpen: true,
             latitude: 37.5670,
             longitude: 126.9785,
             tel: '02-2345-6789'
@@ -40,7 +40,7 @@ const hospitals = [
             distance: '1.2km',
             openTime: '00:00',
             closeTime: '24:00',
-            isOpen: 'Open',
+            isOpen: true,
             latitude: 37.5680,
             longitude: 126.9790,
             tel: '02-3456-7890'
@@ -52,7 +52,7 @@ const hospitals = [
             distance: '2.0km',
             openTime: '09:00',
             closeTime: '17:00',
-            isOpen: 'Closed',
+            isOpen: false,
             latitude: 37.5690,
             longitude: 126.9800,
             tel: '02-4567-8901'
@@ -64,7 +64,7 @@ const hospitals = [
             distance: '0.3km',
             openTime: '09:00',
             closeTime: '18:00',
-            isOpen: 'Open',
+            isOpen: true,
             latitude: 37.5665,
             longitude: 126.9780,
             tel: '02-1234-5678'
@@ -76,7 +76,7 @@ const hospitals = [
             distance: '0.5km',
             openTime: '09:00',
             closeTime: '21:00',
-            isOpen: 'Open',
+            isOpen: true,
             latitude: 37.5670,
             longitude: 126.9785,
             tel: '02-2345-6789'
@@ -88,19 +88,19 @@ const hospitals = [
             distance: '1.2km',
             openTime: '00:00',
             closeTime: '24:00',
-            isOpen: 'Open',
+            isOpen: true,
             latitude: 37.5680,
             longitude: 126.9790,
             tel: '02-3456-7890'
         },
         {
             placeType: 'clinic',
-            name: '강남의원',
+            name: '강남병원',
             tagname: '정형외과',
             distance: '2.0km',
             openTime: '09:00',
             closeTime: '17:00',
-            isOpen: 'Closed',
+            isOpen: false,
             latitude: 37.5690,
             longitude: 126.9800,
             tel: '02-4567-8901'
@@ -139,11 +139,18 @@ function Hospital() {
     useEffect(() => {
         fetch(`/api/hospital?lat=${curPosition[0]}&lng=${curPosition[1]}`, {headers: {'ngrok-skip-browser-warning': 'true'}}).then(response => response.json()).then(data => setHospitals(data))
         .catch(error => console.log(error));
-    }, [curPosition]);
+    }, [curPosition);
 */
     const filteredHospital = hospitals.filter(item =>
         item.tagname.toLowerCase().includes(searchKeyword.toLowerCase())
-    );
+    ).sort((a,b) => {
+        if (sortType === 'treatment') {
+            return b.isOpen - a.isOpen;
+        }
+        else {
+            return 0;
+        }
+    });
 
     const handleSearch = (e) => {
         setSearchKeyword(inputValue);
@@ -193,7 +200,7 @@ function Hospital() {
             <section className='hospital-panel'>
                 <div className='hospital-panel-top'>
                     <div className='hospital-panel-right'>
-                        <h1>전체</h1>
+                        <h1>{searchKeyword.length == 0 ? '전체' : searchKeyword}</h1>
                         <h3>00곳</h3>
                     </div>
                     <div className='hospital-panel-left'>
@@ -225,6 +232,10 @@ function Hospital() {
                     <i className='bi bi-search' onClick={ handleSearch }></i>
                     <input type='text' id='txt-search' placeholder='진료 과목으로 검색...' value={inputValue} onChange={(e) => setInputValue(e.target.value)} onKeyDown={ handleEnter }></input>
                     <input type='button' id='btn-search' value='검색' onClick={ handleSearch }></input>
+                </div>
+                <div className='hospital-panel-left'>
+                    <button className={sortType === 'distance' ? 'hospital-sort-btn active' : 'hospital-sort-btn'} onClick={() => setSortType('distance')}>거리순</button>
+                    <button className={sortType === 'treatment' ? 'hospital-sort-btn active' : 'hospital-sort-btn'} onClick={() => setSortType('treatment')}>진료중</button>
                 </div>
                 <div className='hospital-panel-list'>
                     {filteredHospital.map((item, index) => (
