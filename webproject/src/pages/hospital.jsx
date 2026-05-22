@@ -229,9 +229,8 @@ function Hospital() {
             </section>
             <BottomSheet>
                 <div className='hospital-search'>
-                    <i className='bi bi-search' onClick={ handleSearch }></i>
                     <input type='text' id='txt-search' placeholder='진료 과목으로 검색...' value={inputValue} onChange={(e) => setInputValue(e.target.value)} onKeyDown={ handleEnter }></input>
-                    <input type='button' id='btn-search' value='검색' onClick={ handleSearch }></input>
+                    <i className='bi bi-search' onClick={ handleSearch }></i>
                 </div>
                 <div className='hospital-panel-left'>
                     <button className={sortType === 'distance' ? 'hospital-sort-btn active' : 'hospital-sort-btn'} onClick={() => setSortType('distance')}>거리순</button>
