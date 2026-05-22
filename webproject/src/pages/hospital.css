@@ -168,9 +168,22 @@
     height: 488px;
     padding-top: var(--spacing-sm);
     padding-bottom: var(--spacing-md);
-    overflow-y: auto;
-    scrollbar-width: thin;
-    scrollbar-color: var(--color-line-secondary);
+    overflow-y: scroll;
+}
+
+
+.hospital-panel-list::-webkit-scrollbar {
+    width: 5px;
+    height: auto;
+}
+
+.hospital-panel-list::-webkit-scrollbar-button {
+    display: none;
+}
+
+.hospital-panel-list::-webkit-scrollbar-thumb {
+    background-color: var(--color-line-secondary);
+    border-radius: var(--radius-pill);
 }
 
 
@@ -225,6 +238,19 @@
 
     .hospital-panel-list {
         flex: 1;
+        scrollbar-width: none;
+    }
+
+    .hospital-sort-btn {
+        display: flex;
+        width: 78px;
+        height: 26px;
+        align-items: center;
+        justify-content: center;
+        font-size: var(--font-size-xs);
+        margin-top: var(--spacing-sm);
+        margin-left: var(--spacing-xs);
+        margin-right: var(--spacing-sm);
     }
 
     #btn-search {
