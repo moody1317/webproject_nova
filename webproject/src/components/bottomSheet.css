@@ -32,12 +32,21 @@
     background-color: var(--color-background);
     width: 100%;
     height: calc(100% - 20px);
-    overflow-y: auto;
-    scrollbar-width: none;
+    overflow-y: scroll;
 }
 
 .bottomsheet-body::-webkit-scrollbar {
+    width: 5px;
+    height: auto;
+}
+
+.bottomsheet-body::-webkit-scrollbar-button {
     display: none;
+}
+
+.bottomsheet-body::-webkit-scrollbar-thumb {
+    background-color: var(--color-line-secondary);
+    border-radius: var(--radius-pill);
 }
 
 .bottomsheet-body-content {
@@ -52,7 +61,7 @@
     .bottomsheet {
         display: block;
         position: fixed;
-        bottom: 36px;
+        bottom: 0px;
         left: 0;
         width: 100%;
     }
