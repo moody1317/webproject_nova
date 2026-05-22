@@ -186,7 +186,6 @@
     border-radius: var(--radius-pill);
 }
 
-
 #txt-search {
     color: var(--color-text-primary);
     background-color: transparent;
@@ -229,11 +228,13 @@
     }
 
     .hospital-search {
+        display: flex;
         margin-top: var(--spacing-sm);
         margin-right: 0;
         width: 80%;
         height: 40px;
         font-size: var(--font-size-base);
+        justify-content: space-between;
     }
 
     .hospital-panel-list {
@@ -253,11 +254,8 @@
         margin-right: var(--spacing-sm);
     }
 
-    #btn-search {
-        width: 15%;
-        height: 30px;
-        margin-right: var(--spacing-md);
-        padding: 0 var(--spacing-xs);
-        font-size: var(--font-size-sm);
+    #txt-search {
+        width: 80%;
+        margin-left: var(--spacing-sm);
     }
 }
