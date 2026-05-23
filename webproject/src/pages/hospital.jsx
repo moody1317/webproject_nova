@@ -201,7 +201,7 @@ function Hospital() {
                 <div className='hospital-panel-top'>
                     <div className='hospital-panel-right'>
                         <h1>{searchKeyword.length == 0 ? '전체' : searchKeyword}</h1>
-                        <h3>00곳</h3>
+                        <h3>{ filteredHospital.length }곳</h3>
                     </div>
                     <div className='hospital-panel-left'>
                         <button className={sortType === 'distance' ? 'hospital-sort-btn active' : 'hospital-sort-btn'} onClick={() => setSortType('distance')}>거리순</button>
