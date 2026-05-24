@@ -1,0 +1,32 @@
+.current-dot {
+    display: flex;
+    background-color: rgb(212, 56, 48, 0.3);
+    border-radius: var(--radius-round);
+    width: 20px;
+    height: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.current-main-dot {
+    background-color: rgb(212, 56, 48, 1);
+    border-radius: var(--radius-round);
+    width: 10px;
+    height: 10px;
+}
+
+.hospital-mark {
+    background-color: var(--color-firefighter);
+}
+
+.pharmacy-mark {
+    background-color: var(--color-medical);
+}
+
+.emergency-mark {
+    background-color: var(--color-gover);
+}
+
+.clinic-mark {
+    background-color: var(--color-civil);
+}

@@ -1,0 +1,88 @@
+.pagination {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: var(--spacing-lg);
+}
+
+.pageNumber {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-sub1);
+    margin-left: var(--spacing-xs);
+    margin-right: var(--spacing-xs);
+    padding: var(--spacing-sm) var(--spacing-sm);
+    background-color: inherit;
+    border: none;
+    cursor: pointer;
+}
+
+.pageNumber:hover {
+    font-weight: 150;
+    background-color: var(--color-background-hover);
+    width: fit-content;
+    height: fit-content;
+    padding: var(--spacing-sm) var(--spacing-sm);
+    border: none;
+    border-radius: var(--radius-xl);
+}
+
+.curPage {
+    font-weight: 200;
+    background-color: var(--color-background-btn);
+    color: var(--color-text-sub3);
+    width: fit-content;
+    height: fit-content;
+    padding: var(--spacing-sm) var(--spacing-sm);
+    border: none;
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+}
+
+.curPage:focus {
+    font-weight: 200;
+    background-color: var(--color-background-btn);
+    color: var(--color-text-sub3);
+    width: fit-content;
+    height: fit-content;
+    padding: var(--spacing-sm) var(--spacing-sm);
+    border: none;
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    outline: none;
+}
+
+.go {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-sub1);
+    margin-left: var(--spacing-sm);
+    margin-right: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-xs);
+    cursor: pointer;
+}
+
+.go:hover {
+    font-weight: 150;
+    background-color: var(--color-background-hover);
+    width: fit-content;
+    height: fit-content;
+    padding: var(--spacing-sm) var(--spacing-xs);
+    border: none;
+    border-radius: var(--radius-xl);
+}
+
+.go:active {
+    font-weight: 200;
+    background-color: var(--color-background-btn);
+    color: var(--color-text-sub3);
+    width: fit-content;
+    height: fit-content;
+    padding: var(--spacing-sm) var(--spacing-xs);
+    border: none;
+    border-radius: var(--radius-xl);
+}
+
+.go:focus {
+    padding: var(--spacing-sm) var(--spacing-xs);
+    outline: none;
+}
