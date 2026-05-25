@@ -44,6 +44,7 @@
   --color-background-exit: #EDE0E0; /*대피소 지역 추가 나가기 버튼 */
   --color-background-loc: #FAF5F5; /*저장된 지역 섹션 배경 */
   --color-background-drag: #D1BDBD;
+  --color-background-map: #f7f5f5;
   --color-background-banner: #FCF2DB;
   --color-white: #FFFFFF;
   --color-black: #000000;
@@ -140,6 +141,7 @@
     --color-background-exit: #4D2626;
     --color-background-loc: #2B1717;
     --color-background-drag: #592E2E;
+    /* --color-background-map: #170A0A; */
     --color-background-banner: #661A1A;
 
     --color-line-secondary: #241212;
@@ -222,6 +224,10 @@ footer {
 .rounded-xl { border-radius: var(--radius-xl); }
 .rounded-xxl { border-radius: var(--radius-xxl); }
 
+.leaflet-container img {
+  max-width: none !important;
+  display: inline !important;
+}
 
 /* 모바일 */
 @media (max-width: 768px) {

@@ -45,7 +45,7 @@ function Hospital() {
     const filteredHospital = hospitals.filter(item =>
         item.tagName.toLowerCase().includes(searchKeyword.toLowerCase())
     ).sort((a,b) => {
-        if (sortType === 'TREATMENT') {
+        if (sortType === 'treatment') {
             return b.isOpen - a.isOpen;
         }
         else {
@@ -106,7 +106,7 @@ function Hospital() {
                     </div>
                     <div className='hospital-panel-left'>
                         <button className={sortType === 'distance' ? 'hospital-sort-btn active' : 'hospital-sort-btn'} onClick={() => setSortType('distance')}>거리순</button>
-                        <button className={sortType === 'TREATMENT' ? 'hospital-sort-btn active' : 'hospital-sort-btn'} onClick={() => setSortType('TREATMENT')}>진료중</button>
+                        <button className={sortType === 'treatment' ? 'hospital-sort-btn active' : 'hospital-sort-btn'} onClick={() => setSortType('treatment')}>진료중</button>
                     </div>
                 </div>
                 <div  className='hospital-panel-list'>
@@ -135,7 +135,7 @@ function Hospital() {
                 </div>
                 <div className='hospital-panel-left'>
                     <button className={sortType === 'distance' ? 'hospital-sort-btn active' : 'hospital-sort-btn'} onClick={() => setSortType('distance')}>거리순</button>
-                    <button className={sortType === 'TREATMENT' ? 'hospital-sort-btn active' : 'hospital-sort-btn'} onClick={() => setSortType('TREATMENT')}>진료중</button>
+                    <button className={sortType === 'treatment' ? 'hospital-sort-btn active' : 'hospital-sort-btn'} onClick={() => setSortType('treatment')}>진료중</button>
                 </div>
                 <div className='hospital-panel-list'>
                     {filteredHospital.map((item, index) => (
