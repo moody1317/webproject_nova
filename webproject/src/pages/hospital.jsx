@@ -7,106 +7,6 @@ import { currentMarker, markers } from '../components/mapMarker';
 import 'leaflet/dist/leaflet.css';
 import './hospital.css';
 
-
-const hospitals = [
-        {
-            placeType: 'hospital',
-            name: '서울성모병원',
-            tagname: '내과',
-            distance: '0.3km',
-            openTime: '09:00',
-            closeTime: '18:00',
-            isOpen: true,
-            latitude: 37.5665,
-            longitude: 126.9780,
-            tel: '02-1234-5678'
-        },
-        {
-            placeType: 'pharmacy',
-            name: '한강약국',
-            tagname: '약국',
-            distance: '0.5km',
-            openTime: '09:00',
-            closeTime: '21:00',
-            isOpen: true,
-            latitude: 37.5670,
-            longitude: 126.9785,
-            tel: '02-2345-6789'
-        },
-        {
-            placeType: 'emergency',
-            name: '서울응급의료센터',
-            tagname: '응급실',
-            distance: '1.2km',
-            openTime: '00:00',
-            closeTime: '24:00',
-            isOpen: true,
-            latitude: 37.5680,
-            longitude: 126.9790,
-            tel: '02-3456-7890'
-        },
-        {
-            placeType: 'clinic',
-            name: '강남의원',
-            tagname: '정형외과',
-            distance: '2.0km',
-            openTime: '09:00',
-            closeTime: '17:00',
-            isOpen: false,
-            latitude: 37.5690,
-            longitude: 126.9800,
-            tel: '02-4567-8901'
-        },
-        {
-            placeType: 'hospital',
-            name: '서울성모병원',
-            tagname: '내과',
-            distance: '0.3km',
-            openTime: '09:00',
-            closeTime: '18:00',
-            isOpen: true,
-            latitude: 37.5665,
-            longitude: 126.9780,
-            tel: '02-1234-5678'
-        },
-        {
-            placeType: 'pharmacy',
-            name: '한강약국',
-            tagname: '약국',
-            distance: '0.5km',
-            openTime: '09:00',
-            closeTime: '21:00',
-            isOpen: true,
-            latitude: 37.5670,
-            longitude: 126.9785,
-            tel: '02-2345-6789'
-        },
-        {
-            placeType: 'emergency',
-            name: '서울응급의료센터',
-            tagname: '응급실',
-            distance: '1.2km',
-            openTime: '00:00',
-            closeTime: '24:00',
-            isOpen: true,
-            latitude: 37.5680,
-            longitude: 126.9790,
-            tel: '02-3456-7890'
-        },
-        {
-            placeType: 'clinic',
-            name: '강남병원',
-            tagname: '정형외과',
-            distance: '2.0km',
-            openTime: '09:00',
-            closeTime: '17:00',
-            isOpen: false,
-            latitude: 37.5690,
-            longitude: 126.9800,
-            tel: '02-4567-8901'
-        }
-    ];
-
 function MoveMap({ position }) {
     useMap().setView(position, 20);
 }
@@ -114,7 +14,7 @@ function MoveMap({ position }) {
 function Hospital() {
     const [sortType, setSortType] = useState('distance');
     const [curPosition, setCurPosition] = useState([37.5665, 126.9780]);
-    /* const [hospitals, setHospitals] = useState([]); */
+    const [hospitals, setHospitals] = useState([]);
     const [searchKeyword, setSearchKeyword] = useState('');
     const [inputValue, setInputValue] = useState('');
     
@@ -135,16 +35,17 @@ function Hospital() {
         }, null, { enableHighAccuracy: true}) 
     }, []);
 
-    /*
     useEffect(() => {
-        fetch(`/api/hospital?lat=${curPosition[0]}&lng=${curPosition[1]}`, {headers: {'ngrok-skip-browser-warning': 'true'}}).then(response => response.json()).then(data => setHospitals(data))
+        fetch(`/api/hospitals/nearby?latitude=${curPosition[0]}&longitude=${curPosition[1]}&sortType=${sortType}`, {headers: {'ngrok-skip-browser-warning': 'true'}})
+        .then(response => response.json())
+        .then(data => setHospitals(data))
         .catch(error => console.log(error));
-    }, [curPosition]);
-*/
+    }, [curPosition, sortType]);
+
     const filteredHospital = hospitals.filter(item =>
-        item.tagname.toLowerCase().includes(searchKeyword.toLowerCase())
+        item.tagName.toLowerCase().includes(searchKeyword.toLowerCase())
     ).sort((a,b) => {
-        if (sortType === 'treatment') {
+        if (sortType === 'TREATMENT') {
             return b.isOpen - a.isOpen;
         }
         else {
@@ -205,7 +106,7 @@ function Hospital() {
                     </div>
                     <div className='hospital-panel-left'>
                         <button className={sortType === 'distance' ? 'hospital-sort-btn active' : 'hospital-sort-btn'} onClick={() => setSortType('distance')}>거리순</button>
-                        <button className={sortType === 'treatment' ? 'hospital-sort-btn active' : 'hospital-sort-btn'} onClick={() => setSortType('treatment')}>진료중</button>
+                        <button className={sortType === 'TREATMENT' ? 'hospital-sort-btn active' : 'hospital-sort-btn'} onClick={() => setSortType('TREATMENT')}>진료중</button>
                     </div>
                 </div>
                 <div  className='hospital-panel-list'>
@@ -213,7 +114,7 @@ function Hospital() {
                         <HospitalCard
                             placeType={ item.placeType }
                             name={ item.name }
-                            tagname={ item.tagname}
+                            tagName={ item.tagName}
                             distance={ item.distance }
                             openTime={ item.openTime }
                             closeTime={ item.closeTime}
@@ -234,14 +135,14 @@ function Hospital() {
                 </div>
                 <div className='hospital-panel-left'>
                     <button className={sortType === 'distance' ? 'hospital-sort-btn active' : 'hospital-sort-btn'} onClick={() => setSortType('distance')}>거리순</button>
-                    <button className={sortType === 'treatment' ? 'hospital-sort-btn active' : 'hospital-sort-btn'} onClick={() => setSortType('treatment')}>진료중</button>
+                    <button className={sortType === 'TREATMENT' ? 'hospital-sort-btn active' : 'hospital-sort-btn'} onClick={() => setSortType('TREATMENT')}>진료중</button>
                 </div>
                 <div className='hospital-panel-list'>
                     {filteredHospital.map((item, index) => (
                         <HospitalCard
                             placeType={ item.placeType }
                             name={ item.name }
-                            tagname={ item.tagname}
+                            tagName={ item.tagName}
                             distance={ item.distance }
                             openTime={ item.openTime }
                             closeTime={ item.closeTime}

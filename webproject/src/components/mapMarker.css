@@ -16,17 +16,33 @@
 }
 
 .hospital-mark {
+    width: var(--font-size-base);
+    height: var(--font-size-base);
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
     background-color: var(--color-firefighter);
 }
 
 .pharmacy-mark {
+    width: var(--font-size-base);
+    height: var(--font-size-base);
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
     background-color: var(--color-medical);
 }
 
 .emergency-mark {
+    width: var(--font-size-base);
+    height: var(--font-size-base);
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
     background-color: var(--color-gover);
 }
 
 .clinic-mark {
+    width: var(--font-size-base);
+    height: var(--font-size-base);
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
     background-color: var(--color-civil);
 }

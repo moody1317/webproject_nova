@@ -33,7 +33,7 @@ const placeText = {
     healthcenter: 'hospital-text'
 }
 
-function HospitalCard({ name, tagname, distance, openTime, closeTime, isOpen, placeType, latitude, longitude, tel, current }) {
+function HospitalCard({ name, tagName, distance, openTime, closeTime, isOpen, placeType, latitude, longitude, tel, current }) {
 
     const CallClick = () => {
         const user = navigator.userAgent;
@@ -58,9 +58,9 @@ function HospitalCard({ name, tagname, distance, openTime, closeTime, isOpen, pl
                 </div>
                 <div className='hcard-title'>
                     <h3>{ name }</h3>
-                    <p className={`hcard-tag ${placeText[placeType]} ${placeBackground[placeType]}`}>{ tagname }</p>
+                    <p className={`hcard-tag ${placeText[placeType]} ${placeBackground[placeType]}`}>{ tagName }</p>
                     <div className='hcard-detail'>
-                        <p className='hcard-distance'>📏 { distance }</p>
+                        <p className='hcard-distance'>📏 { distance }km</p>
                         <p className='hcard-time'>🕐 { openTime } ~ { closeTime }</p>
                     </div>
                 </div>

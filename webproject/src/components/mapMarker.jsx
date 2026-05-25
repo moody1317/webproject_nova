@@ -35,5 +35,6 @@ export const markers = {
     hospital: hospitalMarker,
     pharmacy: pharmacyMarker,
     emergency: emergencyMarker,
-    clinic: clinicMarker
+    clinic: clinicMarker,
+    healthcenter: hospitalMarker
 };
