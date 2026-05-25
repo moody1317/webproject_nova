@@ -100,7 +100,7 @@ function HospitalCard({ name, tagname, distance, openTime, closeTime, isOpen, pl
                     <p className={`hcard-tag ${getColorClassName(placeType)} ${getBackgroundClassName(placeType)}`}>{ tagname }</p>
                     <div className='hcard-detail'>
                         <p className='hcard-distance'>📏 { distance }</p>
-                        <p className='hcard-time'>🕐 { time }</p>
+                        <p className='hcard-time'>🕐 {Time}</p>
                     </div>
                 </div>
             </div>

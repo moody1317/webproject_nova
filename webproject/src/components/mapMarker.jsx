@@ -30,3 +30,4 @@ export const clinicMarker = L.divIcon({
     className: 'clinic-marker',
     html: '<div class="clinic-mark"></div>'
 })
+export const markers={};

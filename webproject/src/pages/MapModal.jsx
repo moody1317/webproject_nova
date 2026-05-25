@@ -3,6 +3,7 @@ import {useState, useEffect, useRef} from "react";
 import { currentMarker } from '../components/mapMarker';
 import "./LocationModal.css";
 
+// 지도 중심 위치 이동
  function FindMap({position}) {
     const map=useMap();
     useEffect(() => {
@@ -10,6 +11,7 @@ import "./LocationModal.css";
     }, [position]);
     return null;
 }
+// 마커 찍는 거
 function ClickMarker({onMapClick}) {
     useMapEvents({
         click(e) {
@@ -18,10 +20,8 @@ function ClickMarker({onMapClick}) {
     });
     return null;
 }
-
+// 지도 기능, 모드 (수정, 삭제, 추가), 저장, 닫기
 function MapModal({mode, onClose, onSave}){
-console.log("mode:", mode);
-console.log("address:", mode.loc?.address);
     const [curPosition, setCurPosition] = useState(mode.type !== "add" && mode.loc?.numaddress ? mode.loc.numaddress : [37.5665, 126.9780]);
     const [address, setAddress] = useState(mode.type !== "add" && mode.loc?.address ? mode.loc.address : "");
     const [clickposition, setClickposition] = useState(null);
@@ -29,6 +29,7 @@ console.log("address:", mode.loc?.address);
         if (mode.type === "add"){
             navigator.geolocation.getCurrentPosition(position => {setCurPosition([position.coords.latitude, position.coords.longitude])}, null, {enableHighAccuracy: true});}}, []);
 
+    // 좌표 변환
 const clickmaptrans = async (numaddress) => {
     setClickposition(numaddress);
 
@@ -44,6 +45,7 @@ const btnClick = () => {
     })
 }
 
+// 검색 기능
 const searchRef = useRef(null);
 const search = async () => {
     const input = searchRef.current.value;
