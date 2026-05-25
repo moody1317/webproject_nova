@@ -132,7 +132,7 @@
     }
 
     .closed {
-        width: 430px;
+        width: 90%;
         padding-bottom: var(--spacing-xs);
     }
 }

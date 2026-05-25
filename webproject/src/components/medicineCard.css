@@ -1,0 +1,178 @@
+.medicinecard {
+    width: 90%;
+    height: fit-content;
+    padding: var(--spacing-md) var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+    border-top: 3px solid var(--color-line-primary);
+    border-radius: var(--radius-lg);
+    background-color: var(--color-background);
+}
+
+.medicinecard-main {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.medicinecard-left {
+    display: flex;
+    flex-direction: row;
+    width: 85%;
+}
+
+.medicinecard-left i {
+    display: flex;
+    background-color: var(--color-background-dropdown);
+    border: none;
+    border-radius: var(--radius-lg);
+    align-items: center;
+    justify-content: center;
+    margin-right: var(--spacing-md);
+    width: fit-content;
+    height: fit-content;
+    padding: var(--spacing-md) var(--spacing-md);
+    font-size: var(--font-size-xxl);
+}
+
+.medicine-title {
+    display: block;
+    max-width: 300px;
+    margin-bottom: var(--spacing-md);
+}
+
+.medicine-title h1 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--color-text-primary);
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-xs);
+}
+
+.medicine-title h1.open-name {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: unset;
+}
+
+.medicine-title p {
+    color: var(--color-text-sub1);
+    font-size: var(--font-size-base);
+}
+
+.medicinecard-right {
+    display: flex;
+    align-items: end;
+    margin-bottom: var(--spacing-xs);
+}
+
+.medicinecard-more {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-secondary);
+    background-color: var(--color-background-dropdown);
+    font-size: var(--font-size-xs);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    width: fit-content;
+    height: fit-content;
+    border: none;
+    border-radius: var(--radius-pill);
+}
+
+.hidden-detail {
+    display: none;
+}
+
+.show-detail {
+    border-top: 1px solid var(--color-line-secondary);
+    font-size: var(--font-size-base);
+}
+
+.show-detail > h3 {
+    margin-top: var(--spacing-md);
+    color: var(--color-text-secondary);
+}
+
+.show-detail > p {
+    color: var(--color-text-sub1);
+}
+
+.hidden-detail-item {
+    display: none;
+}
+
+.show-detail-item {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-background-banner);
+    color: var(--color-text-banner);
+    width: 90%;
+    height: fit-content;
+    padding: var(--spacing-sm) var(--spacing-md);
+    margin-top: var(--spacing-md);
+    border-radius: var(--radius-lg);
+}
+
+.detail-title {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: var(--spacing-xs);
+}
+
+.detail-title i {
+    margin-right: var(--spacing-sm);
+}
+
+@media (max-width: 768px) {
+    .medicinecard {
+        width: 90%;
+        padding: var(--spacing-md) var(--spacing-sm);
+        margin-bottom: var(--spacing-md);
+    }
+ 
+    .medicinecard-left {
+        width: 75%;
+    }
+
+    .medicinecard-left i {
+        margin-right: var(--spacing-sm);
+        padding: var(--spacing-sm) var(--spacing-sm);
+        font-size: var(--font-size-xl);
+    }
+
+    .medicine-title {
+        max-width: 200px;
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .medicine-title h1 {
+        font-size: var(--font-size-lg);
+    }
+
+    .medicine-title p {
+        font-size: var(--font-size-sm);
+    }
+
+    .medicinecard-right {
+        margin-bottom: var(--spacing-xs);
+    }
+
+    .hidden-content {
+        display: none !important;
+    }
+    
+    .show-detail {
+        font-size: var(--font-size-base);
+    }
+
+    .show-detail > h3 {
+        margin-top: var(--spacing-sm);
+    }
+
+    .hidden-detail-item {
+        display: none;
+    }
+}

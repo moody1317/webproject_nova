@@ -2,7 +2,7 @@ import { NavLink, Link, useLocation } from 'react-router-dom';
 import { useRef, useState, useEffect } from 'react';
 import './navbar.css';
 
-function Navbar() {
+function Navbar({ isOffline }) {
     const [isOpen, setIsOpen] = useState(false);
     const menuRef = useRef();
     const location = useLocation();
@@ -22,8 +22,9 @@ function Navbar() {
     }, [menuRef]);
 
     return (
-        <nav className={ isHome ? 'nav-hidden': ''}>
-            <Link to="/" end="true">
+        <>
+        <nav className={ isHome && !isOffline ? 'nav-hidden': ''}>
+            <Link to={isOffline? "/firstaid": "/"} end="true">
                 <svg width="143" height="65" viewBox="0 0 143 67" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g clipPath="url(#clip0_269_1672)">
                         <path d="M0 0H142.898V67H0V0Z" fill="var(--color-background)"/>
@@ -81,18 +82,22 @@ function Navbar() {
                 </button>
 
                 <div className={`nav-link ${isOpen ? "open" : ""}`}>
-                    <NavLink to="/" end="true" className="menu">홈</NavLink>
-                    <NavLink to="/firstaid" className="menu">응급처치</NavLink>
-                    <NavLink to="/shelter" className="menu">대피소 찾기</NavLink>
-                    <NavLink to="/medicine" className="menu">의약품 찾기</NavLink>
-                    <NavLink to="/hospital" className="menu">병원 · 약국 찾기</NavLink>
+                    <NavLink to="/" end="true" className={`menu ${isOffline ? 'menu-online-only' : ''}`} onClick={() => setIsOpen(false)}>홈</NavLink>
+                    <NavLink to="/firstaid" className={`menu ${isOffline ? 'menu-main' : ''}`} onClick={() => setIsOpen(false)}>응급처치</NavLink>
+                    <NavLink to="/shelter" className="menu" onClick={() => setIsOpen(false)}>대피소 찾기</NavLink>
+                    <NavLink to="/medicine" className={`menu ${isOffline ? 'menu-online-only' : ''}`} onClick={() => setIsOpen(false)}>의약품 검색</NavLink>
+                    <NavLink to="/hospital" className={`menu ${isOffline ? 'menu-online-only' : ''}`} onClick={() => setIsOpen(false)}>병원 · 약국 찾기</NavLink>
                 </div>
             </div>
             
-            <div className="nav-right">
-                <p className="nav-onoff">● 온라인</p>
+            <div className='nav-right'>
+                <p className={`nav-onoff ${isOffline ? 'nav-offline' : 'nav-online'}`} >{isOffline ? '● 오프라인' : '● 온라인'}</p>
             </div>
         </nav>
+        <section className={`${isOffline ? 'offline-banner' : 'online-state'}`}>
+            <p><i className="bi bi-exclamation-triangle-fill"></i>오프라인 모드 - 저장된 데이터로만 동작합니다. 일부 기능은 사용 불가합니다.</p>
+        </section>
+        </>
     );
 }
 

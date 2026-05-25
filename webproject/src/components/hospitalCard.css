@@ -5,6 +5,7 @@
     background-color: var(--color-background-box);
     border-radius: var(--radius-xl);
     justify-content: space-between;
+    margin-top: var(--spacing-md);
 }
 
 .hospital-card {
@@ -17,6 +18,14 @@
 
 .emergency-card {
     border-top: 3px solid var(--color-line-emergency);
+}
+
+.clinic-card {
+    border-top: 3px solid var(--color-line-clinic);
+}
+
+.healthcenter-card {
+    border-top: 3px solid var(--color-line-healthcenter);
 }
 
 .hcard-left {
@@ -46,6 +55,14 @@
 
 .emergency-background {
     background-color: var(--color-background-offline);
+}
+
+.clinic-background {
+    background-color: var(--color-background-clinic);
+}
+
+.healthcenter-background {
+    background-color: var(--color-background-healthcenter);
 }
 
 .hcard-title {
@@ -81,10 +98,19 @@
     color: var(--color-line-emergency);
 }
 
+.clinic-text {
+    color: var(--color-line-clinic);
+}
+
+.healthcenter-text {
+    color: var(--color-line-healthcenter);
+}
+
 .hcard-detail {
     display: flex;
     padding-top: var(--spacing-xs);
     padding-right: var(--spacing-sm);
+    padding-bottom: var(--spacing-sm);
     color: var(--color-text-sub1);
     font-size: var(--font-size-sm);
     gap: var(--spacing-sm);
@@ -133,12 +159,60 @@
 }
 
 @media (max-width: 768px) {
+    .hCard {
+        height: 70px ;
+        margin-top: var(--spacing-xs);
+        margin-bottom: var(--spacing-xs);
+        padding-left: var(--spacing-sm);
+        padding-top: var(--spacing-xs);
+    }
+
+    .hospital-card {
+        border-top: none;
+        border-left: 3px solid var(--color-line-hospital);
+    }
+
+    .pharmacy-card {
+        border-top: none;
+        border-left: 3px solid var(--color-line-pharmacy);
+    }
+
+    .emergency-card {
+        border-top: none;
+        border-left: 3px solid var(--color-line-emergency);
+    }
+
+    .clinic-card {
+        border-top: none;
+        border-left: 3px solid var(--color-line-clinic);
+    }
+
+    .healthcenter-card {
+        border-top: none;
+        border-left: 3px solid var(--color-line-healthcenter);
+    }
+
     .hcard-tag {
         font-weight: lighter;
+        margin-top: var(--spacing-sm);
+    }
+
+    .hcard-icon {
+        display: none;
+    }
+
+    .hcard-title h3{
+        font-size: var(--font-size-md);
     }
 
     .hcard-btn {
         font-size: var(--font-size-sm);
-        font-weight: 200;
+        font-weight: bold;
+        padding: var(--spacing-xs) var(--spacing-xs);
+        height: 30px;
+    }
+
+    .hcard-detail {
+        display: none;
     }
 }

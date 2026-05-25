@@ -44,8 +44,53 @@
 }
 
 .hospital-map {
+    position: relative;
     width: 50%;
     height: 588px;
+}
+
+.hospital-legend {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: var(--z-modal);
+    width: fit-content;
+    height: fit-content;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    background-color: rgb(255, 255, 255, 0.5);
+    border-radius: var(--radius-xl);
+}
+
+.hospital-marker-list > li:nth-child(1)::marker {
+    color: var(--color-firefighter);
+}
+
+.hospital-marker-list > li:nth-child(1) {
+    color: var(--color-firefighter);
+}
+
+.hospital-marker-list > li:nth-child(2)::marker {
+    color: var(--color-medical);
+}
+
+.hospital-marker-list > li:nth-child(2) {
+    color: var(--color-medical);
+}
+
+.hospital-marker-list > li:nth-child(3)::marker {
+    color: var(--color-gover);
+}
+
+.hospital-marker-list > li:nth-child(3) {
+    color: var(--color-gover);
+}
+
+.hospital-marker-list > li:nth-child(4)::marker {
+    color: var(--color-civil);
+}
+
+.hospital-marker-list > li:nth-child(4) {
+    color: var(--color-civil);
 }
 
 .hospital-panel {
@@ -112,15 +157,33 @@
 
 .hospital-panel-list {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
     background-color: var(--color-background);
     border: none;
-    border-radius: var(--spacing-md);
+    border-radius: var(--radius-lg);
     margin: 0 auto; 
     width: 90%;
     height: 488px;
     padding-top: var(--spacing-sm);
+    padding-bottom: var(--spacing-md);
     overflow-y: auto;
+}
+
+
+.hospital-panel-list::-webkit-scrollbar {
+    width: 5px;
+    height: auto;
+}
+
+.hospital-panel-list::-webkit-scrollbar-button {
+    display: none;
+}
+
+.hospital-panel-list::-webkit-scrollbar-thumb {
+    background-color: var(--color-line-secondary);
+    border-radius: var(--radius-pill);
 }
 
 #txt-search {
@@ -148,82 +211,51 @@
 
 @media (max-width: 768px) {
     .hospital-hero {
-        width: auto;
-        height: 100px;
-        background-color: var(--color-background);
-        border-left: 2px solid var(--color-line-primary);
-        display: block;
-    }    
-
-    .hospital-hero h1 {
-        font-size: var(--font-size-base);
-        margin-left: var(--spacing-sm);
-        margin-top: var(--spacing-sm);
-    }
-
-    .hospital-hero p {
-        color: var(--color-text-sub1);
-        font-size: var(--font-size-sm);
-        margin-left: var(--spacing-sm);
-    }
-
-    .hospita-search {
-        width: 300px;
-        height: 40px;
-        font-size: var(--font-size-xl);
-        margin-top: var(--spacing-sm);
-        margin-left: var(--spacing-md);
+        display: none;
     }
 
     .hospital-content {
-        display: block;
         width: 100%;
-        min-height: 200px;
+        height: 100%;
+    }
+
+    .hospital-panel {
+        display: none;
     }
 
     .hospital-map {
         width: 100%;
-        height: 300px;
     }
 
-    .hospital-panel {
-        width: 100%;
+    .hospital-search {
+        display: flex;
+        margin-top: var(--spacing-sm);
+        margin-right: 0;
+        width: 80%;
+        height: 40px;
+        font-size: var(--font-size-base);
+        justify-content: space-between;
     }
 
-    .hospital-panel-top {
-        padding: 10px 3px;
-    }
-
-    .hospital-panel-right h1 {
-        font-size: var(--font-size-xl);
-        margin-top: var(--spacing-xs);
-    }
-
-    .hospital-panel-right h3 {
-        width: 30px;
-        font-size: var(--font-size-xs);
-        margin-left: var(--spacing-xs);
-        margin-top: var(--spacing-xs);
+    .hospital-panel-list {
+        flex: 1;
+        scrollbar-width: none;
     }
 
     .hospital-sort-btn {
-        width: 50px;
+        display: flex;
+        width: 78px;
+        height: 26px;
+        align-items: center;
+        justify-content: center;
         font-size: var(--font-size-xs);
-        margin-top: 5px;
+        margin-top: var(--spacing-sm);
         margin-left: var(--spacing-xs);
         margin-right: var(--spacing-sm);
     }
 
-    #txt-search::placeholder {
-        color: var(--color-text-sub2);
-        font-size: var(--font-size-sm);
-    }
-
-    #btn-search {
-        width: 60px;
-        height: 30px;
-        font-size: var(--font-size-sm);
-        margin-right: var(--spacing-sm);
-        cursor: pointer;
+    #txt-search {
+        width: 80%;
+        margin-left: var(--spacing-sm);
     }
 }
