@@ -33,6 +33,7 @@ public class HospitalService {
                 apiResponse.getResponse().getBody() == null ||
                 apiResponse.getResponse().getBody().getItems() == null ||
                 apiResponse.getResponse().getBody().getItems().getItem() == null) {
+            System.out.println("⚠️ [WARN] 공공 API로부터 받아온 데이터셋이 비어있습니다.");
             return Collections.emptyList();
         }
 
@@ -48,11 +49,13 @@ public class HospitalService {
                 continue;
             }
 
+            /*
             double distance = calculateDistance(latitude, longitude, item.getLat(), item.getLon());
-
             if (distance > radius) {
                 continue;
             }
+
+             */
 
             String[] operationTime = determineOperationTime(item, dayOfWeek);
             String openTime = operationTime[0];
@@ -60,12 +63,22 @@ public class HospitalService {
             boolean isOpen = checkIsOpen(openTime, closeTime, now);
             String placeType = determinePlaceType(item.getDutyDivName());
 
+            /*
+            String[] operationTime = determineOperationTime(item, dayOfWeek);
+            String openTime = operationTime[0];
+            String closeTime = operationTime[1];
+            boolean isOpen = checkIsOpen(openTime, closeTime, now);
+            String placeType = determinePlaceType(item.getDutyDivName());
+
+             */
+
             NearbyHospitalResponse responseDto = NearbyHospitalResponse.builder()
                     .placeType(placeType)
                     .name(item.getDutyName())
                     .tagName(item.getDutyDivName())
                     .address(item.getDutyAddr())
-                    .distance(Math.round(distance * 10.0) / 10.0)
+                    //.distance(Math.round(distance * 10.0) / 10.0)
+                    .distance(0.0)
                     .openTime(formatTime(openTime))
                     .closeTime(formatTime(closeTime))
                     .isOpen(isOpen)
@@ -84,12 +97,12 @@ public class HospitalService {
                     .comparing(NearbyHospitalResponse::isOpen, Comparator.reverseOrder())
                     .thenComparingDouble(NearbyHospitalResponse::getDistance)); // 문 열었으면 가까운 거리순 정렬
         }
-
+        System.out.println("🚀 [SUCCESS] 필터링 완료! 반경 " + radius + "km 내 조건 부합 병원 수: " + resultHospitals.size() + "개");
         return resultHospitals;
     }
 
     private double calculateDistance(double lat1, double lon1, double lat2, double lon2) {
-        double R = 6371; // 지구 반지름
+        double R = 6371;
         double dLat = Math.toRadians(lat2 - lat1);
         double dLon = Math.toRadians(lon2 - lon1);
         double a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
@@ -112,6 +125,9 @@ public class HospitalService {
             case 6 -> { open = item.getDutyTime6s(); close = item.getDutyTime6c(); }
             case 7 -> { open = item.getDutyTime7s(); close = item.getDutyTime7c(); }
         }
+
+        if (open != null) open = open.trim();
+        if (close != null) close = close.trim();
 
         return new String[]{open, close};
     }
