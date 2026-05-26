@@ -8,12 +8,12 @@ import MapModal from "./MapModal";
 function LocationModal({onClose, onSave, nextId, locations, onDelete, onRename, onEdit}) {
     
     const [customName, setCustomName] = useState("");
-    
+    // 지역 카드 추가
     const AddLocation = () => {
         onSave({
             id: nextId.current,
             name: customName,
-            address: null, // 지도 API 연동
+            address: null, 
             icon: "bi-geo-alt-fill",
             isFixed: false,
             numaddress: null
@@ -28,6 +28,7 @@ function LocationModal({onClose, onSave, nextId, locations, onDelete, onRename, 
     const [mapMode, setMapMode] = useState(null);
     const [nameEdit, setnameEdit] = useState(null);
     const selectLoc = locations.find(loc => loc.id === selectedId);
+    
     
     return (
     <>
