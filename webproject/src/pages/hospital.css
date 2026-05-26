@@ -59,6 +59,7 @@
     padding: var(--spacing-sm) var(--spacing-lg);
     background-color: rgb(255, 255, 255, 0.5);
     border-radius: var(--radius-xl);
+    margin-top: var(--spacing-sm);
 }
 
 .hospital-marker-list > li:nth-child(1)::marker {

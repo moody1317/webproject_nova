@@ -46,6 +46,7 @@
   --color-background-drag: #D1BDBD;
   --color-background-map: #f7f5f5;
   --color-background-banner: #FCF2DB;
+  --color-background-closed: #EFEFEF;
   --color-white: #FFFFFF;
   --color-black: #000000;
   
@@ -59,6 +60,7 @@
   --color-text-online: #219652;
   --color-text-offline: #E08A1A;
   --color-text-banner: #805905;
+  --color-text-closed: #6B6B6B;
   
   /* 간격 */
   --spacing-xs: 4px;
@@ -118,6 +120,7 @@
     --color-text-sub2: #BF9999;
     --color-text-sub3: #FFF2F2;
     --color-text-banner: #FFF2F2;
+    --color-text-closed: #A0A0A0;
     
     --color-background: #241212;
     --color-background-primary: #170A0A;
@@ -143,6 +146,7 @@
     --color-background-drag: #592E2E;
     /* --color-background-map: #170A0A; */
     --color-background-banner: #661A1A;
+    --color-background-closed: #2E2E2E;
 
     --color-line-secondary: #241212;
     --color-line-hospital: #BF382E;

@@ -30,6 +30,7 @@
 
 .hcard-left {
     display: flex;
+    min-width: 0;
 }
 
 .hcard-icon {
@@ -73,6 +74,9 @@
 .hcard-title h3{
     color: var(--color-text-primary);
     font-size: var(--font-size-lg);
+    white-space: normal;
+    overflow: visible;
+    text-overflow: unset;
 }
 
 .hcard-tag {
@@ -122,6 +126,7 @@
     justify-content: center;
     margin-right: var(--spacing-md);
     gap: var(--spacing-sm);
+    flex-shrink: 0;
 }
 
 .isopen {
@@ -130,8 +135,8 @@
 }
 
 .isnotopen {
-    background-color: var(--color-background-offline);
-    color: var(--color-line-emergency);
+    background-color: var(--color-background-closed);
+    color: var(--color-text-closed);
 }
 
 .hcard-btn {
@@ -193,8 +198,20 @@
     }
 
     .hcard-tag {
-        font-weight: lighter;
-        margin-top: var(--spacing-sm);
+        display: none;
+    }
+
+    .isopen {
+        display: block;
+        width: 5px;
+        height: 5px;
+        border-radius: var(--radius-round);
+        background-color: var(--color-background-pharmacy);
+        font-size: 0;
+    }
+
+    .isnotopen {
+        display: block;
     }
 
     .hcard-icon {
@@ -202,6 +219,8 @@
     }
 
     .hcard-title h3{
+        text-align: start;
+        width: 80%;
         font-size: var(--font-size-md);
     }
 

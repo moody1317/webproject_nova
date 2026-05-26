@@ -8,12 +8,13 @@ import 'leaflet/dist/leaflet.css';
 import './hospital.css';
 
 function MoveMap({ position }) {
+    if (!position) return null;
     useMap().setView(position, 20);
 }
 
 function Hospital() {
     const [sortType, setSortType] = useState('distance');
-    const [curPosition, setCurPosition] = useState([37.5665, 126.9780]);
+    const [curPosition, setCurPosition] = useState(null);
     const [hospitals, setHospitals] = useState([]);
     const [searchKeyword, setSearchKeyword] = useState('');
     const [inputValue, setInputValue] = useState('');
@@ -28,14 +29,17 @@ function Hospital() {
     const min = today.getMinutes().toString().padStart(2, '0');
     */
 
-
     useEffect(() => { 
         navigator.geolocation.getCurrentPosition( position => {
-            setCurPosition([position.coords.latitude, position.coords.longitude])
-        }, null, { enableHighAccuracy: true}) 
+            setCurPosition([position.coords.latitude, position.coords.longitude]);
+            console.log(position.coords.latitude, position.coords.longitude)
+        }, () => setCurPosition([37.5665, 126.9780]), { enableHighAccuracy: true}) 
     }, []);
 
     useEffect(() => {
+        if (!curPosition) {
+            return;
+        }
         fetch(`/api/hospitals/nearby?latitude=${curPosition[0]}&longitude=${curPosition[1]}&sortType=${sortType}`, {headers: {'ngrok-skip-browser-warning': 'true'}})
         .then(response => response.json())
         .then(data =>{ 
@@ -89,15 +93,17 @@ function Hospital() {
                         <li>의원</li>
                     </ul>
                 </div>
-                <MapContainer center={curPosition } zoom={20} scrollWheelZoom={false} style={{height: '100%', width: '100%'}} >
-                    <MoveMap position={ curPosition } />
+                <MapContainer center={curPosition || [37.5665, 126.9780]} zoom={20} scrollWheelZoom={false} style={{height: '100%', width: '100%'}} >
+                    <MoveMap position={ curPosition || [37.5665, 126.9780]} />
                     <TileLayer
                         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; CARTO'
                         url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
                     />
-                    <Marker position={ curPosition } icon={ currentMarker }></Marker>
+                    <Marker position={ curPosition || [37.5665, 126.9780] } icon={ currentMarker }></Marker>
                     { hospitals.map((item, index) => (
-                        <Marker position={ [item.latitude, item.longitude]} icon={ markers[item.placeType] } key={ index }></Marker>
+                        <Marker position={ [item.latitude, item.longitude]} icon={ markers[item.placeType] } key={ index }>
+                            <Popup>{ item.name }</Popup>
+                        </Marker>
                     ))}
                 </MapContainer>
             </section>
@@ -125,7 +131,7 @@ function Hospital() {
                             latitude={ item.latitude }
                             longitude={ item.longitude}
                             tel={ item.tel }
-                            current={ curPosition }
+                            current={ curPosition || [37.5665, 126.9780] }
                             key={ index }
                         />
                     ))}
@@ -153,7 +159,7 @@ function Hospital() {
                             latitude={ item.latitude }
                             longitude={ item.longitude}
                             tel={ item.tel }
-                            current={ curPosition }
+                            current={ curPosition || [37.5665, 126.9780] }
                             key={ index }
                         />
                     ))}
