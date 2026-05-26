@@ -4,6 +4,7 @@ import com.safeguard.backend.domain.hospital.dto.external.HospitalApiResponse;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
+
 import java.net.URI;
 
 @Component
@@ -16,20 +17,35 @@ public class HospitalApiClient {
             WebClient hospitalWebClient,
             @Value("${disaster.api.hospital.service-key}") String serviceKey) {
         this.hospitalWebClient = hospitalWebClient;
-        this.serviceKey = serviceKey.replace("\"", ""); // 혹시 모를 쌍따옴표 정제
+        this.serviceKey = serviceKey.replace("\"", "");
     }
 
-    public HospitalApiResponse fetchHospitals(double latitude, double longitude) {
+    public HospitalApiResponse fetchByApiCode(String apiCode) {
         try {
-            // 💡 명세서 표준 규격대로 파라미터를 정확하게 조립합니다.
-            String urlString = "https://safemap.go.kr/openapi2/IF_0022"
+            String urlString = "https://safemap.go.kr/openapi2/" + apiCode
                     + "?serviceKey=" + this.serviceKey
                     + "&pageNo=1"
-                    + "&numOfRows=500"         // 주변 필터링을 위해 넉넉히 500개 호출
-                    + "&returnType=json";      // 명세서에 기재된 JSON 선언 방식
+                    + "&numOfRows=1000"
+                    + "&returnType=json";
 
             URI uri = new URI(urlString);
             System.out.println("🔗 [DEBUG] 생활안전지도 최종 요청 URI: " + uri);
+
+            /*
+            String raw = hospitalWebClient.get()
+                    .uri(uri)
+                    .retrieve()
+                    .bodyToMono(String.class)
+                    .block();
+
+            if (raw == null) {
+                System.out.println("📦 [DEBUG] RAW 응답: null");
+            } else {
+                System.out.println("📦 [DEBUG] RAW 응답 앞 1000자: "
+                        + raw.substring(0, Math.min(raw.length(), 1000)));
+            }
+
+            */
 
             return hospitalWebClient.get()
                     .uri(uri)
@@ -38,9 +54,24 @@ public class HospitalApiClient {
                     .block();
 
         } catch (Exception e) {
-            System.out.println("❌ [ERROR] 생활안전지도 호출 중 예외 발생: " + e.getMessage());
+            System.out.println("[ERROR] 생활안전지도 호출 중 예외 발생: " + e.getMessage());
             e.printStackTrace();
             return new HospitalApiResponse();
         }
+    }
+    public HospitalApiResponse fetchHospitals(double latitude, double longitude) {
+        return fetchByApiCode("IF_0022");
+    }
+
+    public HospitalApiResponse fetchPharmacies(double latitude, double longitude) {
+        return fetchByApiCode("IF_0048");
+    }
+
+    public HospitalApiResponse fetchClinics(double latitude, double longitude) {
+        return fetchByApiCode("IF_0026");
+    }
+
+    public HospitalApiResponse fetchHealthCenters(double latitude, double longitude) {
+        return fetchByApiCode("IF_0024");
     }
 }

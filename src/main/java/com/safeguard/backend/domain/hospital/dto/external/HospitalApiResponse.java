@@ -11,18 +11,11 @@ import java.util.List;
 @NoArgsConstructor
 public class HospitalApiResponse {
 
-    @JsonProperty("response")
-    private Response response;
+    @JsonProperty("header")
+    private Header header;
 
-    @Getter
-    @NoArgsConstructor
-    public static class Response {
-        @JsonProperty("header")
-        private Header header;
-
-        @JsonProperty("body")
-        private Body body;
-    }
+    @JsonProperty("body")
+    private Body body;
 
     @Getter
     @NoArgsConstructor
@@ -38,10 +31,13 @@ public class HospitalApiResponse {
     public static class Body {
         @JsonProperty("items")
         private Items items;
+
         @JsonProperty("numOfRows")
         private int numOfRows;
+
         @JsonProperty("pageNo")
         private int pageNo;
+
         @JsonProperty("totalCount")
         private int totalCount;
     }
@@ -77,7 +73,7 @@ public class HospitalApiResponse {
 
         // 요일별 운영 시간 필드 (1=월요일 ~ 6=토요일, 7=일요일, 8=공휴일)
         @JsonProperty("dutytime1s") private String dutyTime1s; // 월요일 시작
-        @JsonProperty("dutytime1c") private String dutyTime1c; // 월요일 종료
+        @JsonProperty("dutytime1c") private String dutyTime1c;
         @JsonProperty("dutytime2s") private String dutyTime2s;
         @JsonProperty("dutytime2c") private String dutyTime2c;
         @JsonProperty("dutytime3s") private String dutyTime3s;
