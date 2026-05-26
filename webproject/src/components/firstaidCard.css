@@ -66,8 +66,7 @@
     margin-left: var(--spacing-md);
 }
 
-/* desktop 그런 사이지가 아니여서 너무 억지스럽긴 한데 이렇게 해야 일단 카드 디자인 깔끔해서..(이 부분 나중에 카드 대체로 하거나 하면 다 수정될 확률 큼*/
-@media (max-width: 1100px) { 
+@media (max-width: 1024px) { 
     .step-card {
         width: 100%;
         height: auto;
@@ -79,7 +78,7 @@
     }
 
     .step-title {
-        width: 80%;
+        width: 90%;
         font-size: var(--font-size-lg);
     }
     .step-main {
@@ -97,10 +96,11 @@
         width: 100%;
         height: auto;
         min-height: unset;
+        margin-left: var(--spacing-md);
     }
 
     .open {
-        width: 200px;
+        width: 100%;
     }
 
     .step-title {
@@ -108,15 +108,25 @@
         font-size: var(--font-size-sm);
     }
 
+    .step-num {
+        width: var(--font-size-xl);
+        height: var(--font-size-xl);
+    }
+
+    .step-num > h1 {
+        font-size: var(--font-size-lg);
+        color: var(--color-text-third);
+    }
+
     .step-icon {
         display: none;
     }
 
     .step-main {
-        width: 120px;
+        width: 80%;
         height: auto;
         margin-top: var(--spacing-xs);
-        padding-bottom: var(--spacing-xs);
+        padding-bottom: var(--spacing-sm);
     }
 
     .step-main p {

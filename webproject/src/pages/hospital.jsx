@@ -38,7 +38,10 @@ function Hospital() {
     useEffect(() => {
         fetch(`/api/hospitals/nearby?latitude=${curPosition[0]}&longitude=${curPosition[1]}&sortType=${sortType}`, {headers: {'ngrok-skip-browser-warning': 'true'}})
         .then(response => response.json())
-        .then(data => setHospitals(data))
+        .then(data =>{ 
+            console.log(data);
+            setHospitals(data);
+        })
         .catch(error => console.log(error));
     }, [curPosition, sortType]);
 

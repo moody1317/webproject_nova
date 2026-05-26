@@ -19,7 +19,7 @@ function FirstaidContent({ selectedIndex, selectedData, isOpen }) {
                 <h1>{ selectedData?.name }</h1>
                 <p className='firstaid-explan'>설명 글</p>
                 <hr/>
-                <div className='firstaid-grid'>
+                <div className={isOpen ? 'firstaid-grid grid-open' : 'firstaid-grid'}>
                     { stepsList }
                 </div>
                 <div className={isOpen ? 'warn-box closed' :'warn-box'}>
