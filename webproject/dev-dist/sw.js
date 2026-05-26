@@ -67,7 +67,7 @@ if (!self.define) {
     });
   };
 }
-define(['./workbox-a24bf94b'], (function (workbox) { 'use strict';
+define(['./workbox-d08cb3c2'], (function (workbox) { 'use strict';
 
   self.skipWaiting();
   workbox.clientsClaim();
@@ -81,12 +81,13 @@ define(['./workbox-a24bf94b'], (function (workbox) { 'use strict';
     "revision": "3ca0b8505b4bec776b69afdba2768812"
   }, {
     "url": "index.html",
-    "revision": "0.n7tgvpolmtg"
+    "revision": "0.635h9p7bde8"
   }], {});
   workbox.cleanupOutdatedCaches();
   workbox.registerRoute(new workbox.NavigationRoute(workbox.createHandlerBoundToURL("index.html"), {
     allowlist: [/^\/$/]
   }));
+  workbox.registerRoute(/\/api\/hospital/, new workbox.NetworkOnly(), 'GET');
   workbox.registerRoute(/\/api\//, new workbox.NetworkFirst({
     "cacheName": "api-cache",
     plugins: []
