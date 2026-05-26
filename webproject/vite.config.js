@@ -17,6 +17,10 @@ export default defineConfig({
         maximumFileSizeToCacheInBytes: 8 * 1024 * 1024,
         runtimeCaching: [
           {
+            urlPattern: /\/api\/hospital/,
+            handler: 'NetworkOnly',
+          },
+          {
             urlPattern: /\/api\//,
             handler: 'NetworkFirst',
             options: {
