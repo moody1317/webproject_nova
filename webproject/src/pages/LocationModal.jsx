@@ -29,6 +29,7 @@ function LocationModal({onClose, onSave, nextId, locations, onDelete, onRename, 
     const [nameEdit, setnameEdit] = useState(null);
     const selectLoc = locations.find(loc => loc.id === selectedId);
     
+    
     return (
     <>
     <div className="modal-overlay" onClick={onClose}>

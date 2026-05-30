@@ -8,8 +8,8 @@ import 'leaflet/dist/leaflet.css';
 import './hospital.css';
 
 function MoveMap({ position }) {
-    if (!position) return null;
     useMap().setView(position, 20);
+    if (!position) return null;
 }
 
 function Hospital() {
@@ -50,7 +50,8 @@ function Hospital() {
     }, [curPosition, sortType]);
 
     const filteredHospital = hospitals.filter(item =>
-        item.tagName.toLowerCase().includes(searchKeyword.toLowerCase())
+        item.tagName.toLowerCase().includes(searchKeyword.toLowerCase()) ||
+        item.name.toLowerCase().includes(searchKeyword.toLowerCase())
     ).sort((a,b) => {
         if (sortType === 'treatment') {
             return b.isOpen - a.isOpen;

@@ -6,7 +6,7 @@ const placeConfig = {
     pharmacy: { icon: 'bi-capsule-pill' },
     emergency: { icon: 'bi-heart-pulse' },
     clinic: { icon: 'bi-hospital' },
-    healthcenter: { icon: 'bi-hospital' }
+    public: { icon: 'bi-hospital' }
 }
 
 const placeCard = {
@@ -14,7 +14,7 @@ const placeCard = {
     pharmacy: 'pharmacy-card',
     emergency: 'emergency-card',
     clinic: 'clinic-card',
-    healthcenter: 'hospital-card'
+    public: 'hospital-card'
 }
 
 const placeBackground = {
@@ -22,7 +22,7 @@ const placeBackground = {
     pharmacy: 'pharmacy-background',
     emergency: 'emergency-background',
     clinic: 'clinic-background',
-    healthcenter: 'hospital-background'
+    public: 'hospital-background'
 }
 
 const placeText = {
@@ -30,7 +30,7 @@ const placeText = {
     pharmacy: 'pharmacy-text',
     emergency: 'emergency-text',
     clinic: 'clinic-text',
-    healthcenter: 'hospital-text'
+    public: 'hospital-text'
 }
 
 function HospitalCard({ name, tagName, distance, openTime, closeTime, isOpen, placeType, latitude, longitude, tel, current }) {

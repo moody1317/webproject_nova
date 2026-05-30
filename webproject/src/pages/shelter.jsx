@@ -5,6 +5,7 @@ import LocationModal from './LocationModal';
 import './shelter.css';
 import 'leaflet/dist/leaflet.css';
 import "./LocationModal.css";
+import ShelterCard from '../components/Sheltercard';
 
 // 지도 중심위치 이동
 function MoveMap({position}) {
@@ -78,6 +79,15 @@ function Shelter() {
         {id: 2, name:" 승환이 집", distance: "1km", capacity: 1},
         {id: 3, name: "소은 집", distance: "3km", capacity: 5}
     ];
+
+    const [shelters, setShelters] = useState([]);
+    useEffect(()=> {
+        if (!selectedloc?.numaddress) return;
+
+        fetch(`/api/shelters/nearby?latitude=${selectedloc.numaddress[0]}&longitude=${selectedloc.numaddress[1]}`)
+        .then(res => res.json())
+        .then(data => setShelters(data))
+    }, [selectedTabId]);
     return(
     <>
      <section className="shelter-category">
@@ -103,25 +113,9 @@ function Shelter() {
                             )}
                </MapContainer>
             </section>
-            <section className="nearshelter-list">
-                <div className="shelter-inner">
-                {dummy.map((shelter) => (
-                    <div className="shelter-card" key={shelter.id}>
-                        <div className="shelter-card-info">
-                            <i className="bi bi-buildings"></i>
-                        <div>
-                        <h4>{shelter.name}</h4>
-                        <p>📏 {shelter.distance} 👥 {shelter.capacity}</p>
-                    </div>
-                    </div>
-                    <input type="button" id="btn-shelter-card" value="길 찾기"
-                    onClick={() => {
 
-                    }}></input>
-                    </div>
-                ))}
-                </div>
-            </section>
+            <ShelterCard shelters={dummy}/>
+
         </div>
         <section className="emergency-contacts">
             <div className="emergency-contacts-content">

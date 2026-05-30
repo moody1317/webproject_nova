@@ -220,7 +220,7 @@
 
     .hcard-title h3{
         text-align: start;
-        width: 80%;
+        width: 100%;
         font-size: var(--font-size-md);
     }
 
