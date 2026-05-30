@@ -11,7 +11,7 @@ public enum HospitalType {
     PHARMACY("pharmacy"),
     EMERGENCY("emergency"),
     CLINIC("clinic"),
-    HEALTHCENTER("healthcenter");
+    HEALTHCENTER("public");
 
     @JsonValue
     private final String value;

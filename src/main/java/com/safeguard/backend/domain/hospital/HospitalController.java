@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+
 import java.util.List;
 
 @RestController
@@ -14,6 +15,7 @@ import java.util.List;
 public class HospitalController {
 
     private final HospitalService hospitalService;
+    private final HospitalSyncService hospitalSyncService;
 
     @GetMapping("/nearby")
     public ResponseEntity<List<NearbyHospitalResponse>> getNearbyHospitals(
@@ -22,14 +24,21 @@ public class HospitalController {
             @RequestParam(value = "radius", defaultValue = "3.5") double radius,
             @RequestParam(defaultValue = "distance") String sortType
     ) {
-        System.out.println("[DEBUG] 병원 요청 좌표 latitude=" + latitude
-                + ", longitude=" + longitude
-                + ", radius=" + radius
-                + ", sortType=" + sortType);
-
         List<NearbyHospitalResponse> responses =
-                hospitalService.findNearbyHospitals(latitude, longitude, radius, HospitalSortType.from(sortType));
+                hospitalService.findNearbyHospitals(
+                        latitude,
+                        longitude,
+                        radius,
+                        HospitalSortType.from(sortType)
+                );
 
         return ResponseEntity.ok(responses);
+    }
+
+    @PostMapping("/sync/json")
+    public ResponseEntity<String> syncHospitalsFromJson() {
+        int savedCount = hospitalSyncService.syncHospitalsFromJson();
+
+        return ResponseEntity.ok("병원/약국 데이터 저장 완료: " + savedCount + "개");
     }
 }

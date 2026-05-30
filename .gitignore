@@ -6,6 +6,7 @@ build/
 !**/src/test/**/build/
 src/main/resources/application.properties
 src/main/java/com/safeguard/backend/test.http
+src/main/resources/data/all_medical_data.json
 
 ### STS ###
 .apt_generated

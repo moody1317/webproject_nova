@@ -19,7 +19,7 @@ public class UserPlace {
     @Id
     private String id;
 
-    private String userId; // 사용자별 저장 위치 구분
+    private String userId;    // 사용자별 저장 위치 구분
 
     private String placeName;//우리집, 학교 등등
 
