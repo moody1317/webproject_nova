@@ -7,7 +7,7 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @RequiredArgsConstructor
 public enum HospitalSortType {
-    DISTANCE("distance"),   // 거리순 정렬
+    DISTANCE("distance"),     // 거리순 정렬
     TREATMENT("treatment");   // 진료중(영업중) 우선 정렬
 
     private final String value;

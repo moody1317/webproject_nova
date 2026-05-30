@@ -29,23 +29,7 @@ public class HospitalApiClient {
                     + "&returnType=json";
 
             URI uri = new URI(urlString);
-            System.out.println("🔗 [DEBUG] 생활안전지도 최종 요청 URI: " + uri);
-
-            /*
-            String raw = hospitalWebClient.get()
-                    .uri(uri)
-                    .retrieve()
-                    .bodyToMono(String.class)
-                    .block();
-
-            if (raw == null) {
-                System.out.println("📦 [DEBUG] RAW 응답: null");
-            } else {
-                System.out.println("📦 [DEBUG] RAW 응답 앞 1000자: "
-                        + raw.substring(0, Math.min(raw.length(), 1000)));
-            }
-
-            */
+            System.out.println("[DEBUG] 생활안전지도 최종 요청 URI: " + uri);
 
             return hospitalWebClient.get()
                     .uri(uri)

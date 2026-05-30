@@ -39,12 +39,11 @@ public class ShelterService {
         return NearbyShelterResponse.builder()
                 .id(shelter.getId())
                 .name(shelter.getName())
-                .roadAddress(shelter.getRoadAddress())
+                .lat(shelter.getLocation().getY())
+                .lng(shelter.getLocation().getX())
                 .capacity(shelter.getCapacity())
-                .shelterType(shelter.getShelterType())
-                .distance(formattedDistance)             // 오른쪽 탭 거리 정보
-                .longitude(shelter.getLocation().getX()) // 지도 마커 경도
-                .latitude(shelter.getLocation().getY())  // 지도 마커 위도
+                .address(shelter.getRoadAddress())
+                .distance(formattedDistance) //오른쪽 탭 거리 정보
                 .build();
     }
 }

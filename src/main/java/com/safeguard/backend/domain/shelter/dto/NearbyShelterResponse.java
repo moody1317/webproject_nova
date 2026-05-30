@@ -10,11 +10,9 @@ import lombok.*;
 public class NearbyShelterResponse {
     private String id;
     private String name;
-    private String roadAddress;
+    private double lat;
+    private double lng;
     private Integer capacity;
-    private ShelterType shelterType;
+    private String address;
     private double distance;
-
-    private double latitude;  //지도 마커 표시용 위도
-    private double longitude; //지도 마커 표시용 경도
 }
