@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/shelters")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequiredArgsConstructor
 public class ShelterController {
     private final ShelterService shelterService;
@@ -23,7 +24,7 @@ public class ShelterController {
     public ResponseEntity<List<NearbyShelterResponse>> getNearbyShelters(
             @RequestParam("latitude") double latitude,
             @RequestParam("longitude") double longitude,
-            @RequestParam(value = "radius", defaultValue = "5.0") double radius
+            @RequestParam(value = "radius", defaultValue = "3.5") double radius
     ) {
         List<NearbyShelterResponse> responses = shelterService.findNearbyShelters(latitude, longitude, radius);
 

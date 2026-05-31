@@ -7,6 +7,7 @@ import org.springframework.data.geo.*;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalTime;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Comparator;
 import java.util.List;
@@ -93,7 +94,7 @@ public class HospitalService {
         }
 
         try {
-            LocalTime now = LocalTime.now();
+            LocalTime now = LocalTime.now(ZoneId.of("Asia/Seoul"));
             LocalTime openTime = LocalTime.parse(open, DateTimeFormatter.ofPattern("HHmm"));
             LocalTime closeTime = LocalTime.parse(close, DateTimeFormatter.ofPattern("HHmm"));
 

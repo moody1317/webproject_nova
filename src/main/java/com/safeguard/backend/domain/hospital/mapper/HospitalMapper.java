@@ -19,15 +19,12 @@ public class HospitalMapper {
         );
 
         return Hospital.builder()
-                .hospitalKey(
-                        item.getDutyName() + "_" + item.getDutyAddr()
-                )
+                .hospitalKey(item.getDutyName() + "_" + item.getDutyAddr() + "_" + tagName)
                 .name(item.getDutyName())
                 .address(item.getDutyAddr())
                 .tel(item.getDutyTel1())
 
                 .tagName(tagName)
-
                 .placeType(convertPlaceType(tagName))
 
                 .location(
