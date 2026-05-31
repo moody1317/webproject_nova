@@ -1,13 +1,4 @@
 
-
-.nearshelter-list {
-    display: flex;
-    flex-direction: column;
-    background-color: var(--color-background);
-    width: 35%;
-    padding: 20px;
-    margin-top: 40px;
-}
 .shelter-inner {
     margin-top: 30px;
     display: flex;
@@ -46,7 +37,7 @@
     color: var(--color-text-sub1);
 }
 
-#btn-shelter-card {
+.btn-shelter-card {
     background-color: var(--color-background-btn);
     border: none;
     color: var(--color-text-sub3);
@@ -54,4 +45,38 @@
     width: 110px;
     height: 35px;
     font-size: var(--font-size-base);
+    cursor: pointer;
+}
+.shelter-text {
+    text-align: left;
+}
+@media (max-width: 768px) {
+
+    .shelter-inner {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .btn-shelter-card {
+        width: 150px;
+        height: 50px;
+        font-size: var(--font-size-lg)
+    }
+    .shelter-card-info i {
+        display: none;
+    }
+
+    .shelter-card h4 {
+    font-size: var(--font-size-xl);
+    }
+
+    .shelter-card p {
+    font-size: var(--font-size-base);
+    color: var(--color-text-sub1);
+    }
+
+    .shelter-distance {
+        display: none;
+    }
+    
 }

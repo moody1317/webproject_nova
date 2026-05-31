@@ -28,6 +28,17 @@ function LocationModal({onClose, onSave, nextId, locations, onDelete, onRename, 
     const [mapMode, setMapMode] = useState(null);
     const [nameEdit, setnameEdit] = useState(null);
     const selectLoc = locations.find(loc => loc.id === selectedId);
+
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+    useEffect(() => {
+        const sceneResize = () => {
+            setIsMobile(window.innerWidth<=768);
+        };
+
+        window.addEventListener('resize', sceneResize);
+        return () => window.removeEventListener('resize', sceneResize);
+    }, []);
     
     
     return (
@@ -42,9 +53,18 @@ function LocationModal({onClose, onSave, nextId, locations, onDelete, onRename, 
                         <h1>📍지역 관리</h1>
                         <p>거점 지역을 추가하고 관리하세요. 순서 변경·삭제는 온라인에서만 가능합니다.</p>
                     </div>
-                    <button id="btn-modal-exit" onClick={onClose}>✕</button>
+                    <button id="btn-modal-exit" onClick={onClose}>
+                        {isMobile ? '← 주소 설정' : '✕'}
+                        </button>
                 </div>
             </section>
+             <div className="modal-mobile-search">
+                <div className="modal-mobile-search-input">
+                    <i className="bi bi-search"></i>
+                    <input type="text" className="txt-mobilesearch" placeholder="   도로명, 건물명, 지번으로 검색"></input>
+                </div>
+                <button className="mobile-locsearch">현재 위치로 찾기</button>
+            </div>
         
         <div className="modal-body">
             <section className="modal-saveloc">
@@ -76,6 +96,7 @@ function LocationModal({onClose, onSave, nextId, locations, onDelete, onRename, 
                             <div className="modal-loc-item-inner">
                                 <i className={`bi ${loc.icon}`}></i>
                                     <div className="modal-loc-info">
+                                        <div className="modal-loc-name">
                                         {nameEdit===loc.id ? (
                                             <input type="text" defaultValue={loc.name} 
                                             autoFocus 
@@ -89,13 +110,14 @@ function LocationModal({onClose, onSave, nextId, locations, onDelete, onRename, 
                                                 {onRename(loc.id, e.target.value); 
                                             setnameEdit(null);}}}/>
                                         ) : (
+
                                         <h4 onClick={(e) => {e.stopPropagation();
                                             setnameEdit(loc.id);
                                         }}>{loc.name}</h4>
                                         )}
 
                                             {loc.isFixed && <span className="modal-loc-badge">기본</span>} 
-                                        
+                                        </div>
                                         
                                         <p>{loc.address ?? "주소 미설정"}</p>
                                     </div>
