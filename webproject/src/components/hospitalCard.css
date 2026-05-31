@@ -203,11 +203,7 @@
 
     .isopen {
         display: block;
-        width: 5px;
-        height: 5px;
-        border-radius: var(--radius-round);
         background-color: var(--color-background-pharmacy);
-        font-size: 0;
     }
 
     .isnotopen {

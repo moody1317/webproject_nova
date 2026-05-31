@@ -29,6 +29,8 @@ function Hospital() {
     const min = today.getMinutes().toString().padStart(2, '0');
     */
 
+    const usedCoords = [];
+
     useEffect(() => { 
         navigator.geolocation.getCurrentPosition( position => {
             setCurPosition([position.coords.latitude, position.coords.longitude]);
@@ -54,7 +56,7 @@ function Hospital() {
         item.name.toLowerCase().includes(searchKeyword.toLowerCase())
     ).sort((a,b) => {
         if (sortType === 'treatment') {
-            return b.isOpen - a.isOpen;
+            return b.open - a.open;
         }
         else {
             return 0;
@@ -70,6 +72,19 @@ function Hospital() {
             handleSearch();
         }
     };
+
+    const adjustHospitals = hospitals.map((item, index) => {
+        if (usedCoords.some(coords => {
+            const latDiff = Math.abs(coords.lat - item.latitude);
+            const lngDiff = Math.abs(coords.lng - item.longitude);
+            return (latDiff < 0.0001 && lngDiff < 0.0001)
+        })) {
+            usedCoords.push({ lat: item.latitude, lng: item.longitude });
+            return {...item, longitude: item.longitude + 0.0001};
+        }
+        usedCoords.push({ lat: item.latitude, lng: item.longitude });
+        return item;
+    });
 
     return (
         <>
@@ -101,7 +116,7 @@ function Hospital() {
                         url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
                     />
                     <Marker position={ curPosition || [37.5665, 126.9780] } icon={ currentMarker }></Marker>
-                    { hospitals.map((item, index) => (
+                    { adjustHospitals.map((item, index) => (
                         <Marker position={ [item.latitude, item.longitude]} icon={ markers[item.placeType] } key={ index }>
                             <Popup>{ item.name }</Popup>
                         </Marker>
@@ -128,7 +143,7 @@ function Hospital() {
                             distance={ item.distance }
                             openTime={ item.openTime }
                             closeTime={ item.closeTime}
-                            isOpen={ item.isOpen }
+                            isOpen={ item.open }
                             latitude={ item.latitude }
                             longitude={ item.longitude}
                             tel={ item.tel }
@@ -156,7 +171,7 @@ function Hospital() {
                             distance={ item.distance }
                             openTime={ item.openTime }
                             closeTime={ item.closeTime}
-                            isOpen={ item.isOpen }
+                            isOpen={ item.open }
                             latitude={ item.latitude }
                             longitude={ item.longitude}
                             tel={ item.tel }
