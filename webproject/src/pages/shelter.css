@@ -63,3 +63,64 @@
     width: 65%;
     border: 2px solid var(--color-line-secondary);
 }
+
+.sheltercard-list {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-background);
+    width: 35%;
+    padding: 20px;
+    margin-top: 40px;
+}
+
+.shelter-list-mobile {
+        display: flex;
+        flex-direction: column;
+        background-color: var(--color-background);
+        padding: 20px;
+        width: 100%;
+    }
+.shelter-add-btn {
+    background:none;
+    border: none;
+    cursor: pointer;
+    padding: 0 16px;
+    height: 52px;
+}
+.shelter-add-btn:hover{
+    background-color: var(--color-background-primary);
+}
+
+
+@media (max-width: 768px) {
+    .emergency-contacts {
+        display: none;
+    }
+    .sheltercard-list {
+        display: none;
+    }
+    .shelter-mapcontent {
+        width: 100%;
+        height: 100vh;
+    }
+    .shelter-page {
+        width: 100%;
+    }
+    .shelter-category {
+        padding: 0;
+    }
+    .shelter-add-btn {
+        position: absolute;
+        right: 0;
+        font-size: var(--font-size-xxl);
+    }
+    .shelter-add-btn:hover {
+        background:none;
+    }
+    .shelter-sidebar-show {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+}

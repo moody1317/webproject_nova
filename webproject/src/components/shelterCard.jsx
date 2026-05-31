@@ -7,25 +7,24 @@ function ShelterCard({shelters}) {
     
     return(
     <>
-            <section className="nearshelter-list">
                 <div className="shelter-inner">
-                {shelters.map((shelter) => (
+                    {shelters.map((shelter) => (
                     <div className="shelter-card" key={shelter.id}>
                         <div className="shelter-card-info">
                             <i className="bi bi-buildings"></i>
-                        <div>
+                        <div className="shelter-text">
                         <h4>{shelter.name}</h4>
-                        <p>📏 {shelter.distance}km 👥 {shelter.capacity}명</p>
+                        <p><span className="shelter-distance">📏 {shelter.distance}km</span> 👥 {shelter.capacity}명</p>
                     </div>
                     </div>
-                    <input type="button" id="btn-shelter-card" value="길 찾기"
-                    onClick={() => {
 
-                    }}></input>
+                    <button className="btn-shelter-card"
+                    onClick={(e) => {
+                        window.open(`https://map.kakao.com/link/to/${shelter.name},${shelter.lat},${shelter.lng}`);
+                    }}>길 찾기</button>
                     </div>
                 ))}
                 </div>
-            </section>
     </>
     )
 }
