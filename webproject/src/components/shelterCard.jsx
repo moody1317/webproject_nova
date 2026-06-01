@@ -3,7 +3,7 @@ import './ShelterCard.css';
 
 
 
-function ShelterCard({shelters}) {
+function ShelterCard({shelters, currentLocation}) {
     
     return(
     <>
@@ -20,7 +20,7 @@ function ShelterCard({shelters}) {
 
                     <button className="btn-shelter-card"
                     onClick={(e) => {
-                        window.open(`https://map.kakao.com/link/to/${shelter.name},${shelter.lat},${shelter.lng}`);
+                        window.open(`https://map.kakao.com/link/from/${currentLocation?.name},${currentLocation?.numaddress?.[0]},${currentLocation?.numaddress?.[1]}/to/${shelter.name},${shelter.lat},${shelter.lng}`);
                     }}>길 찾기</button>
                     </div>
                 ))}

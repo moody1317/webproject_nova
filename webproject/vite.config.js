@@ -9,6 +9,9 @@ export default defineConfig({
       '/api': {
         target: 'https://jere-trispermous-festively.ngrok-free.dev',
         changeOrigin: true,
+        headers: {
+          'ngrok-skip-browser-warning': 'true'
+        }
       }
     }
   }
