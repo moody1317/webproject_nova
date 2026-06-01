@@ -109,7 +109,7 @@ function Hospital() {
                         <li>의원</li>
                     </ul>
                 </div>
-                <MapContainer center={curPosition || [37.5665, 126.9780]} zoom={20} scrollWheelZoom={false} style={{height: '100%', width: '100%'}} >
+                <MapContainer center={curPosition || [37.5665, 126.9780]} zoom={20} style={{height: '100%', width: '100%'}} >
                     <MoveMap position={ curPosition || [37.5665, 126.9780]} />
                     <TileLayer
                         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; CARTO'
