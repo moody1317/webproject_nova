@@ -70,7 +70,8 @@
     background-color: var(--color-background);
     width: 35%;
     padding: 20px;
-    margin-top: 40px;
+    overflow-y: auto;
+    height: 456px;
 }
 
 .shelter-list-mobile {

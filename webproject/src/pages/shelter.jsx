@@ -138,7 +138,7 @@ function Shelter() {
             </section>
 
          <div className="sheltercard-list">
-            <ShelterCard shelters={shelters}/>
+            <ShelterCard shelters={shelters} currentLocation={selectedloc}/>
         </div>
 
         </div>
@@ -239,6 +239,7 @@ function Shelter() {
                 onDelete={DeleteLocation}
                 onRename={RenameLocation}
                 onEdit={EditLocation}
+                onSelectTab={(id) => setSelectedTabId(id)}
             />
         }
 

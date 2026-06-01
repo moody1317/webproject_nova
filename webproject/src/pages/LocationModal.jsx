@@ -5,7 +5,7 @@ import MapModal from "./MapModal";
 
 
 
-function LocationModal({onClose, onSave, nextId, locations, onDelete, onRename, onEdit}) {
+function LocationModal({onClose, onSave, nextId, locations, onDelete, onRename, onEdit, onSelectTab}) {
     
     const [customName, setCustomName] = useState("");
     // 지역 카드 추가
@@ -40,6 +40,8 @@ function LocationModal({onClose, onSave, nextId, locations, onDelete, onRename, 
         return () => window.removeEventListener('resize', sceneResize);
     }, []);
     
+    const [mobileloc, setMobileloc] = useState('list');
+
     
     return (
     <>
@@ -54,20 +56,14 @@ function LocationModal({onClose, onSave, nextId, locations, onDelete, onRename, 
                         <p>거점 지역을 추가하고 관리하세요. 순서 변경·삭제는 온라인에서만 가능합니다.</p>
                     </div>
                     <button id="btn-modal-exit" onClick={onClose}>
-                        {isMobile ? '← 주소 설정' : '✕'}
+                        {isMobile ? '❮ 주소 설정' : '✕'}
                         </button>
                 </div>
             </section>
-             <div className="modal-mobile-search">
-                <div className="modal-mobile-search-input">
-                    <i className="bi bi-search"></i>
-                    <input type="text" className="txt-mobilesearch" placeholder="   도로명, 건물명, 지번으로 검색"></input>
-                </div>
-                <button className="mobile-locsearch">현재 위치로 찾기</button>
-            </div>
+            <div className="modal-content"></div>
         
         <div className="modal-body">
-            <section className="modal-saveloc">
+            <section className="modal-saveloc" style={isMobile && mobileloc === 'map' ? {display: 'none'} : {}}>
             <div className="modal-saveloc-inner">
                  <h4>{locations.address ? locations.adress : "주소 미설정"}</h4>
                  <span className="modal-locCount">{locations.length}/5</span>
@@ -78,15 +74,19 @@ function LocationModal({onClose, onSave, nextId, locations, onDelete, onRename, 
                     <div key={loc.id}>
                     <div className={selectedId === loc.id ? "modal-loc-item modal-loc-item-active" : "modal-loc-item"} 
                         onClick={() => {
-                            if (selectedId === loc.id)
-                            {
-                                setSelectedId(null);
-                                setMapMode(null);
+                            if (isMobile) {
+                                onSelectTab(loc.id);
+                                onClose();
                             }
-                            else
-                            {
-                                setSelectedId(loc.id);
-                                setMapMode({type: "view", loc:loc});
+                            else {
+                                if (selectedId === loc.id) {
+                                    setSelectedId(null);
+                                    setMapMode(null);
+                                }
+                                else {
+                                    setSelectedId(loc.id);
+                                    setMapMode({type: "view", loc: loc});
+                                }
                             }
 
                             }
@@ -123,7 +123,7 @@ function LocationModal({onClose, onSave, nextId, locations, onDelete, onRename, 
                                     </div>
                             </div>
                                 <div className="modal-loc-btn">
-                                    <button id="btn-loc-change" onClick={(e) => {e.stopPropagation(); setMapMode({type: "edit", loc:loc})}}>수정</button>
+                                    <button id="btn-loc-change" onClick={(e) => {e.stopPropagation(); setMapMode({type: "edit", loc:loc}); if (isMobile) setMobileloc('map')}}>수정</button>
                                     {!loc.isFixed && (
                                     <button id="btn-loc-delete" onClick={(e) => {e.stopPropagation(); onDelete(loc.id)}}>삭제</button>
                                     )}
@@ -135,7 +135,7 @@ function LocationModal({onClose, onSave, nextId, locations, onDelete, onRename, 
                 ))}
 
                  {locations.length < 5 && (
-                <div className="modal-loc-add-btn" onClick={() => setMapMode({type: "add"})}>
+                <div className="modal-loc-add-btn" onClick={() => {setMapMode({type: "add"}); if (isMobile) setMobileloc('map')}}>
                     <p>+ 새 지역 추가</p>
                 </div>
              )}
@@ -164,6 +164,7 @@ function LocationModal({onClose, onSave, nextId, locations, onDelete, onRename, 
                                                         })
                                                     }
                                                     setMapMode(null);
+                                                    if (isMobile) setMobileloc('list');
                                                 }}
                                                     />
                                                 )}

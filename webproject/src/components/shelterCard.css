@@ -3,7 +3,7 @@
     margin-top: 30px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 30px;
 }
 .shelter-card {
     display: flex;
@@ -58,8 +58,8 @@
     }
 
     .btn-shelter-card {
-        width: 150px;
-        height: 50px;
+        width: 120px;
+        height: 40px;
         font-size: var(--font-size-lg)
     }
     .shelter-card-info i {
@@ -67,7 +67,7 @@
     }
 
     .shelter-card h4 {
-    font-size: var(--font-size-xl);
+    font-size: var(--font-size-lg);
     }
 
     .shelter-card p {
@@ -78,5 +78,7 @@
     .shelter-distance {
         display: none;
     }
-    
+    .shelter-card {
+        height: 70px;
+    }
 }
