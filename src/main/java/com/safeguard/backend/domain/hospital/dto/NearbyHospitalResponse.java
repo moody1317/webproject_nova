@@ -18,7 +18,7 @@ public class NearbyHospitalResponse {
 
     private String address;
 
-    private double distance; // disdance 받는거 {hospital.distance}km 나 `${hospital.distance}km`로 수정 요청
+    private double distance;
 
     private String openTime;
 
