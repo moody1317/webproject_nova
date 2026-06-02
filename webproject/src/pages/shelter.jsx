@@ -6,6 +6,7 @@ import './shelter.css';
 import 'leaflet/dist/leaflet.css';
 import "./LocationModal.css";
 import ShelterCard from '../components/Sheltercard';
+import BottomSheet from '../components/bottomsheet';
 
 // 지도 중심위치 이동
 function MoveMap({position}) {
@@ -75,12 +76,12 @@ function Shelter() {
     const position = selectedloc?.numaddress ?? [37.5665, 126.9780];
 
     const dummy = [
-        {id: 1, name: "형서 집", distance: "0.3km", capacity: 500},
-        {id: 2, name:" 승환이 집", distance: "1km", capacity: 1},
-        {id: 3, name: "소은 집", distance: "3km", capacity: 5}
+        {id: 1, name: "형서 집", distance:"0.3km", capacity:500, lat: 36.629, lng: 127.457},
+        {id: 2, name:"승환이 집", distance:"1km", capacity:500, lat: 36.631, lng: 127.459},
+        {id: 3, name: "소은 집", distance:"3km", capacity:500, lat: 36.635, lng: 127.462}
     ];
 
-    const [shelters, setShelters] = useState([]);
+    const [shelters, setShelters] = useState(dummy);
     useEffect(()=> {
         if (!selectedloc?.numaddress) return;
 
@@ -88,16 +89,47 @@ function Shelter() {
         .then(res => res.json())
         .then(data => setShelters(data))
     }, [selectedTabId]);
+
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+    useEffect(() => {
+        const sceneResize = () => {
+            setIsMobile(window.innerWidth<=768);
+        };
+
+        window.addEventListener('resize', sceneResize);
+        return () => window.removeEventListener('resize', sceneResize);
+    }, []);
+
+    const [isOnline, setIsOnline] = useState(navigator.onLine);
+    useEffect(() => {
+        const Online = () => setIsOnline(true);
+        const Offline = () => setIsOnline(false);
+
+        window.addEventListener('online', Online);
+        window.addEventListener('offline', Offline);
+
+        return () => {
+            window.removeEventListener('online', Online);
+            window.removeEventListener('offline', Offline);
+        };
+    }, []);
     return(
     <>
      <section className="shelter-category">
                 <div className="shelter-sidebar-show">
-                    {locationList}
-                    <div className="shelter-inventory" onClick={() => setIsModalOpen(true)}>
+                    {isMobile ? <div className="shelter-inventory shelter-inventory-active">
                         <div className="shelter-inventory-content">
-                            <p>+ 지역 추가</p>
+                            <p>{locations.find(loc => loc.id === selectedTabId)?.name}</p>
                         </div>
-                    </div>
+                        </div>
+                        :locationList
+                    }
+                    {isOnline && (
+                    <button className="shelter-add-btn" onClick={() => setIsModalOpen(true)}>
+                        {isMobile ? '+' : '+ 지역 추가'}
+                    </button>
+                    )}
                 </div>
     </section>
 
@@ -111,10 +143,17 @@ function Shelter() {
                                                             <Popup>{selectedloc.name}</Popup>
                                                         </Marker>
                             )}
+                    {shelters.map((shelter) => (
+                        <Marker position = {[shelter.lat, shelter.lng]} key = {shelter.id}>
+                            <Popup>{shelter.name}</Popup>
+                        </Marker>
+                    ))}
                </MapContainer>
             </section>
 
-            <ShelterCard shelters={dummy}/>
+         <div className="sheltercard-list">
+            <ShelterCard shelters={shelters} currentLocation={selectedloc}/>
+        </div>
 
         </div>
         <section className="emergency-contacts">
@@ -214,8 +253,15 @@ function Shelter() {
                 onDelete={DeleteLocation}
                 onRename={RenameLocation}
                 onEdit={EditLocation}
+                onSelectTab={(id) => setSelectedTabId(id)}
             />
         }
+
+        <BottomSheet>
+            <div className="shelter-list-mobile">
+                <ShelterCard shelters = {shelters}></ShelterCard>
+            </div>
+        </BottomSheet>
     </>
     )
 }

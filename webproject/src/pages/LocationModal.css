@@ -6,7 +6,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 10000;
+    z-index: 10000001;
     top: 0;
     left: 0;
     padding-top: 70px;
@@ -15,8 +15,8 @@
 .modal-container {
     background-color: var(--color-background);
     border-radius: 20px;
-    width: 1280px;
-    height: 800px;
+    width: 1180px;
+    height: 700px;
     overflow-y: hidden;
     display: flex;
     flex-direction: column;
@@ -107,7 +107,7 @@
     background-color: var(--color-background);
     border-radius: var(--radius-xxl);
     width: 330px;
-    height: 100px;
+    height: 90px;
     border: 2px solid var(--color-line-secondary);
     border-top: 4px solid var(--color-line-secondary);
     padding: 0;
@@ -141,7 +141,7 @@
     display: flex;
     flex-direction: row;
     gap: 10px;
-    padding: 5px;
+    padding-top: 20px;
     flex: 1;
     min-width: 0;
     overflow: hidden;
@@ -149,11 +149,11 @@
 }
 
 .modal-loc-item-inner i {
-    font-size: var(--font-size-xxl);
+    font-size: var(--font-size-xxxl);
 }
 
 .modal-loc-item-inner p {
-    font-size: var(--font-size-xs);
+    font-size: var(--font-size-base)!important;
     color: var(--color-text-sub1);
 }
 
@@ -164,8 +164,8 @@
     overflow: hidden;
 }
 
-.modal-loc-item i {
-
+.modal-loc-item-inner h4 {
+    font-size: var(--font-size-lg) !important;
 }
 
 .modal-loc-info h4 {
@@ -383,7 +383,7 @@
         width: 100%;
         height: 100%;
         border-radius: 0;
-        overflow-y: auto;
+        overflow-y: hidden;
     }
     .modal-loc-list {
         align-items: stretch;
@@ -392,6 +392,8 @@
     }
     .modal-saveloc {
         width: 100%;
+        overflow-y: auto;
+
     }
 
     .modal-saveloc-inner {
@@ -399,7 +401,7 @@
     }
 
     .modal-loc-item {
-        width: 100%;
+        width: auto;
         border-radius: 0;
         border-left: none;
         border-right: none;
@@ -418,6 +420,7 @@
         border: 2px solid var(--color-line-secondary);
         border-radius: var(--radius-md);
         margin-top: 16px;
+        height: 45px;
     }
     .modal-loc-add-btn-txt {
         align-self: center;
@@ -430,17 +433,12 @@
         display: none;
     }
     .modal-loc-btn {
-        margin-left: 0 !important;
-        padding-left: 50px;
+        margin-left: 34px !important;
+        padding: 0;
         align-self: flex-start;
-        padding-bottom: 10px;
+
     }
-    .modal-loc-info {
-        gap: 8px;
-    }
-    .modal-loc-item-top {
-        flex-direction: column;
-    }
+    
     .modal-overlay {
         z-index: 1000001;
     }
@@ -454,24 +452,21 @@
         background: none;
         order: -1;
         font-size: var(--font-size-sm);
-        width: 80px;
-        padding-top: 3px;
+        width: auto;
+        padding-top: 4px;
         cursor: pointer;
         font-size: var(--font-size-lg);
         color: var(--color-text-sub1);
         font-weight: bold;
+        text-align: left;
     }
     .modal-hero-inner {
         display: none;
     }
     .modal-mobile-search {
         display: flex;
-        flex-direction: column;
         background-color: var(--color-background-hospital);
-        height: 130px;
-        gap: 15px;
-        align-items: center;
-        padding-top: 15px;
+        height: 50px;
     }
     .txt-mobilesearch {
         border: none;
@@ -489,6 +484,8 @@
         outline: none;
         cursor: pointer;
         color: var(--color-text-sub2);
+        text-align: center;
+        padding: 0;
     }
     .modal-hero {
         background-color: var(--color-background);
@@ -512,5 +509,73 @@
 
     .txt-mobilesearch::placeholder {
         color: var(--color-text-sub2);
+    }
+    .modal-overlay {
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 10000001;
+        padding-top: 0;
+    }
+    .modal-loc-item {
+        padding: 10px 20px;
+        height: 85px;
+    }
+    .modal-loc-item h4 {
+        font-size: var(--font-size-lg)
+    }
+    .modal-loc-item-inner i {
+        font-size: var(--font-size-xl);
+        margin-top: 6px;
+        padding-right: 5px;
+    }
+    .modal-loc-item p {
+        font-size: var(--font-size-base)
+    }
+    .modal-loc-info {
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        overflow: hidden;
+    }
+    .modal-loc-item-top {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+        width: 100%;
+        flex: 1;
+    }
+    .modal-loc-info p {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 250px;
+    }
+    .modal-loc-item-inner {
+        gap: 3px;
+        padding: 0;
+    }
+    #btn-modal-save {
+        width: 100px;
+    }
+    .maploc {
+        font-size: 8px !important;
+    }
+    .modal-hero-content {
+        padding: 8px 10px;
+    }
+    .modal-content {
+        background-color: var(--color-background-search);
+        width: 100%;
+        height: 20px;
+    }
+    body {
+        overflow:hidden;
+    }
+    .shelter-mapcontent {
+        width: 100%;
+        height: calc(100vh - 52px - 60px);
     }
 }

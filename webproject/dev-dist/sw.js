@@ -67,7 +67,7 @@ if (!self.define) {
     });
   };
 }
-define(['./workbox-d08cb3c2'], (function (workbox) { 'use strict';
+define(['./workbox-bc322087'], (function (workbox) { 'use strict';
 
   self.skipWaiting();
   workbox.clientsClaim();
@@ -81,7 +81,7 @@ define(['./workbox-d08cb3c2'], (function (workbox) { 'use strict';
     "revision": "3ca0b8505b4bec776b69afdba2768812"
   }, {
     "url": "index.html",
-    "revision": "0.ra75c22sk9g"
+    "revision": "0.f9dpdvl7r34"
   }], {});
   workbox.cleanupOutdatedCaches();
   workbox.registerRoute(new workbox.NavigationRoute(workbox.createHandlerBoundToURL("index.html"), {
@@ -89,9 +89,23 @@ define(['./workbox-d08cb3c2'], (function (workbox) { 'use strict';
   }));
   workbox.registerRoute(/\/api\/hospitals/, new workbox.NetworkOnly(), 'GET');
   workbox.registerRoute(/\/api\/medicine/, new workbox.NetworkOnly(), 'GET');
+  workbox.registerRoute(/\/api\/shelters/, new workbox.CacheFirst({
+    "cacheName": "shelters-cache",
+    plugins: [new workbox.ExpirationPlugin({
+      maxEntries: 50,
+      maxAgeSeconds: 604800
+    })]
+  }), 'GET');
   workbox.registerRoute(/\/api\//, new workbox.NetworkFirst({
     "cacheName": "api-cache",
     plugins: []
+  }), 'GET');
+  workbox.registerRoute(/https:\/\/.*\.basemaps\.cartocdn\.com\/.*/, new workbox.CacheFirst({
+    "cacheName": "map-tiles-cache",
+    plugins: [new workbox.ExpirationPlugin({
+      maxEntries: 1000,
+      maxAgeSeconds: 2592000
+    })]
   }), 'GET');
 
 }));
