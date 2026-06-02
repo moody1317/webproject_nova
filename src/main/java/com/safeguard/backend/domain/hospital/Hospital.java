@@ -28,8 +28,8 @@ public class Hospital {
     private String address;
     private String tel;
 
-    private String placeType; // hospital, pharmacy, clinic, healthcenter
-    private String tagName;   // 종합병원, 약국, 보건소, 의원 등
+    private String placeType; // hospital, pharmacy, emergency, public
+    private String tagName;   // 종합병원, 약국, 보건소, 의원, 응급실
 
     @GeoSpatialIndexed(type = GeoSpatialIndexType.GEO_2DSPHERE)
     private GeoJsonPoint location;
