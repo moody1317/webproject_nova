@@ -291,14 +291,6 @@
     margin-top: 8px;
 }
 
-.firstaid-content {
-    display: flex;
-}
-
-.firstaid-left {
-    width: 50%;
-}
-
 .section-comment {
     font-weight: bold;
     font-size: var(--font-size-lg);
@@ -306,11 +298,29 @@
     color: var(--color-text-sub2);
 }
 
+/* 응급처치 색션 */
+.firstaid-content {
+    display: flex;
+    flex-direction: row;
+    gap: 80px;
+    align-items: flex-start;
+}
+
+.firstaid-left {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.firstaid-left .section-comment {
+    margin-left: var(--spacing-md);
+}
+
 .firstaid-type {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    margin-left: var(--spacing-xxl);
-    margin-top: var(--spacing-md);
+    margin-left: var(--spacing-md);
+    margin-top: var(--spacing-sm);
     padding-left: var(--spacing-md);
     background-color: var(--color-background);
     border-radius: var(--radius-xl);
@@ -334,9 +344,8 @@
     width: 50%;
 }
 
-.firstaid-right > p {
-    font-weight: bold;
-    font-size: 20px;
+.firstaid-right > h2 {
+    font-size: var(--font-size-xl);
     color: var(--color-text-sub1);
     padding-bottom: var(--spacing-sm);
 }
@@ -350,32 +359,36 @@
 
 .firstaid-func {
     display: flex;
-    padding-left: var(--spacing-md);
-    padding-top: var(--spacing-md);
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 10px;
+    margin-left: 20px;
 }
 
 .firstaid-func > i {
-    font-size: var(--font-size-xl);
-    padding-right: var(--spacing-sm);
-    color: var(--color-text-primary);
+    font-size: var(--font-size-xxl);
+    margin-top: 15px;
 }
 
-.firstaid-li > h3 {
+.firstaid-li > h4 {
     color: var(--color-text-primary);
     font-size: var(--font-size-xl);
-    font-weight: 500;
-    padding-bottom: var(--spacing-xs);
+    margin-top: 15px;
 }
 
 .firstaid-li > p {
     color: var(--color-text-sub1);
     font-size: var(--font-size-lg);
+    font-weight: 500;
 }
 
-.mobile-only {
-    display: none;
+.find-hospital > p {
+    color: var(--color-text-sub1);
+    margin-left: var(--spacing-xxl);
+    margin-top: var(--spacing-sm);
+    font-size: 20px;
+    font-weight: bold;
 }
-
 /* 랜딩페이지-대피소 */
 .shelter-section-content {
     display: flex;
