@@ -1,12 +1,34 @@
 import {NavLink} from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import './home.css';
-
 import homeFrameImg from '../assets/homeFrame.svg';
 import Heo from '../assets/Heo.png';
-import Sim from '../assets/Sim.png';
+import Shim from '../assets/Shim.png';
 import Hong from '../assets/Hong.png';
 
+const placeConfig = {
+    publicCount: { label: '보건소', colorClass: 'public-cnt'},
+    hospitalCount: { label: '종합병원', colorClass: 'hospital-cnt'},
+    pharmacyCount: { label: '약국', colorClass: 'pharmacy-cnt'},
+    clinicCount: { label: '병의원', colorClass: 'clinic-cnt'},
+    emergencyCount: { label: '응급실', colorClass: 'emergency-cnt'}
+}
+
 function Home() {
+    const [hospitalcnt, setHospitalCnt] = useState({});
+
+    useEffect (() => {
+        fetch('/api/main/stats', {headers: {'ngrok-skip-browser-warning': 'true'}}).then(response => response.json()).then(data => setHospitalCnt(data))
+        .catch(error => console.log(error));
+    }, []);
+
+    const hospitalList = Object.entries(hospitalcnt).map(([key, value]) => (
+        <div className={`hospital-card ${placeConfig[key].colorClass}`}>
+            <h1>{placeConfig[key].label}</h1>
+            <h3>{value}</h3>
+        </div>
+    ))
+
     return (
         <>
         <section className="home-hero">
@@ -55,7 +77,7 @@ function Home() {
                         <p>가까운 대피소 바로 확인</p>
                     </div>
                 </div>
-            </div>
+                </div>
                 <div className='shelter-feature-cheklist'>
                     <h2>내 주변의 안전, 가장 빠르고 확실하게 찾으세요.</h2>
                     <div className='shelter-feature-checklist-box'>
@@ -95,6 +117,7 @@ function Home() {
                     <i className='bi bi-arrow-right-circle' style={{fontSize: 'var(--font-size-xxl)'}}></i>
                 </NavLink>
             </div>
+
             <div className='firstaid-content'>
                 <div className='firstaid-left'>
                     <div className='section-comment'>
@@ -230,6 +253,25 @@ function Home() {
             </div>
         </section>
 
+        <section className='find-hospital'>
+            <div className='section-head'>
+                <h1>병원·약국 찾기</h1>
+                <div className='onoff-tag'>
+                    <p>온/오프 지원</p>
+                </div>
+                <NavLink to="/hospital" end className='move'>
+                    <i className='bi bi-arrow-right-circle' style={{fontSize: 'var(--font-size-xxl)'}}></i>
+                </NavLink>
+            </div>
+            <div className='section-comment'>
+                <p>현재 위치 기준 가까운 병원, 응급실, 약국 정보를 실시간으로 제공합니다.</p>
+            </div>
+            <p>실시간 검색 가능한 의료 기관</p>
+            <div className='hospital-list'>
+                { hospitalList }
+            </div>
+        </section>
+
         <section className='Introduce-contact'>
             <div className='Introduce-text'>
                 <h3>만든 사람들</h3>
@@ -250,7 +292,7 @@ function Home() {
                 </div>
 
                 <div className='team-card'>
-                    <img src={Sim} className='team-img' style={{width: '197px', height: '200px'}} alt='심소은'></img>
+                    <img src={Shim} className='team-img' style={{width: '197px', height: '200px'}} alt='심소은'></img>
                     <div className='team-card-text'>
                         <h3>심소은</h3>
                         <p>Frontend</p>
