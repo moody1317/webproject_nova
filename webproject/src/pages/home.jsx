@@ -92,41 +92,71 @@ function Home() {
                     <i className='bi bi-arrow-right-circle' style={{fontSize: 'var(--font-size-xxl)'}}></i>
                 </NavLink>
             </div>
-            <div className='section-comment'>
-                <p>주요 응급처치 가이드를 제공합니다.</p>
-            </div>
-            <div className='firstaid-type'>
-                <div className='firstaid-name'>
-                    <i className='bi bi-heart-pulse-fill'></i>
-                    <p>CPR(심폐소생술)</p>
+            <div className='firstaid-content'>
+                <div className='firstaid-left'>
+                    <div className='section-comment'>
+                        <p>주요 응급처치 가이드를 제공합니다.</p>
+                    </div>
+                    <div className='firstaid-type'>
+                        <div className='firstaid-name'>
+                            <i className='bi bi-heart-pulse-fill'></i>
+                            <p>CPR(심폐소생술)</p>
+                        </div>
+                        <div className='firstaid-name'>
+                            <i className='bi bi-fire'></i>
+                            <p>화상처치</p>
+                        </div>
+                        <div className='firstaid-name'>
+                            <i className='bi bi-emoji-dizzy-fill'></i>
+                            <p>하임리히법</p>
+                        </div>
+                        <div className='firstaid-name'>
+                            <i className='bi bi-virus'></i>
+                            <p>독극물 중독</p>
+                        </div>
+                        <div className='firstaid-name'>
+                            <i className='bi bi-droplet-fill'></i>
+                            <p>지혈법</p>
+                        </div>
+                        <div className='firstaid-name'>
+                            <i className='bi bi-water'></i>
+                            <p>익수자 처치</p>
+                        </div>
+                        <div className='firstaid-name'>
+                            <i className='bi bi-person-wheelchair'></i>
+                            <p>골절 처치</p>
+                        </div>
+                        <div className='firstaid-name'>
+                            <i className='bi bi-lightning-charge-fill'></i>
+                            <p>전기 쇼크</p>
+                        </div>
+                    </div>
                 </div>
-                <div className='firstaid-name'>
-                    <i className='bi bi-fire'></i>
-                    <p>화상처치</p>
-                </div>
-                <div className='firstaid-name'>
-                    <i className='bi bi-emoji-dizzy-fill'></i>
-                    <p>하임리히법</p>
-                </div>
-                <div className='firstaid-name'>
-                    <i className='bi bi-virus'></i>
-                    <p>독극물 중독</p>
-                </div>
-                <div className='firstaid-name'>
-                    <i className='bi bi-droplet-fill'></i>
-                    <p>지혈법</p>
-                </div>
-                <div className='firstaid-name'>
-                    <i className='bi bi-water'></i>
-                    <p>익수자 처치</p>
-                </div>
-                <div className='firstaid-name'>
-                    <i className='bi bi-person-wheelchair'></i>
-                    <p>골절 처치</p>
-                </div>
-                <div className='firstaid-name'>
-                    <i className='bi bi-lightning-charge-fill'></i>
-                    <p>전기 쇼크</p>
+                <div className='firstaid-right'>
+                    <p>다음과 같은 기능을 제공합니다.</p>
+                    <div className='firstaid-list'>
+                        <div className='firstaid-func'>
+                            <i className='bi bi-check-square'></i>
+                            <div className='firstaid-li'>
+                                <h3>오프라인 동작</h3>
+                                <p>데이터가 끊겨도 언제든 확인 가능합니다.</p>
+                            </div>
+                        </div>
+                        <div className='firstaid-func'>
+                            <i className='bi bi-check-square'></i>
+                            <div className='firstaid-li'>
+                                <h3>직관적인 매뉴얼</h3>
+                                <p>긴 글을 읽을 필요 없이 핵심 요약 정보와 짧은 영상으로 제공합니다.</p>
+                            </div>
+                        </div>
+                        <div className='firstaid-func'>
+                            <i className='bi bi-check-square'></i>
+                            <div className='firstaid-li'>
+                                <h3>검증된 공식 응급 가이드</h3>
+                                <p>소방청 등의 기관의 지침을 반영하여 제공합니다.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
