@@ -31,6 +31,9 @@ function Hospital() {
 
     const usedCoords = [];
 
+    useEffect(() => { window.scrollTo(0,0) }, []);
+
+
     useEffect(() => { 
         navigator.geolocation.getCurrentPosition( position => {
             setCurPosition([position.coords.latitude, position.coords.longitude]);

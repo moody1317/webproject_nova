@@ -7,6 +7,8 @@
         const [selectedIndex, setSelectedIndex] = useState(0);
         const [firstaids, setFirstaid] = useState([]);
 
+        useEffect(() => { window.scrollTo(0,0) }, []);
+
         useEffect (() => {
             fetch('/api/firstaid', {headers: {'ngrok-skip-browser-warning': 'true'}}).then(response => response.json()).then(data => setFirstaid(data))
             .catch(error => console.log(error));

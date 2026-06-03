@@ -44,6 +44,40 @@ function Home() {
             <div className='section-comment'>
                 <p>주요 응급처치 가이드를 제공합니다.</p>
             </div>
+            <div className='firstaid-type'>
+                <div className='firstaid-name'>
+                    <i className='bi bi-heart-pulse-fill'></i>
+                    <p>CPR(심폐소생술)</p>
+                </div>
+                <div className='firstaid-name'>
+                    <i className='bi bi-fire'></i>
+                    <p>화상처치</p>
+                </div>
+                <div className='firstaid-name'>
+                    <i className='bi bi-emoji-dizzy-fill'></i>
+                    <p>하임리히법</p>
+                </div>
+                <div className='firstaid-name'>
+                    <i className='bi bi-virus'></i>
+                    <p>독극물 중독</p>
+                </div>
+                <div className='firstaid-name'>
+                    <i className='bi bi-droplet-fill'></i>
+                    <p>지혈법</p>
+                </div>
+                <div className='firstaid-name'>
+                    <i className='bi bi-water'></i>
+                    <p>익수자 처치</p>
+                </div>
+                <div className='firstaid-name'>
+                    <i className='bi bi-person-wheelchair'></i>
+                    <p>골절 처치</p>
+                </div>
+                <div className='firstaid-name'>
+                    <i className='bi bi-lightning-charge-fill'></i>
+                    <p>전기 쇼크</p>
+                </div>
+            </div>
         </section>
 
         <section className='search-medicine'>

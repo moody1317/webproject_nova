@@ -11,6 +11,8 @@ function Medicine() {
     const [inputValue, setInputValue] = useState('');
     const [page, setPage] = useState(1);
 
+    useEffect(() => { window.scrollTo(0,0) }, []);
+
     useEffect (() => {
         fetch('/api/medicine', {headers: {'ngrok-skip-browser-warning': 'true'}}).then(response => response.json()).then(data => setMedicines   (data))
         .catch(error => console.log(error));

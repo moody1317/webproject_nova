@@ -27,6 +27,7 @@ function Shelter() {
         {id: 1, name: "우리집", address: null, icon:'bi bi-house-door', isFixed: true},
     ]});
 
+    useEffect(() => { window.scrollTo(0,0) }, []);
 
     useEffect(() => {
         localStorage.setItem('locations', JSON.stringify(locations));
