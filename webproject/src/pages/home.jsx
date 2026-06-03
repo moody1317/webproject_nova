@@ -2,6 +2,9 @@ import {NavLink} from 'react-router-dom';
 import './home.css';
 
 import homeFrameImg from '../assets/homeFrame.svg';
+import Heo from '../assets/Heo.png';
+import Sim from '../assets/Sim.png';
+import Hong from '../assets/Hong.png';
 
 function Home() {
     return (
@@ -227,10 +230,53 @@ function Home() {
             </div>
         </section>
 
-        <section className='introduce-team'>
+        <section className='Introduce-contact'>
+            <div className='Introduce-text'>
+                <h3>만든 사람들</h3>
+                <p>Team Nova</p>
+            </div>
+
+            <div className='Team-Nova'>
+                <div className='team-card'>
+                    <img src={Heo} className='team-img' style={{width: '222px', height: '204px'}} alt='허형서'></img>
+                    <div className='team-card-text'>
+                        <h3>허형서</h3>
+                        <p>Backend</p>
+                    </div>
+                    <div className='team-tags'>
+                        <p>#Server</p>
+                        <p>#DB</p>
+                    </div>
+                </div>
+
+                <div className='team-card'>
+                    <img src={Sim} className='team-img' style={{width: '197px', height: '200px'}} alt='심소은'></img>
+                    <div className='team-card-text'>
+                        <h3>심소은</h3>
+                        <p>Frontend</p>
+                    </div>
+                    <div className='team-tags'>
+                        <p>#Component</p>
+                        <p>#Hospital</p>
+                        <p>#Medicine</p>
+                        <p>#Firstaid</p>
+                    </div>
+                </div>
+
+                <div className='team-card'>
+                    <img src={Hong} className='team-img' style={{width: '171px', height: '192px'}} alt='홍승환'></img>
+                    <div className='team-card-text'>
+                        <h3>홍승환</h3>
+                        <p>Frontend</p>
+                    </div>
+                    <div className='team-tags'>
+                        <p>#Figma Design</p>
+                        <p>#Shelter</p>
+                    </div>
+                </div>
+            </div>
 
         </section>
-
         <section className="emergency-contacts">
             <div className="emergency-contacts-content">
                 <p className="emergency-contacts-text">긴급 연락처</p>
