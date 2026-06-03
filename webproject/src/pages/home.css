@@ -250,6 +250,13 @@
     justify-content: center;
 }
 
+.move {
+    color: var(--color-text-third);
+}
+.move.active {
+    color: var(--color-text-third);
+}
+
 .mobile-only {
     display: none;
 }

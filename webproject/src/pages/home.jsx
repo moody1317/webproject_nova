@@ -22,7 +22,9 @@ function Home() {
                 <div className='onoff-tag'>
                     <p>온/오프 지원</p>
                 </div>
-                <i className='bi bi-arrow-right-circle' style={{color: 'var(--color-text-sub1)', fontSize: 'var(--font-size-xxl)'}}></i>
+                <NavLink to="/shelter" end className='move'>
+                    <i className='bi bi-arrow-right-circle' style={{fontSize: 'var(--font-size-xxl)'}}></i>
+                </NavLink>
             </div>
             <div className='section-comment'>
                 <p>정해진 위치 기준 주변 대피소 정보를 제공합니다.</p>
@@ -35,7 +37,9 @@ function Home() {
                 <div className='onoff-tag'>
                     <p>온/오프 지원</p>
                 </div>
-                <i className='bi bi-arrow-right-circle' style={{color: 'var(--color-text-sub1)', fontSize: 'var(--font-size-xxl)'}}></i>
+                <NavLink to="/firstaid" end className='move'>
+                    <i className='bi bi-arrow-right-circle' style={{fontSize: 'var(--font-size-xxl)'}}></i>
+                </NavLink>
             </div>
             <div className='section-comment'>
                 <p>주요 응급처치 가이드를 제공합니다.</p>
@@ -48,7 +52,9 @@ function Home() {
                 <div className='onoff-tag'>
                     <p>온/오프 지원</p>
                 </div>
-                <i className='bi bi-arrow-right-circle' style={{color: 'var(--color-text-sub1)', fontSize: 'var(--font-size-xxl)'}}></i>
+                <NavLink to="/medicine" end className='move'>
+                    <i className='bi bi-arrow-right-circle' style={{fontSize: 'var(--font-size-xxl)'}}></i>
+                </NavLink>
             </div>
             <div className='section-comment'>
                 <p>약품명 또는 증상을 입력하면 해당 의약품과 복용법을 안내합니다.</p>
@@ -61,7 +67,9 @@ function Home() {
                 <div className='onoff-tag'>
                     <p>온/오프 지원</p>
                 </div>
-                <i className='bi bi-arrow-right-circle' style={{color: 'var(--color-text-sub1)', fontSize: 'var(--font-size-xxl)'}}></i>
+                <NavLink to="/hospital" end className='move'>
+                    <i className='bi bi-arrow-right-circle' style={{fontSize: 'var(--font-size-xxl)'}}></i>
+                </NavLink>
             </div>
             <div className='section-comment'>
                 <p>현재 위치 기준 가까운 병원, 응급실, 약국 정보를 실시간으로 제공합니다.</p>
@@ -69,7 +77,7 @@ function Home() {
         </section>
 
         <section className='introduce-team'>
-            
+
         </section>
 
         <section className="emergency-contacts">
