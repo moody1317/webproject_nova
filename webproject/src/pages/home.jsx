@@ -16,6 +16,62 @@ function Home() {
             </div>
         </section>
 
+        <section className='find-shelter'>
+            <div className='section-head'>
+                <h1>대피소 찾기</h1>
+                <div className='onoff-tag'>
+                    <p>온/오프 지원</p>
+                </div>
+                <i className='bi bi-arrow-right-circle' style={{color: 'var(--color-text-sub1)', fontSize: 'var(--font-size-xxl)'}}></i>
+            </div>
+            <div className='section-comment'>
+                <p>정해진 위치 기준 주변 대피소 정보를 제공합니다.</p>
+            </div>
+        </section>
+
+        <section className='firstaid-guide'>
+            <div className='section-head'>
+                <h1>응급처치 가이드</h1>
+                <div className='onoff-tag'>
+                    <p>온/오프 지원</p>
+                </div>
+                <i className='bi bi-arrow-right-circle' style={{color: 'var(--color-text-sub1)', fontSize: 'var(--font-size-xxl)'}}></i>
+            </div>
+            <div className='section-comment'>
+                <p>주요 응급처치 가이드를 제공합니다.</p>
+            </div>
+        </section>
+
+        <section className='search-medicine'>
+            <div className='section-head'>
+                <h1>의약품 검색</h1>
+                <div className='onoff-tag'>
+                    <p>온/오프 지원</p>
+                </div>
+                <i className='bi bi-arrow-right-circle' style={{color: 'var(--color-text-sub1)', fontSize: 'var(--font-size-xxl)'}}></i>
+            </div>
+            <div className='section-comment'>
+                <p>약품명 또는 증상을 입력하면 해당 의약품과 복용법을 안내합니다.</p>
+            </div>
+        </section>
+
+        <section className='find-hospital'>
+            <div className='section-head'>
+                <h1>병원·약국 찾기</h1>
+                <div className='onoff-tag'>
+                    <p>온/오프 지원</p>
+                </div>
+                <i className='bi bi-arrow-right-circle' style={{color: 'var(--color-text-sub1)', fontSize: 'var(--font-size-xxl)'}}></i>
+            </div>
+            <div className='section-comment'>
+                <p>현재 위치 기준 가까운 병원, 응급실, 약국 정보를 실시간으로 제공합니다.</p>
+            </div>
+        </section>
+
+        <section className='introduce-team'>
+            
+        </section>
+
         <section className="emergency-contacts">
             <div className="emergency-contacts-content">
                 <p className="emergency-contacts-text">긴급 연락처</p>
@@ -102,75 +158,6 @@ function Home() {
                 </div>
             </div>
 
-        </section>
-
-        <section className="direct">
-            <div className="direct-content">
-                <p className="direct-text">주요 기능</p>
-                <h2 className="direct-title">필요한 순간 즉시 이용하세요</h2>
-            </div>
-            <div className="direct-grid">
-                <div className="direct-box">
-                    <div className="direct-icon">
-                        <i className="bi bi-capsule" style={{fontSize: 'var(--font-size-xxl)'}}></i>
-                    </div>
-                    <div className='direct-info'>
-                        <h3>응급처치 가이드</h3>
-                        <p>CPR · 하임리히법 · 지혈법 등 <br/>단계별 안내</p>
-                        <div className='direct-onoff'>
-                            <p><b>오프라인 지원</b></p>
-                        </div>
-                    </div>
-                    <div className='direct-arrow'>
-                        <NavLink to="/firstaid" end className='move'><i className='bi bi-arrow-right'></i></NavLink>
-                    </div>
-                </div>
-                <div className="direct-box">
-                    <div className="direct-icon">
-                        <i className="bi bi-map" style={{fontSize: 'var(--font-size-xxl)'}}></i>
-                    </div>
-                    <div className='direct-info'>
-                        <h3>대피소 찾기</h3>
-                        <p>근처 대피소 위치 안내 <br/>오프라인 지도 포함</p>
-                        <div className='direct-onoff'>
-                            <p><b>오프라인 지원</b></p>
-                        </div>
-                    </div>
-                    <div className='direct-arrow'>
-                        <NavLink to="/shelter" end className='move'><i className='bi bi-arrow-right'></i></NavLink>
-                    </div>
-                </div>
-                <div className='direct-box'>
-                    <div className='direct-icon'>
-                        <i className='bi bi-capsule-pill' style={{fontSize: 'var(--font-size-xxl)'}}></i>
-                    </div>
-                    <div className='direct-info'>
-                        <h3>의약품 검색</h3>
-                        <p>약품 효능 및 복용법<br/>상세 안내 제공</p>
-                        <div className='direct-onoff'>
-                            <p><b>온라인 전용</b></p>
-                        </div>
-                    </div>
-                    <div className='direct-arrow'>
-                        <NavLink to="/medicine" end className='move'><i className='bi bi-arrow-right'></i></NavLink>
-                    </div>
-                </div>
-                <div className='direct-box'>
-                    <div className='direct-icon'>
-                        <i className='bi bi-hospital' style={{fontSize: 'var(--font-size-xxl)'}}></i>
-                    </div>
-                    <div className='direct-info'>
-                        <h3>병원·약국 찾기</h3>
-                        <p>근처 병원·약국 위치 안내<br/>온라인 지도 포함</p>
-                        <div className='direct-onoff'>
-                            <p><b>온라인 전용</b></p>
-                        </div>
-                    </div>
-                    <div className='direct-arrow'>
-                        <NavLink to="/hospital" end className='move'><i className='bi bi-arrow-right'></i></NavLink>
-                    </div>
-                </div>
-            </div>
         </section>
 
         <section className='mobile-only'>
