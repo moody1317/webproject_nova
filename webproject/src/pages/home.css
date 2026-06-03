@@ -382,13 +382,6 @@
     font-weight: 500;
 }
 
-.find-hospital > p {
-    color: var(--color-text-sub1);
-    margin-left: var(--spacing-xxl);
-    margin-top: var(--spacing-sm);
-    font-size: 20px;
-    font-weight: bold;
-}
 /* 랜딩페이지-대피소 */
 .shelter-section-content {
     display: flex;
