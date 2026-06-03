@@ -92,6 +92,7 @@ function Home() {
                     <i className='bi bi-arrow-right-circle' style={{fontSize: 'var(--font-size-xxl)'}}></i>
                 </NavLink>
             </div>
+
             <div className='firstaid-content'>
                 <div className='firstaid-left'>
                     <div className='section-comment'>
@@ -133,26 +134,26 @@ function Home() {
                     </div>
                 </div>
                 <div className='firstaid-right'>
-                    <p>다음과 같은 기능을 제공합니다.</p>
+                    <h2>다음과 같은 기능을 제공합니다.</h2>
                     <div className='firstaid-list'>
                         <div className='firstaid-func'>
                             <i className='bi bi-check-square'></i>
                             <div className='firstaid-li'>
-                                <h3>오프라인 동작</h3>
+                                <h4>오프라인 동작</h4>
                                 <p>데이터가 끊겨도 언제든 확인 가능합니다.</p>
                             </div>
                         </div>
                         <div className='firstaid-func'>
                             <i className='bi bi-check-square'></i>
                             <div className='firstaid-li'>
-                                <h3>직관적인 매뉴얼</h3>
+                                <h4>직관적인 매뉴얼</h4>
                                 <p>긴 글을 읽을 필요 없이 핵심 요약 정보와 짧은 영상으로 제공합니다.</p>
                             </div>
                         </div>
                         <div className='firstaid-func'>
                             <i className='bi bi-check-square'></i>
                             <div className='firstaid-li'>
-                                <h3>검증된 공식 응급 가이드</h3>
+                                <h4>검증된 공식 응급 가이드</h4>
                                 <p>소방청 등의 기관의 지침을 반영하여 제공합니다.</p>
                             </div>
                         </div>
@@ -160,7 +161,7 @@ function Home() {
                 </div>
             </div>
         </section>
-
+            
         <section className='find-shelter'>
             <div className='section-head'>
                 <h1>의약품 검색</h1>
