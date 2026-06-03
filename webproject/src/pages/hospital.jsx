@@ -103,10 +103,10 @@ function Hospital() {
             <section className='hospital-map'>
                 <div className='hospital-legend'>
                     <ul className='hospital-marker-list'>
-                        <li>병원, 보건소, 종합병원</li>
+                        <li>보건소, 종합병원</li>
                         <li>약국</li>
                         <li>응급실</li>
-                        <li>의원</li>
+                        <li>병원, 의원</li>
                     </ul>
                 </div>
                 <MapContainer center={curPosition || [37.5665, 126.9780]} zoom={20} style={{height: '100%', width: '100%'}} >

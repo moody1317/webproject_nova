@@ -117,8 +117,8 @@
 }
 
 .medicine-count {
-    background-color: var(--color-background-offline);
-    color: var(--color-text-offline);
+    background-color: var(--color-background-dropdown);
+    color: var(--color-text-third);
     font-size: var(--font-size-sm);
     margin-left: var(--spacing-xs);
     border-radius: var(--radius-pill);
