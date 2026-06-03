@@ -15,8 +15,8 @@
 .modal-container {
     background-color: var(--color-background);
     border-radius: 20px;
-    width: 1280px;
-    height: 800px;
+    width: 1180px;
+    height: 700px;
     overflow-y: hidden;
     display: flex;
     flex-direction: column;
@@ -107,7 +107,7 @@
     background-color: var(--color-background);
     border-radius: var(--radius-xxl);
     width: 330px;
-    height: 100px;
+    height: 90px;
     border: 2px solid var(--color-line-secondary);
     border-top: 4px solid var(--color-line-secondary);
     padding: 0;
@@ -141,7 +141,7 @@
     display: flex;
     flex-direction: row;
     gap: 10px;
-    padding: 5px;
+    padding-top: 20px;
     flex: 1;
     min-width: 0;
     overflow: hidden;
@@ -149,11 +149,11 @@
 }
 
 .modal-loc-item-inner i {
-    font-size: var(--font-size-xxl);
+    font-size: var(--font-size-xxxl);
 }
 
 .modal-loc-item-inner p {
-    font-size: var(--font-size-xs);
+    font-size: var(--font-size-base)!important;
     color: var(--color-text-sub1);
 }
 
@@ -164,8 +164,8 @@
     overflow: hidden;
 }
 
-.modal-loc-item i {
-
+.modal-loc-item-inner h4 {
+    font-size: var(--font-size-lg) !important;
 }
 
 .modal-loc-info h4 {
@@ -383,7 +383,7 @@
         width: 100%;
         height: 100%;
         border-radius: 0;
-        overflow-y: auto;
+        overflow-y: hidden;
     }
     .modal-loc-list {
         align-items: stretch;
@@ -392,6 +392,8 @@
     }
     .modal-saveloc {
         width: 100%;
+        overflow-y: auto;
+
     }
 
     .modal-saveloc-inner {
@@ -553,6 +555,7 @@
     }
     .modal-loc-item-inner {
         gap: 3px;
+        padding: 0;
     }
     #btn-modal-save {
         width: 100px;
@@ -567,5 +570,12 @@
         background-color: var(--color-background-search);
         width: 100%;
         height: 20px;
+    }
+    body {
+        overflow:hidden;
+    }
+    .shelter-mapcontent {
+        width: 100%;
+        height: calc(100vh - 52px - 60px);
     }
 }

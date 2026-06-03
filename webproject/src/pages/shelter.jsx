@@ -101,7 +101,19 @@ function Shelter() {
         return () => window.removeEventListener('resize', sceneResize);
     }, []);
 
-    
+    const [isOnline, setIsOnline] = useState(navigator.onLine);
+    useEffect(() => {
+        const Online = () => setIsOnline(true);
+        const Offline = () => setIsOnline(false);
+
+        window.addEventListener('online', Online);
+        window.addEventListener('offline', Offline);
+
+        return () => {
+            window.removeEventListener('online', Online);
+            window.removeEventListener('offline', Offline);
+        };
+    }, []);
     return(
     <>
      <section className="shelter-category">
@@ -113,9 +125,11 @@ function Shelter() {
                         </div>
                         :locationList
                     }
+                    {isOnline && (
                     <button className="shelter-add-btn" onClick={() => setIsModalOpen(true)}>
                         {isMobile ? '+' : '+ 지역 추가'}
                     </button>
+                    )}
                 </div>
     </section>
 

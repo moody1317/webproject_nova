@@ -40,6 +40,12 @@ function LocationModal({onClose, onSave, nextId, locations, onDelete, onRename, 
         return () => window.removeEventListener('resize', sceneResize);
     }, []);
     
+    useEffect(() => {
+        document.body.style.overflow = 'hidden';
+        return () => {
+            document.body.style.overflow = 'unset';
+        };
+    }, []);
     const [mobileloc, setMobileloc] = useState('list');
 
     
@@ -116,7 +122,7 @@ function LocationModal({onClose, onSave, nextId, locations, onDelete, onRename, 
                                         }}>{loc.name}</h4>
                                         )}
 
-                                            {loc.isFixed && <span className="modal-loc-badge">기본</span>} 
+                                            
                                         </div>
                                         
                                         <p>{loc.address ?? "주소 미설정"}</p>
@@ -129,7 +135,7 @@ function LocationModal({onClose, onSave, nextId, locations, onDelete, onRename, 
                                     )}
                                     </div>
                         </div>
-                            <p className="modal-loc-drag">⇅ 드래그로 순서 변경</p>
+                            
                     </div>
                     </div>
                 ))}

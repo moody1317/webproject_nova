@@ -25,10 +25,32 @@ export default defineConfig({
             handler: 'NetworkOnly',
           },
           {
+            urlPattern: /\/api\/shelters/,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'shelters-cache',
+              expiration: {
+                maxEntries: 50,
+                maxAgeSeconds: 60 * 60 * 24 * 7
+              }
+            }
+          },
+          {
             urlPattern: /\/api\//,
             handler: 'NetworkFirst',
             options: {
               cacheName: 'api-cache'
+            }
+          },
+          {
+            urlPattern: /https:\/\/.*\.basemaps\.cartocdn\.com\/.*/,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'map-tiles-cache',
+              expiration: {
+                maxEntries: 1000,
+                maxAgeSeconds: 60 * 60 * 24 * 30
+              }
             }
           }
         ]
@@ -43,6 +65,9 @@ export default defineConfig({
       '/api': {
         target: 'https://jere-trispermous-festively.ngrok-free.dev',
         changeOrigin: true,
+        headers: {
+          'ngrok-skip-browser-warning': 'true'
+        }
       }
     }
   },
@@ -51,6 +76,9 @@ export default defineConfig({
       '/api': {
         target: 'https://jere-trispermous-festively.ngrok-free.dev',
         changeOrigin: true,
+        headers: {
+          'ngrok-skip-browser-warning': 'true'
+        }
       }
     }
   }
