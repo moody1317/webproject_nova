@@ -12,11 +12,7 @@ public class HospitalMapper {
 
     public Hospital toEntity(HospitalJsonItem item) {
 
-        String tagName = firstNonBlank(
-                item.getDutyDivName(),
-                item.getDutyDivNameLower(),
-                item.getDutyDivNameEmergency()
-        );
+        String tagName = item.getDutyDivName() == null ? "" : item.getDutyDivName();
 
         return Hospital.builder()
                 .hospitalKey(item.getDutyName() + "_" + item.getDutyAddr() + "_" + tagName)
@@ -62,19 +58,10 @@ public class HospitalMapper {
                 .build();
     }
 
-    private String firstNonBlank(String... values) {
-        for (String value : values) {
-            if (value != null && !value.isBlank()) {
-                return value;
-            }
-        }
-        return "";
-    }
-
     private String convertPlaceType(String tagName) {
 
         if (tagName == null) {
-            return "hospital";
+            return "clinic";
         }
 
         if (tagName.contains("약국")) {
@@ -89,6 +76,14 @@ public class HospitalMapper {
             return "emergency";
         }
 
-        return "hospital";
+        if (tagName.contains("종합병원")){
+            return "hospital";
+        }
+
+        if(tagName.contains("병원") || tagName.contains("의원")) {
+            return "clinic";
+        }
+
+        return "clinic";
     }
 }

@@ -23,14 +23,8 @@ public class HospitalJsonItem {
     @JsonProperty("lon")
     private Double lon;
 
-    @JsonProperty("dutyDivName")
-    private String dutyDivName;
-
     @JsonProperty("dutydivname")
-    private String dutyDivNameLower;
-
-    @JsonProperty("dutyDivNamee")
-    private String dutyDivNameEmergency;
+    private String dutyDivName;
 
     @JsonProperty("dutytime1s")
     private String dutyTime1s;

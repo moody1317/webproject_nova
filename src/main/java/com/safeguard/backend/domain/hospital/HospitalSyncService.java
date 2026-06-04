@@ -27,7 +27,7 @@ public class HospitalSyncService {
     public int syncHospitalsFromJson() {
         try {
             ClassPathResource resource =
-                    new ClassPathResource("data/all_medical_data.json");
+                    new ClassPathResource("data/all_medical_data_v2.json");
 
             HospitalJsonItem[] items =
                     objectMapper.readValue(resource.getInputStream(), HospitalJsonItem[].class);

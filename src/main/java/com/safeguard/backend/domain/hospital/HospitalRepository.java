@@ -11,4 +11,6 @@ public interface HospitalRepository extends MongoRepository<Hospital, String> {
             Point point,
             Distance distance
     );
+
+    long countByPlaceType(String placeType);
 }
