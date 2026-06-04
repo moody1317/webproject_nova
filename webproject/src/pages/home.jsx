@@ -23,7 +23,7 @@ function Home() {
     }, []);
 
     const hospitalList = Object.entries(hospitalcnt).map(([key, value]) => (
-        <div className={`hospital-card ${placeConfig[key].colorClass}`}>
+        <div className={`hospitals-card ${placeConfig[key].colorClass}`}>
             <h1>{placeConfig[key].label}</h1>
             <h3>{value}</h3>
         </div>
