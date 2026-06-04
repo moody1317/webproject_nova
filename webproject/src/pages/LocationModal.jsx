@@ -71,7 +71,7 @@ function LocationModal({onClose, onSave, nextId, locations, onDelete, onRename, 
         <div className="modal-body">
             <section className="modal-saveloc" style={isMobile && mobileloc === 'map' ? {display: 'none'} : {}}>
             <div className="modal-saveloc-inner">
-                 <h4>{locations.address ? locations.adress : "주소 미설정"}</h4>
+                 <h4>{locations.address ? locations.adress : "저장된 지역"}</h4>
                  <span className="modal-locCount">{locations.length}/5</span>
             </div>
              
