@@ -486,9 +486,10 @@
 .hospital-list {
     display: flex;
     justify-content: space-evenly;
+    margin-top: var(--spacing-md);
 }
 
-.hospital-card {
+.hospitals-card {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -500,12 +501,12 @@
     padding-top: var(--spacing-lg);
 }
 
-.hospital-card > h1 {
+.hospitals-card > h1 {
     font-size: 40px;
     padding-bottom: var(--spacing-sm);
 }
 
-.hospital-card > h3 {
+.hospitals-card > h3 {
     color: var(--color-text-sub2);
     font-size: var(--font-size-xxxl);
 }
