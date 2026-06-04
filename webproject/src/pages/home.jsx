@@ -314,6 +314,7 @@ function Home() {
                     <div className='team-tags'>
                         <p>#Figma Design</p>
                         <p>#Shelter</p>
+                        <p>#Home</p>
                     </div>
                 </div>
             </div>
