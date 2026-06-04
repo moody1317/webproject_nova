@@ -24,10 +24,6 @@
     border-top: 3px solid var(--color-line-clinic);
 }
 
-.healthcenter-card {
-    border-top: 3px solid var(--color-line-healthcenter);
-}
-
 .hcard-left {
     display: flex;
     min-width: 0;
@@ -60,10 +56,6 @@
 
 .clinic-background {
     background-color: var(--color-background-clinic);
-}
-
-.healthcenter-background {
-    background-color: var(--color-background-healthcenter);
 }
 
 .hcard-title {
@@ -104,10 +96,6 @@
 
 .clinic-text {
     color: var(--color-line-clinic);
-}
-
-.healthcenter-text {
-    color: var(--color-line-healthcenter);
 }
 
 .hcard-detail {
@@ -190,11 +178,6 @@
     .clinic-card {
         border-top: none;
         border-left: 3px solid var(--color-line-clinic);
-    }
-
-    .healthcenter-card {
-        border-top: none;
-        border-left: 3px solid var(--color-line-healthcenter);
     }
 
     .hcard-tag {
