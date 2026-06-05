@@ -81,13 +81,23 @@ function Shelter() {
         {id: 3, name: "소은 집", distance:"3km", capacity:500, lat: 36.635, lng: 127.462}
     ];
 
-    const [shelters, setShelters] = useState(dummy);
+    const [shelters, setShelters] = useState(() => {
+        const saved = localStorage.getItem(`shelters_${locations[0].id}`);
+        return saved ? JSON.parse(saved) : [] ;
+    })
     useEffect(()=> {
         if (!selectedloc?.numaddress) return;
 
         fetch(`/api/shelters/nearby?latitude=${selectedloc.numaddress[0]}&longitude=${selectedloc.numaddress[1]}`)
         .then(res => res.json())
-        .then(data => setShelters(data))
+        .then(data => {
+            setShelters(data);
+            localStorage.setItem(`shelters_${selectedTabId}`, JSON.stringify(data));
+        })
+        .catch(() => {
+            const saved = localStorage.getItem(`shelters_${selectedTabId}`);
+            if (saved) setShelters(JSON.parse(saved));
+        });
     }, [selectedTabId]);
 
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
@@ -114,6 +124,8 @@ function Shelter() {
             window.removeEventListener('offline', Offline);
         };
     }, []);
+
+    
     return(
     <>
      <section className="shelter-category">

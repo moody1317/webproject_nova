@@ -24,12 +24,9 @@
     border-top: 3px solid var(--color-line-clinic);
 }
 
-.healthcenter-card {
-    border-top: 3px solid var(--color-line-healthcenter);
-}
-
 .hcard-left {
     display: flex;
+    min-width: 0;
 }
 
 .hcard-icon {
@@ -61,10 +58,6 @@
     background-color: var(--color-background-clinic);
 }
 
-.healthcenter-background {
-    background-color: var(--color-background-healthcenter);
-}
-
 .hcard-title {
     margin-left: var(--spacing-sm);
     margin-top: var(--spacing-sm);
@@ -73,6 +66,9 @@
 .hcard-title h3{
     color: var(--color-text-primary);
     font-size: var(--font-size-lg);
+    white-space: normal;
+    overflow: visible;
+    text-overflow: unset;
 }
 
 .hcard-tag {
@@ -102,10 +98,6 @@
     color: var(--color-line-clinic);
 }
 
-.healthcenter-text {
-    color: var(--color-line-healthcenter);
-}
-
 .hcard-detail {
     display: flex;
     padding-top: var(--spacing-xs);
@@ -122,6 +114,7 @@
     justify-content: center;
     margin-right: var(--spacing-md);
     gap: var(--spacing-sm);
+    flex-shrink: 0;
 }
 
 .isopen {
@@ -130,8 +123,8 @@
 }
 
 .isnotopen {
-    background-color: var(--color-background-offline);
-    color: var(--color-line-emergency);
+    background-color: var(--color-background-closed);
+    color: var(--color-text-closed);
 }
 
 .hcard-btn {
@@ -187,14 +180,17 @@
         border-left: 3px solid var(--color-line-clinic);
     }
 
-    .healthcenter-card {
-        border-top: none;
-        border-left: 3px solid var(--color-line-healthcenter);
+    .hcard-tag {
+        display: none;
     }
 
-    .hcard-tag {
-        font-weight: lighter;
-        margin-top: var(--spacing-sm);
+    .isopen {
+        display: block;
+        background-color: var(--color-background-pharmacy);
+    }
+
+    .isnotopen {
+        display: block;
     }
 
     .hcard-icon {
@@ -202,6 +198,8 @@
     }
 
     .hcard-title h3{
+        text-align: start;
+        width: 100%;
         font-size: var(--font-size-md);
     }
 

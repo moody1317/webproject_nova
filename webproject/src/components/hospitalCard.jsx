@@ -6,73 +6,34 @@ const placeConfig = {
     pharmacy: { icon: 'bi-capsule-pill' },
     emergency: { icon: 'bi-heart-pulse' },
     clinic: { icon: 'bi-hospital' },
-    healthcenter: { icon: 'bi-hospital' }
+    public: { icon: 'bi-hospital' }
 }
 
-function HospitalCard({ name, tagname, distance, openTime, closeTime, isOpen, placeType, latitude, longitude, tel, current }) {
+const placeCard = {
+    hospital: 'hospital-card',
+    pharmacy: 'pharmacy-card',
+    emergency: 'emergency-card',
+    clinic: 'clinic-card',
+    public: 'hospital-card'
+}
 
-    const getClassName = (type) => {
-        if (type === 'hospital') {
-            return 'hospital-card';
-        }
-        else if (type === 'pharmacy') {
-            return 'pharmacy-card';
-        }
-        else if (type === 'emergency') {
-            return 'emergency-card';
-        }
-        else if (type === 'clinic') {
-            return 'clinic-card';
-        }
-        else if (type === 'healthcenter') {
-            return 'healthcenter-card';
-        }
-    }
+const placeBackground = {
+    hospital: 'hospital-background',
+    pharmacy: 'pharmacy-background',
+    emergency: 'emergency-background',
+    clinic: 'clinic-background',
+    public: 'hospital-background'
+}
 
-    const getBackgroundClassName = (type) => {
-        if (type === 'hospital') {
-            return 'hospital-background';
-        }
-        else if (type === 'pharmacy') {
-            return 'pharmacy-background';
-        }
-        else if (type === 'emergency') {
-            return 'emergency-background';
-        }
-        else if (type === 'clinic') {
-            return 'clinic-background';
-        }
-        else if (type === 'healthcenter') {
-            return 'healthcenter-background';
-        }
-    }
+const placeText = {
+    hospital: 'hospital-text',
+    pharmacy: 'pharmacy-text',
+    emergency: 'emergency-text',
+    clinic: 'clinic-text',
+    public: 'hospital-text'
+}
 
-    const getColorClassName = (type) => {
-        if (type === 'hospital') {
-            return 'hospital-text';
-        }
-        else if (type === 'pharmacy') {
-            return 'pharmacy-text';
-        }
-        else if (type === 'emergency') {
-            return 'emergency-text';
-        }
-        else if (type === 'clinic') {
-            return 'clinic-text';
-        }
-        else if (type === 'healthcenter') {
-            return 'healthcenter-text';
-        }
-    }
-
-    const getIsOpenClassName = (type) => {
-        if (type === 'Open') {
-            return 'isopen';
-        }
-        else {
-            return 'isnotopen';
-        }
-    }
+function HospitalCard({ name, tagName, distance, openTime, closeTime, isOpen, placeType, latitude, longitude, tel, current }) {
 
     const CallClick = () => {
         const user = navigator.userAgent;
@@ -90,22 +51,22 @@ function HospitalCard({ name, tagname, distance, openTime, closeTime, isOpen, pl
     }
 
     return (
-        <section className={`hCard ${getClassName(placeType)}`}>
+        <section className={`hCard ${placeCard[placeType]}`}>
             <div className='hcard-left'>
-                <div className={`hcard-icon ${getBackgroundClassName(placeType)}`}>
+                <div className={`hcard-icon ${placeBackground[placeType]}`}>
                     <i className={`bi ${placeConfig[placeType].icon}`}></i>
                 </div>
                 <div className='hcard-title'>
                     <h3>{ name }</h3>
-                    <p className={`hcard-tag ${getColorClassName(placeType)} ${getBackgroundClassName(placeType)}`}>{ tagname }</p>
+                    <p className={`hcard-tag ${placeText[placeType]} ${placeBackground[placeType]}`}>{ tagName }</p>
                     <div className='hcard-detail'>
-                        <p className='hcard-distance'>📏 { distance }</p>
-                        <p className='hcard-time'>🕐 {Time}</p>
+                        <p className='hcard-distance'>📏 { distance }km</p>
+                        <p className='hcard-time'>🕐 { openTime } ~ { closeTime }</p>
                     </div>
                 </div>
             </div>
             <div className='hcard-right'>
-                <h3 className={`hcard-tag ${getIsOpenClassName(isOpen)}`}>{ isOpen }</h3>
+                <h3 className={`hcard-tag ${isOpen ? 'isopen' : 'isnotopen'}`}>{ isOpen ? 'Open' : 'Closed' }</h3>
                 <button className='hcard-btn hcard-call' onClick={() => CallClick()}>전화</button>
                 <button className='hcard-btn hcard-road' onClick={() => Directions() }>길 찾기</button>
             </div>

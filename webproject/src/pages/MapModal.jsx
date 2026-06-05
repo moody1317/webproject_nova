@@ -111,7 +111,7 @@ const search = async () => {
                             </input>
                         )}
                     </div>
-                    <p className="modal-map-warn">⚠ 저장 시 선택 위치 기준 반경 5km 데이터가 다운로드됩니다. Wi-Fi 환경을 권장합니다.</p>
+                    <p className="modal-map-warn">⚠ 저장 시 선택 위치 기준 반경 3.5km 데이터가 다운로드됩니다. Wi-Fi 환경을 권장합니다.</p>
                 </div>
             </section>   
     )

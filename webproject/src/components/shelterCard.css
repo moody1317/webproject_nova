@@ -62,12 +62,21 @@
         height: 40px;
         font-size: var(--font-size-lg)
     }
+
+    .shelter-card-info {
+        flex: 1;
+        min-width: 0;
+        overflow: hidden;
+    }
     .shelter-card-info i {
         display: none;
     }
 
     .shelter-card h4 {
     font-size: var(--font-size-lg);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     }
 
     .shelter-card p {
@@ -80,5 +89,10 @@
     }
     .shelter-card {
         height: 70px;
+    }
+
+    .shelter-text {
+        min-width: 0;
+        flex: 1;
     }
 }
