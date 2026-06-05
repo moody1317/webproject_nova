@@ -15,6 +15,8 @@ public class FirstAid {
     private String name;
     private String icon;
 
+    private String description; // 한 줄 설명
+
     private List<Step> steps; // 처치법 단계 리스트
     private String warning;   // 주의 사항
     private String videoUrl;  // 영상
@@ -25,5 +27,4 @@ class Step {
     private int number;
     private String title;
     private String content;
-    private String stepIcon;
 }
