@@ -118,7 +118,7 @@ function Home() {
                 </NavLink>
             </div>
 
-            <div className='firstaid-content'>
+            <div className='firstaids-content'>
                 <div className='firstaid-left'>
                     <div className='section-comment'>
                         <p>주요 응급처치 가이드를 제공합니다.</p>
