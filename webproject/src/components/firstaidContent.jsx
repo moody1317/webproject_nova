@@ -6,7 +6,6 @@ function FirstaidContent({ selectedIndex, selectedData, isOpen }) {
         <FirstaidCard
             num = { item.number }
             title = { item.title }
-            stepIcon = { item.stepIcon }
             description = { item.content }
             isOpen = { isOpen }
             key = { index }
