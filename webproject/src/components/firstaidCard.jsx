@@ -13,9 +13,6 @@ function FirstaidCard({ num, title, description, stepIcon, isOpen }) {
                             <h3>{ title }</h3>
                         </div>
                     </div>
-                    <div className='step-icon'>
-                        <i className={ stepIcon }></i>
-                    </div>
                 </div>
                 <div className='step-main'>
                     <p>{ description }</p>
