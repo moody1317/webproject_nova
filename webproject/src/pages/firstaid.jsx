@@ -10,8 +10,15 @@
         useEffect(() => { window.scrollTo(0,0) }, []);
 
         useEffect (() => {
-            fetch('/api/firstaid', {headers: {'ngrok-skip-browser-warning': 'true'}}).then(response => response.json()).then(data => setFirstaid(data))
-            .catch(error => console.log(error));
+            fetch('/api/firstaid', {headers: {'ngrok-skip-browser-warning': 'true'}}).then(response => response.json())
+            .then(data => {
+                setFirstaid(data);
+                localStorage.setItem('firstaid', JSON.stringify(data));
+            })
+            .catch(() => {
+                const saved = localStorage.getItem('firstaid');
+                if (saved) setFirstaid(JSON.parse(saved));
+            });
         }, []);
 
         useEffect (() => {

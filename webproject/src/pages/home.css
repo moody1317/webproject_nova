@@ -312,6 +312,7 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
+    margin-left: 33px;
 }
 
 .firstaid-left .section-comment {
@@ -350,6 +351,7 @@
     font-size: var(--font-size-xl);
     color: var(--color-text-sub1);
     padding-bottom: var(--spacing-sm);
+    margin-left: 10px;
 }
 
 .firstaid-list {
