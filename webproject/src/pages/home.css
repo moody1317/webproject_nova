@@ -322,7 +322,7 @@
 .firstaid-type {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    margin-left: var(--spacing-md);
+    margin-left: 60px;
     margin-top: var(--spacing-sm);
     padding-left: var(--spacing-md);
     background-color: var(--color-background);
@@ -357,7 +357,7 @@
 .firstaid-list {
     background-color: var(--color-background);
     border-radius: var(--radius-xl);
-    width: 700px;
+    width: 750px;
     height: 227px;
 }
 
@@ -405,7 +405,7 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
     width: 525px;
-    margin-left: 50px;
+    margin-left: 100px;
     column-gap: 30px;
     margin-top: 20px;
 }
@@ -443,7 +443,7 @@
     flex-direction: column;
     background-color: var(--color-background);
     border-radius: var(--radius-xl);
-    width: 700px;
+    width: 750px;
     height: 220px;
 }
 
