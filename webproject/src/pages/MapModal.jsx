@@ -85,9 +85,6 @@ const search = async () => {
                                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; CARTO'
                                 url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"/>
                                 <Marker position={clickposition ?? curPosition } icon={ currentMarker }>
-                                    <Popup>
-                                        A pretty CSS3 popup. <br /> Easily customizable.
-                                    </Popup>
                                 </Marker>
                     </MapContainer>
                 </section>    
