@@ -5,7 +5,7 @@ import LocationModal from './LocationModal';
 import './shelter.css';
 import 'leaflet/dist/leaflet.css';
 import "./LocationModal.css";
-import ShelterCard from '../components/sheltercard';
+import ShelterCard from '../components/shelterCard';
 import BottomSheet from '../components/bottomSheet';
 
 // 지도 중심위치 이동
