@@ -2,7 +2,7 @@ import { MapContainer, TileLayer, useMap, Marker, Popup } from 'react-leaflet';
 import { useState, useEffect } from 'react';
 import L from 'leaflet';
 import HospitalCard from '../components/hospitalCard';
-import BottomSheet from '../components/bottomsheet';
+import BottomSheet from '../components/bottomSheet';
 import { currentMarker, markers } from '../components/mapMarker';
 import 'leaflet/dist/leaflet.css';
 import './hospital.css';
