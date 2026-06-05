@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import './ShelterCard.css';
+import './shelterCard.css';
 
 
 
