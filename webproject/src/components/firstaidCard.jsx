@@ -1,6 +1,6 @@
 import './firstaidCard.css';
 
-function FirstaidCard({ num, title, description, stepIcon, isOpen }) {
+function FirstaidCard({ num, title, description, isOpen }) {
     return (
         <>
             <section className={`step-card ${isOpen ? 'open' : ''}`}>
