@@ -301,7 +301,7 @@
 }
 
 /* 응급처치 색션 */
-.firstaid-content {
+.firstaids-content {
     display: flex;
     flex-direction: row;
     gap: 80px;
