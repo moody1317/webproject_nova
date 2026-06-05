@@ -64,6 +64,8 @@ const search = async () => {
         setAddress(display_name);
     }
 };
+
+const [showTip, setShowTip] = useState(false);
     return (
 
         <section className="modal-map">

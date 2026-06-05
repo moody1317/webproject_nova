@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { use, useEffect, useState } from 'react';
 import {MapContainer, TileLayer, useMap, Marker, Popup} from 'react-leaflet';
 import L from 'leaflet';
 import MapModal from "./MapModal";
@@ -48,9 +48,12 @@ function LocationModal({onClose, onSave, nextId, locations, onDelete, onRename, 
     }, []);
     const [mobileloc, setMobileloc] = useState('list');
 
-    
+    const [showGuide, setShowGuide] = useState(true);
+    const [showTip, setShowTip] = useState(false);
     return (
     <>
+
+    
     <div className="modal-overlay" onClick={onClose}>
         <div className="modal-container" onClick={(e) => e.stopPropagation()}>
         
@@ -60,6 +63,7 @@ function LocationModal({onClose, onSave, nextId, locations, onDelete, onRename, 
                     <div className="modal-hero-inner">
                         <h1>📍지역 관리</h1>
                         <p>거점 지역을 추가하고 관리하세요. 순서 변경·삭제는 온라인에서만 가능합니다.</p>
+                            
                     </div>
                     <button id="btn-modal-exit" onClick={onClose}>
                         {isMobile ? '❮ 주소 설정' : '✕'}
@@ -67,6 +71,17 @@ function LocationModal({onClose, onSave, nextId, locations, onDelete, onRename, 
                 </div>
             </section>
             <div className="modal-content"></div>
+                            <div className='modal-guide'>
+                                <button id="btn-guide" onClick={() => setShowTip(!showTip)}>어떻게 사용 하나요?</button>
+                                    {showTip && (
+                                         <div className="modal-guideline">
+                                            {!isMobile && <p>💡 주소 카드와 수정 버튼을 누르면 오른쪽 공간에 지도가 나타납니다.</p>}
+                                            {isMobile && <p>💡 카드를 클릭하면 해당 지역의 대피소를 확인할 수 있습니다.</p>}
+                                            <p>💡 주소 저장은 새 지역을 추가할 때 또는 수정 버튼을 누를 때만 가능합니다.</p>
+                                            <p>💡 주소 카드의 이름을 클릭하면 저장된 주소의 이름을 변경할 수 있습니다.</p>
+                                        </div>
+                                        )}
+                            </div>
         
         <div className="modal-body">
             <section className="modal-saveloc" style={isMobile && mobileloc === 'map' ? {display: 'none'} : {}}>
