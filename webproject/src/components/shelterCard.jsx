@@ -12,11 +12,11 @@ function ShelterCard({shelters, currentLocation}) {
                     <div className="shelter-card" key={shelter.id}>
                         <div className="shelter-card-info">
                             <i className="bi bi-buildings"></i>
-                        <div className="shelter-text">
-                        <h4>{shelter.name}</h4>
-                        <p><span className="shelter-distance">📏 {shelter.distance}km</span> 👥 {shelter.capacity}명</p>
-                    </div>
-                    </div>
+                                <div className="shelter-text">
+                                    <h4>{shelter.name}</h4>
+                                    <p><span className="shelter-distance">📏 {shelter.distance}km</span> 👥 {shelter.capacity}명</p>
+                                </div>
+                        </div>
 
                     <button className="btn-shelter-card"
                     onClick={(e) => {

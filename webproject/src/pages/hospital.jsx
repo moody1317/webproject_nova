@@ -7,114 +7,15 @@ import { currentMarker, markers } from '../components/mapMarker';
 import 'leaflet/dist/leaflet.css';
 import './hospital.css';
 
-
-const hospitals = [
-        {
-            placeType: 'hospital',
-            name: '서울성모병원',
-            tagname: '내과',
-            distance: '0.3km',
-            openTime: '09:00',
-            closeTime: '18:00',
-            isOpen: true,
-            latitude: 37.5665,
-            longitude: 126.9780,
-            tel: '02-1234-5678'
-        },
-        {
-            placeType: 'pharmacy',
-            name: '한강약국',
-            tagname: '약국',
-            distance: '0.5km',
-            openTime: '09:00',
-            closeTime: '21:00',
-            isOpen: true,
-            latitude: 37.5670,
-            longitude: 126.9785,
-            tel: '02-2345-6789'
-        },
-        {
-            placeType: 'emergency',
-            name: '서울응급의료센터',
-            tagname: '응급실',
-            distance: '1.2km',
-            openTime: '00:00',
-            closeTime: '24:00',
-            isOpen: true,
-            latitude: 37.5680,
-            longitude: 126.9790,
-            tel: '02-3456-7890'
-        },
-        {
-            placeType: 'clinic',
-            name: '강남의원',
-            tagname: '정형외과',
-            distance: '2.0km',
-            openTime: '09:00',
-            closeTime: '17:00',
-            isOpen: false,
-            latitude: 37.5690,
-            longitude: 126.9800,
-            tel: '02-4567-8901'
-        },
-        {
-            placeType: 'hospital',
-            name: '서울성모병원',
-            tagname: '내과',
-            distance: '0.3km',
-            openTime: '09:00',
-            closeTime: '18:00',
-            isOpen: true,
-            latitude: 37.5665,
-            longitude: 126.9780,
-            tel: '02-1234-5678'
-        },
-        {
-            placeType: 'pharmacy',
-            name: '한강약국',
-            tagname: '약국',
-            distance: '0.5km',
-            openTime: '09:00',
-            closeTime: '21:00',
-            isOpen: true,
-            latitude: 37.5670,
-            longitude: 126.9785,
-            tel: '02-2345-6789'
-        },
-        {
-            placeType: 'emergency',
-            name: '서울응급의료센터',
-            tagname: '응급실',
-            distance: '1.2km',
-            openTime: '00:00',
-            closeTime: '24:00',
-            isOpen: true,
-            latitude: 37.5680,
-            longitude: 126.9790,
-            tel: '02-3456-7890'
-        },
-        {
-            placeType: 'clinic',
-            name: '강남병원',
-            tagname: '정형외과',
-            distance: '2.0km',
-            openTime: '09:00',
-            closeTime: '17:00',
-            isOpen: false,
-            latitude: 37.5690,
-            longitude: 126.9800,
-            tel: '02-4567-8901'
-        }
-    ];
-
 function MoveMap({ position }) {
     useMap().setView(position, 20);
+    if (!position) return null;
 }
 
 function Hospital() {
     const [sortType, setSortType] = useState('distance');
-    const [curPosition, setCurPosition] = useState([37.5665, 126.9780]);
-    /* const [hospitals, setHospitals] = useState([]); */
+    const [curPosition, setCurPosition] = useState(null);
+    const [hospitals, setHospitals] = useState([]);
     const [searchKeyword, setSearchKeyword] = useState('');
     const [inputValue, setInputValue] = useState('');
     
@@ -128,24 +29,37 @@ function Hospital() {
     const min = today.getMinutes().toString().padStart(2, '0');
     */
 
+    const usedCoords = [];
+
+    useEffect(() => { window.scrollTo(0,0) }, []);
+
 
     useEffect(() => { 
         navigator.geolocation.getCurrentPosition( position => {
-            setCurPosition([position.coords.latitude, position.coords.longitude])
-        }, null, { enableHighAccuracy: true}) 
+            setCurPosition([position.coords.latitude, position.coords.longitude]);
+            console.log(position.coords.latitude, position.coords.longitude)
+        }, () => setCurPosition([37.5665, 126.9780]), { enableHighAccuracy: true}) 
     }, []);
 
-    /*
     useEffect(() => {
-        fetch(`/api/hospital?lat=${curPosition[0]}&lng=${curPosition[1]}`, {headers: {'ngrok-skip-browser-warning': 'true'}}).then(response => response.json()).then(data => setHospitals(data))
+        if (!curPosition) {
+            return;
+        }
+        fetch(`/api/hospitals/nearby?latitude=${curPosition[0]}&longitude=${curPosition[1]}&sortType=${sortType}`, {headers: {'ngrok-skip-browser-warning': 'true'}})
+        .then(response => response.json())
+        .then(data =>{ 
+            console.log(data);
+            setHospitals(data);
+        })
         .catch(error => console.log(error));
-    }, [curPosition);
-*/
+    }, [curPosition, sortType]);
+
     const filteredHospital = hospitals.filter(item =>
-        item.tagname.toLowerCase().includes(searchKeyword.toLowerCase())
+        item.tagName.toLowerCase().includes(searchKeyword.toLowerCase()) ||
+        item.name.toLowerCase().includes(searchKeyword.toLowerCase())
     ).sort((a,b) => {
         if (sortType === 'treatment') {
-            return b.isOpen - a.isOpen;
+            return b.open - a.open;
         }
         else {
             return 0;
@@ -161,6 +75,19 @@ function Hospital() {
             handleSearch();
         }
     };
+
+    const adjustHospitals = hospitals.map((item, index) => {
+        if (usedCoords.some(coords => {
+            const latDiff = Math.abs(coords.lat - item.latitude);
+            const lngDiff = Math.abs(coords.lng - item.longitude);
+            return (latDiff < 0.0001 && lngDiff < 0.0001)
+        })) {
+            usedCoords.push({ lat: item.latitude, lng: item.longitude });
+            return {...item, longitude: item.longitude + 0.0001};
+        }
+        usedCoords.push({ lat: item.latitude, lng: item.longitude });
+        return item;
+    });
 
     return (
         <>
@@ -179,21 +106,23 @@ function Hospital() {
             <section className='hospital-map'>
                 <div className='hospital-legend'>
                     <ul className='hospital-marker-list'>
-                        <li>병원, 보건소, 종합병원</li>
+                        <li>보건소, 종합병원</li>
                         <li>약국</li>
                         <li>응급실</li>
-                        <li>의원</li>
+                        <li>병원, 의원</li>
                     </ul>
                 </div>
-                <MapContainer center={curPosition } zoom={20} scrollWheelZoom={false} style={{height: '100%', width: '100%'}} >
-                    <MoveMap position={ curPosition } />
+                <MapContainer center={curPosition || [37.5665, 126.9780]} zoom={20} style={{height: '100%', width: '100%'}} >
+                    <MoveMap position={ curPosition || [37.5665, 126.9780]} />
                     <TileLayer
                         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; CARTO'
                         url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
                     />
-                    <Marker position={ curPosition } icon={ currentMarker }></Marker>
-                    { hospitals.map((item, index) => (
-                        <Marker position={ [item.latitude, item.longitude]} icon={ markers[item.placeType] } key={ index }></Marker>
+                    <Marker position={ curPosition || [37.5665, 126.9780] } icon={ currentMarker }></Marker>
+                    { adjustHospitals.map((item, index) => (
+                        <Marker position={ [item.latitude, item.longitude]} icon={ markers[item.placeType] } key={ index }>
+                            <Popup>{ item.name }</Popup>
+                        </Marker>
                     ))}
                 </MapContainer>
             </section>
@@ -213,15 +142,15 @@ function Hospital() {
                         <HospitalCard
                             placeType={ item.placeType }
                             name={ item.name }
-                            tagname={ item.tagname}
+                            tagName={ item.tagName}
                             distance={ item.distance }
                             openTime={ item.openTime }
                             closeTime={ item.closeTime}
-                            isOpen={ item.isOpen }
+                            isOpen={ item.open }
                             latitude={ item.latitude }
                             longitude={ item.longitude}
                             tel={ item.tel }
-                            current={ curPosition }
+                            current={ curPosition || [37.5665, 126.9780] }
                             key={ index }
                         />
                     ))}
@@ -241,15 +170,15 @@ function Hospital() {
                         <HospitalCard
                             placeType={ item.placeType }
                             name={ item.name }
-                            tagname={ item.tagname}
+                            tagName={ item.tagName}
                             distance={ item.distance }
                             openTime={ item.openTime }
                             closeTime={ item.closeTime}
-                            isOpen={ item.isOpen }
+                            isOpen={ item.open }
                             latitude={ item.latitude }
                             longitude={ item.longitude}
                             tel={ item.tel }
-                            current={ curPosition }
+                            current={ curPosition || [37.5665, 126.9780] }
                             key={ index }
                         />
                     ))}

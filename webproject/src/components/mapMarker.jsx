@@ -7,27 +7,34 @@ export const currentMarker = L.divIcon({
     html: '<div class="current-dot"><div class="current-main-dot"></div></div>'
 });
 
-export const hospitalMarker = L.divIcon({
+const hospitalMarker = L.divIcon({
     iconSize: [20, 20],
     className: 'hospital-marker',
     html: '<div class="hospital-mark"></div>'
 });
 
-export const pharmacyMarker = L.divIcon({
+const pharmacyMarker = L.divIcon({
     iconSize: [20, 20],
     className: 'pharmacy-marker',
     html: '<div class="pharmacy-mark"></div>'
 });
 
-export const emergencyMarker = L.divIcon({
+const emergencyMarker = L.divIcon({
     iconSize: [20, 20],
     className: 'emergency-marker',
     html: '<div class="emergency-mark"></div>'
 });
 
-export const clinicMarker = L.divIcon({
+const clinicMarker = L.divIcon({
     iconSize: [20, 20],
     className: 'clinic-marker',
     html: '<div class="clinic-mark"></div>'
 })
-export const markers={};
+
+export const markers = {
+    hospital: hospitalMarker,
+    pharmacy: pharmacyMarker,
+    emergency: emergencyMarker,
+    clinic: clinicMarker,
+    public: hospitalMarker
+};
