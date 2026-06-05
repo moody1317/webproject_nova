@@ -6,7 +6,7 @@ import './shelter.css';
 import 'leaflet/dist/leaflet.css';
 import "./LocationModal.css";
 import ShelterCard from '../components/sheltercard';
-import BottomSheet from '../components/bottomsheet';
+import BottomSheet from '../components/bottomSheet';
 
 // 지도 중심위치 이동
 function MoveMap({position}) {
