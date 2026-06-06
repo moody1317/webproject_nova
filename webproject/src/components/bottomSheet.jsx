@@ -43,13 +43,31 @@ function BottomSheet({ children }) {
         setSheetHeight(finalHeight);
     }
 
+    function resizeSheet() {
+        const keyboardHeight = window.innerHeight - window.visualViewport.height;
+        
+        if (keyboardHeight > 150) {
+            setSheetHeight(snapPoints[2]);
+        }
+        else {
+            setSheetHeight(snapPoints[currentSnapIndex]);
+        }
+    }
+
     useEffect(() => {
         window.addEventListener('mousemove', handleDragMove);
         window.addEventListener('mouseup', handleDragEnd);
         window.addEventListener('touchmove', handleDragMove);
         window.addEventListener('touchend', handleDragEnd);
 
+        if (window.visualViewport) {
+            window.visualViewport.addEventListener('resize', resizeSheet);
+        }
+
         return () => {
+            if (window.visualViewport) {
+                window.visualViewport.removeEventListener('resize', resizeSheet);
+            }
             window.removeEventListener('mousemove', handleDragMove);
             window.removeEventListener('mouseup', handleDragEnd);
             window.removeEventListener('touchmove', handleDragMove);
