@@ -68,7 +68,7 @@ function BottomSheet({ children }) {
         return () => window.visualViewport.removeEventListener('resize', handleViewportResize);
     }, []);
 
-    const displayHeight = isKeyboardVisible ? sheetHeight * 0.7 : sheetHeight;
+    const displayHeight = isKeyboardVisible ? sheetHeight * 0.5 : sheetHeight;
  
     return (
         <section className="bottomsheet" style={{ height: `${sheetHeight}px`}}>
