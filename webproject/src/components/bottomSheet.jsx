@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import './bottomSheet.css';
 
 function BottomSheet({ children }) {
-    const initialHeight = 20;
+    const initialHeight = 40;
     const snapPoints = [initialHeight, window.innerHeight * 0.5, window.innerHeight * 0.8];
     
     const [sheetHeight, setSheetHeight] = useState(initialHeight);
