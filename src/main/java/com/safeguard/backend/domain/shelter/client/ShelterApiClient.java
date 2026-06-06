@@ -20,11 +20,13 @@ public class ShelterApiClient {
     private final RestTemplate restTemplate = new RestTemplate();
     private final ObjectMapper objectMapper = new ObjectMapper();
 
-    @Value("${disaster.api.shelter.tsunami.service-key}")
+    @Value("${disaster.api.shelter.tsunami.service-key:}")
     private String tsunamiServiceKey;
-    @Value("${disaster.api.shelter.earthquake.service-key}")
+
+    @Value("${disaster.api.shelter.earthquake.service-key:}")
     private String earthquakeServiceKey;
-    @Value("${disaster.api.shelter.civil-defense.service-key}")
+
+    @Value("${disaster.api.shelter.civil-defense.service-key:}")
     private String civilDefenseServiceKey;
 
     private <T> T fetchShelters(
