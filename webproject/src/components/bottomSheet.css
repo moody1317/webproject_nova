@@ -15,12 +15,12 @@
     text-align: center;
     align-items: center;
     width: 100%;  
-    height: 20px;
+    height: 40px;
 }
 
 .bottomsheet-header > hr  {
     width: 40px;
-    height: 4px;
+    height: 10px;
     background-color: var(--color-line-secondary);
     border-style: none;
     border-radius: var(--radius-pill);
