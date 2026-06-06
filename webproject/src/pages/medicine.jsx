@@ -10,12 +10,13 @@ function Medicine() {
     const [medicines, setMedicines] = useState([]);
     const [inputValue, setInputValue] = useState('');
     const [page, setPage] = useState(1);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => { window.scrollTo(0,0) }, []);
 
     useEffect (() => {
-        fetch('/api/medicine', {headers: {'ngrok-skip-browser-warning': 'true'}}).then(response => response.json()).then(data => setMedicines   (data))
-        .catch(error => console.log(error));
+        fetch('/api/medicine', {headers: {'ngrok-skip-browser-warning': 'true'}}).then(response => response.json()).then(data => {setMedicines(data); setIsLoading(false);})
+        .catch(error => {console.log(error); setIsLoading(false);});
     }, []);
 
     const filteredMedicine = medicines.filter(item =>
@@ -59,7 +60,7 @@ function Medicine() {
         </div>
     );
     return (
-        <>
+        <div>
         <section className="medicine-hero">
             <div className="medicine-search-inner">
                 <h1>의약품 검색</h1>
@@ -67,11 +68,11 @@ function Medicine() {
             </div>
             <div className='medicine-search'>
                 <i className='bi bi-search search-icon' onClick={ handleSearch }></i>
-                <input type='text' id='txt-search' placeholder='약품명 입력 또는 증상 검색 ' value={inputValue} onChange={(e) => setInputValue(e.target.value)} onKeyDown={ handleEnter }></input>
+                <input type='text' className='txt-search' placeholder='약품명 입력 또는 증상 검색 ' value={inputValue} onChange={(e) => setInputValue(e.target.value)} onKeyDown={ handleEnter }></input>
                 <input type='button' id='btn-search' value='검색' onClick={ handleSearch }></input>
             </div>
             <div className='medicine-search-mobile'>
-                <input type='text' id='txt-search' placeholder='약품명 입력 또는 증상 검색 ' value={inputValue} onChange={(e) => setInputValue(e.target.value)} onKeyDown={ handleEnter }></input>
+                <input type='text' className='txt-search' placeholder='약품명 입력 또는 증상 검색 ' value={inputValue} onChange={(e) => setInputValue(e.target.value)} onKeyDown={ handleEnter }></input>
                 <i className='bi bi-search search-icon' onClick={ handleSearch }></i>
             </div>
         </section>
@@ -82,14 +83,14 @@ function Medicine() {
                 <span className="medicine-count">{filteredMedicine.length}개</span>
             </section>
             <section className='medicine-imform'>
-                { medicineList }
+                { isLoading ? <p className='medicine-load'>받아오는 중...</p> : medicineList }
             </section>
         </div>
         <section className='medicine-pagination'>
             <Pagination page={ page } setPage={ setPage } totalCount={ filteredMedicine.length } limit={ 10 }>
             </Pagination>
         </section>
-        </>
+        </div>
     )
 }
 
