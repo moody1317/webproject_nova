@@ -80,6 +80,7 @@
     height: fit-content;
     border: none;
     border-radius: var(--radius-pill);
+    cursor: pointer;
 }
 
 .hidden-detail {
