@@ -63,7 +63,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://jere-trispermous-festively.ngrok-free.dev',
+        target: 'https://webproject-nova.onrender.com',
         changeOrigin: true,
         headers: {
           'ngrok-skip-browser-warning': 'true'
@@ -74,7 +74,7 @@ export default defineConfig({
   preview: {
     proxy: {
       '/api': {
-        target: 'https://jere-trispermous-festively.ngrok-free.dev',
+        target: 'https://webproject-nova.onrender.com',
         changeOrigin: true,
         headers: {
           'ngrok-skip-browser-warning': 'true'
