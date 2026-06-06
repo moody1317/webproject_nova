@@ -47,7 +47,7 @@ function BottomSheet({ children }) {
         const keyboardHeight = window.innerHeight - window.visualViewport.height;
         
         if (keyboardHeight > 150) {
-            setSheetHeight(snapPoints[2]);
+            setSheetHeight(snapPoints[1]);
         }
         else {
             setSheetHeight(snapPoints[currentSnapIndex]);
