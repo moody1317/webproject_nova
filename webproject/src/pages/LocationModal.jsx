@@ -31,6 +31,20 @@ function LocationModal({onClose, onSave, nextId, locations, onDelete, onRename, 
 
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
+    const [isOnline, setIsOnline] = useState(navigator.onLine);
+    useEffect(() => {
+        const Online = () => setIsOnline(true);
+        const Offline = () => setIsOnline(false);
+
+        window.addEventListener('online', Online);
+        window.addEventListener('offline', Offline);
+
+        return () => {
+            window.removeEventListener('online', Online);
+            window.removeEventListener('offline', Offline);
+        };
+    }, []);
+
     useEffect(() => {
         const sceneResize = () => {
             setIsMobile(window.innerWidth<=768);
@@ -143,12 +157,13 @@ function LocationModal({onClose, onSave, nextId, locations, onDelete, onRename, 
                                         <p>{loc.address ?? "주소 미설정"}</p>
                                     </div>
                             </div>
-                                <div className="modal-loc-btn">
+                                { isOnline &&
+                                (<div className="modal-loc-btn">
                                     <button id="btn-loc-change" onClick={(e) => {e.stopPropagation(); setMapMode({type: "edit", loc:loc}); if (isMobile) setMobileloc('map')}}>수정</button>
                                     {!loc.isFixed && (
                                     <button id="btn-loc-delete" onClick={(e) => {e.stopPropagation(); onDelete(loc.id)}}>삭제</button>
                                     )}
-                                    </div>
+                                </div>)}
                         </div>
                             
                     </div>
