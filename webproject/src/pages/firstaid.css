@@ -111,9 +111,10 @@
         border-radius: var(--radius-round);
         align-items: center;
         justify-content: center;
-        font-size: var(--font-size-lg);
+        font-size: var(--font-size-xl);
         font-weight: bold;
         padding: var(--spacing-xs);
+        margin-bottom: var(--spacing-xs);
         color: var(--color-text-sub1);
         transition: var(--transition-slow);
         top: 0px;
