@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import './bottomSheet.css';
 
 function BottomSheet({ children }) {
@@ -23,7 +23,7 @@ function BottomSheet({ children }) {
         setStartHeight(sheetHeight);
     }
 
-    const handleDragMove = (e) => {
+    const handleDragMove = useCallback((e) => {
         if(!isDragging.current) return;
         const clientY = e.touches?.[0].clientY || e.clientY;
         const moveY = startY - clientY;
@@ -31,9 +31,9 @@ function BottomSheet({ children }) {
         const newHeight = Math.max(initialHeight, Math.min(deltaHeight, snapPoints[2]));
         setSheetHeight(newHeight);
         setLastY(clientY);
-    }
+    }, [startY, startHeight, snapPoints]);
 
-    const handleDragEnd = (e) => {
+    const handleDragEnd = useCallback((e) => {
         if (!isDragging.current) return;
         isDragging.current = false;
         const finalHeight = snapPoints.reduce((prev, curr) => {
@@ -41,9 +41,9 @@ function BottomSheet({ children }) {
         });
         setCurrentSnapIndex(snapPoints.indexOf(finalHeight))
         setSheetHeight(finalHeight);
-    }
+    }, [sheetHeight, snapPoints]);
 
-    function resizeSheet() {
+    const resizeSheet = useCallback((e) => {
         const keyboardHeight = window.innerHeight - window.visualViewport.height;
         
         if (keyboardHeight > 150) {
@@ -52,7 +52,7 @@ function BottomSheet({ children }) {
         else {
             setSheetHeight(snapPoints[currentSnapIndex]);
         }
-    }
+    }, [currentSnapIndex, snapPoints])
 
     useEffect(() => {
         window.addEventListener('mousemove', handleDragMove);
@@ -73,7 +73,7 @@ function BottomSheet({ children }) {
             window.removeEventListener('touchmove', handleDragMove);
             window.removeEventListener('touchend', handleDragEnd);
         }
-    }, [handleDragMove, handleDragEnd]);
+    }, [handleDragMove, handleDragEnd, resizeSheet]);
 
     return (
         <section className="bottomsheet" style={{ height: `${sheetHeight}px`}}>
