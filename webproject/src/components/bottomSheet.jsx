@@ -6,6 +6,7 @@ function BottomSheet({ children }) {
     const snapPoints = [initialHeight, window.innerHeight * 0.5, window.innerHeight * 0.8];
     
     const [sheetHeight, setSheetHeight] = useState(initialHeight);
+    const [isKeyboardVisible, setIsKeyboardVisible] = useState(false);
     const isDragging = useRef(false);
     const [startY, setStartY] = useState(0);
     const [startHeight, setStartHeight] = useState(initialHeight);
@@ -57,6 +58,18 @@ function BottomSheet({ children }) {
         }
     }, [handleDragMove, handleDragEnd]);
 
+    useEffect(() => {
+        if(!window.visualViewport) return;
+        const handleViewportResize = () => {
+            const keyboardHeight = window.innerHeight - window.visualViewport.height;
+            setIsKeyboardVisible(keyboardHeight > 150);
+        };
+        window.visualViewport.addEventListener('resize', handleViewportResize);
+        return () => window.visualViewport.removeEventListener('resize', handleViewportResize);
+    }, []);
+
+    const displayHeight = isKeyboardVisible ? sheetHeight * 0.7 : sheetHeight;
+ 
     return (
         <section className="bottomsheet" style={{ height: `${sheetHeight}px`}}>
             <div className="bottomsheet-header" onMouseDown={handleDragStart} onTouchStart={handleDragStart}>
