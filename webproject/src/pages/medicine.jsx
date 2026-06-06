@@ -27,7 +27,7 @@ function Medicine() {
     const curpageList = filteredMedicine.slice((page-1) * 10, page * 10);
     const medicineList = curpageList.map((item, index) => (
         <MedicineCard
-            key={index}
+            key={ item.medicineName }
             medicineName={ item.medicineName }
             company={ item.company }
             symptom={ item.symptom }
