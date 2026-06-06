@@ -2,7 +2,7 @@
     "rewrites": [
         {
             "source": "/api/:path*",
-            "destination": "https://jere-trispermous-festively.ngrok-free.dev/api/:path*"
+            "destination": "https://webproject-nova.onrender.com/api/:path*"
         }
     ]
 }
