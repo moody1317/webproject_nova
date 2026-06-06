@@ -17,7 +17,6 @@ function MoveMap({position}) {
     }, [position]);
     return null;
 }
-
 function Shelter() {
     // 장소 목록
     const [locations, setLocations] = useState(() => {
@@ -74,12 +73,6 @@ function Shelter() {
    
     const selectedloc = locations.find(loc=>loc.id===selectedTabId);
     const position = selectedloc?.numaddress ?? [37.5665, 126.9780];
-
-    const dummy = [
-        {id: 1, name: "형서 집", distance:"0.3km", capacity:500, lat: 36.629, lng: 127.457},
-        {id: 2, name:"승환이 집", distance:"1km", capacity:500, lat: 36.631, lng: 127.459},
-        {id: 3, name: "소은 집", distance:"3km", capacity:500, lat: 36.635, lng: 127.462}
-    ];
 
     const [shelters, setShelters] = useState(() => {
         const saved = localStorage.getItem(`shelters_${locations[0].id}`);

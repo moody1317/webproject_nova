@@ -26,8 +26,8 @@ function MapModal({mode, onClose, onSave}){
     const [address, setAddress] = useState(mode.type !== "add" && mode.loc?.address ? mode.loc.address : "");
     const [clickposition, setClickposition] = useState(null);
     useEffect(() => {
-        if (mode.type === "add"){
-            navigator.geolocation.getCurrentPosition(position => {setCurPosition([position.coords.latitude, position.coords.longitude])}, null, {enableHighAccuracy: true});}}, []);
+        if (mode.type !== "add") return;
+            navigator.geolocation.getCurrentPosition((position) => setCurPosition([position.coords.latitude, position.coords.longitude]), () => setCurPosition([37.5665, 126.9780]), { enableHighAccuracy: true}); }, []);
 
     // 좌표 변환
 const clickmaptrans = async (numaddress) => {
@@ -64,7 +64,6 @@ const search = async () => {
         setAddress(display_name);
     }
 };
-
 const [showTip, setShowTip] = useState(false);
     return (
 
@@ -80,13 +79,13 @@ const [showTip, setShowTip] = useState(false);
                     <input type="button" id="btn-modal-search" value="검색" onClick={search}></input>
                 </div>
                 <section className='modal-map-R'>
-                    <MapContainer center={curPosition } zoom={20} scrollWheelZoom={true}scrollWheelZoom={true} style={{height: '100%', width: '100%'}} >
-                        <FindMap position={ curPosition } />
+                    <MapContainer center={curPosition || [37.5665, 126.9780] } zoom={20} scrollWheelZoom={true}scrollWheelZoom={true} style={{height: '100%', width: '100%'}} >
+                        <FindMap position={ curPosition || [37.5665, 126.9780] } />
                             <ClickMarker onMapClick={clickmaptrans}></ClickMarker>
                             <TileLayer
                                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; CARTO'
                                 url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"/>
-                                <Marker position={clickposition ?? curPosition } icon={ currentMarker }></Marker>
+                                <Marker position={clickposition ?? curPosition ?? [37.5665, 126.9780]} icon={currentMarker}></Marker>
                     </MapContainer>
                 </section>    
                 <div className="modal-map-save">
