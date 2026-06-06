@@ -36,6 +36,17 @@ export default defineConfig({
             }
           },
           {
+            urlPattern: /\/api\/firstaid/,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'firstaid-cache',
+              expiration: {
+                maxEntries: 50,
+                maxAgeSeconds: 60 * 60 * 24 * 7
+              }
+            }
+          },
+          {
             urlPattern: /\/api\//,
             handler: 'NetworkFirst',
             options: {
