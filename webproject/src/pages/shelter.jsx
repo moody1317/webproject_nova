@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, useMap} from 'react-leaflet';
+import L from 'leaflet';
 import { currentMarker, markers } from '../components/mapMarker';
 import LocationModal from './LocationModal';
 import './shelter.css';
