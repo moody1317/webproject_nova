@@ -99,6 +99,7 @@
 @media (max-width: 768px) {
     .firstaid-content {
         margin-left: var(--spacing-sm);
+        margin-top: var(--spacing-sm);
     }
     .firstaid-content > h1 {
         font-size: var(--font-size-xxl);
