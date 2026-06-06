@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import './bottomSheet.css';
 
 function BottomSheet({ children }) {
@@ -23,7 +23,7 @@ function BottomSheet({ children }) {
         setStartHeight(sheetHeight);
     }
 
-    const handleDragMove = useCallback((e) => {
+    const handleDragMove = (e) => {
         if(!isDragging.current) return;
         const clientY = e.touches?.[0].clientY || e.clientY;
         const moveY = startY - clientY;
@@ -31,9 +31,9 @@ function BottomSheet({ children }) {
         const newHeight = Math.max(initialHeight, Math.min(deltaHeight, snapPoints[2]));
         setSheetHeight(newHeight);
         setLastY(clientY);
-    }, [startY, startHeight, snapPoints]);
+    }
 
-    const handleDragEnd = useCallback((e) => {
+    const handleDragEnd = (e) => {
         if (!isDragging.current) return;
         isDragging.current = false;
         const finalHeight = snapPoints.reduce((prev, curr) => {
@@ -41,18 +41,7 @@ function BottomSheet({ children }) {
         });
         setCurrentSnapIndex(snapPoints.indexOf(finalHeight))
         setSheetHeight(finalHeight);
-    }, [sheetHeight, snapPoints]);
-
-    const resizeSheet = useCallback((e) => {
-        const keyboardHeight = window.innerHeight - window.visualViewport.height;
-        
-        if (keyboardHeight > 150) {
-            setSheetHeight(snapPoints[1]);
-        }
-        else {
-            setSheetHeight(snapPoints[currentSnapIndex]);
-        }
-    }, [currentSnapIndex, snapPoints])
+    }
 
     useEffect(() => {
         window.addEventListener('mousemove', handleDragMove);
@@ -60,20 +49,13 @@ function BottomSheet({ children }) {
         window.addEventListener('touchmove', handleDragMove);
         window.addEventListener('touchend', handleDragEnd);
 
-        if (window.visualViewport) {
-            window.visualViewport.addEventListener('resize', resizeSheet);
-        }
-
         return () => {
-            if (window.visualViewport) {
-                window.visualViewport.removeEventListener('resize', resizeSheet);
-            }
             window.removeEventListener('mousemove', handleDragMove);
             window.removeEventListener('mouseup', handleDragEnd);
             window.removeEventListener('touchmove', handleDragMove);
             window.removeEventListener('touchend', handleDragEnd);
         }
-    }, [handleDragMove, handleDragEnd, resizeSheet]);
+    }, [handleDragMove, handleDragEnd]);
 
     return (
         <section className="bottomsheet" style={{ height: `${sheetHeight}px`}}>
