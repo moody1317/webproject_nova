@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import MedicineCard from '../components/medicineCard';
 import Pagination from '../components/pagination';
 import './medicine.css';
@@ -19,13 +19,12 @@ function Medicine() {
         .catch(error => {console.log(error); setIsLoading(false);});
     }, []);
 
-    const filteredMedicine = medicines.filter(item =>
+    const filteredMedicine = useMemo(() => medicines.filter(item =>
         item.efficacy?.toLowerCase().includes(searchKeyword.toLowerCase()) ||
         item.medicineName?.toLowerCase().includes(searchKeyword.toLowerCase())
-    );
+    ), [medicines, searchKeyword]);
 
-    const curpageList = filteredMedicine.slice((page-1) * 10, page * 10);
-    const medicineList = curpageList.map((item, index) => (
+    const medicineList = useMemo(() => filteredMedicine.slice((page-1) * 10, page * 10).map((item) => (
         <MedicineCard
             key={ item.medicineName }
             medicineName={ item.medicineName }
@@ -39,7 +38,7 @@ function Medicine() {
             sideEffect={ item.sideEffect }
             storage={ item.storage }>
         </MedicineCard>
-    ))
+    )), [filteredMedicine, page]);
 
     const handleSearch = (e) => {
         setSearchKeyword(inputValue);
