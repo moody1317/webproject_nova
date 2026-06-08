@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, memo } from "react";
 import './medicineCard.css';
 
 function MedicineCard({medicineName, company, symptom, efficacy, usage, warning, precaution, interaction, sideEffect, storage}) {
@@ -61,4 +61,4 @@ function MedicineCard({medicineName, company, symptom, efficacy, usage, warning,
     )
 }
 
-export default MedicineCard;
+export default memo(MedicineCard);
