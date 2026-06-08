@@ -1,5 +1,5 @@
 import { MapContainer, TileLayer, useMap, Marker, Popup } from 'react-leaflet';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import L from 'leaflet';
 import HospitalCard from '../components/hospitalCard';
 import BottomSheet from '../components/bottomSheet';
@@ -29,8 +29,6 @@ function Hospital() {
     const min = today.getMinutes().toString().padStart(2, '0');
     */
 
-    const usedCoords = [];
-
     useEffect(() => { window.scrollTo(0,0) }, []);
 
 
@@ -54,7 +52,10 @@ function Hospital() {
         .catch(error => console.log(error));
     }, [curPosition, sortType]);
 
-    const adjustHospitals = hospitals.map((item, index) => {
+    const adjustHospitals = useMemo(() => {
+        const usedCoords = [];
+
+        return hospitals.map((item, index) => {
         if (usedCoords.some(coords => {
             const latDiff = Math.abs(coords.lat - item.latitude);
             const lngDiff = Math.abs(coords.lng - item.longitude);
@@ -66,19 +67,26 @@ function Hospital() {
         usedCoords.push({ lat: item.latitude, lng: item.longitude });
 
         return {...item, open: item.placeType === "emergency" ? true : item.open};
-    });
+    })}, [hospitals]);
 
-    const filteredHospital = adjustHospitals.filter(item =>
-        item.tagName.toLowerCase().includes(searchKeyword.toLowerCase()) ||
-        item.name.toLowerCase().includes(searchKeyword.toLowerCase())
-    ).sort((a,b) => {
-        if (sortType === 'treatment') {
-            return b.open - a.open;
-        }
-        else {
-            return 0;
-        }
-    });
+    const filteredHospital = useMemo(() => {
+        return adjustHospitals.filter(item =>
+            item.tagName.toLowerCase().includes(searchKeyword.toLowerCase()) ||
+            item.name.toLowerCase().includes(searchKeyword.toLowerCase())
+        ).sort((a,b) => {
+            if (sortType === 'treatment') {
+                return b.open - a.open;
+            }
+            else {
+                return 0;
+            }
+    });}, [adjustHospitals, searchKeyword, sortType]);
+
+    const markerElements = useMemo(() => adjustHospitals.map((item, index) => (
+        <Marker position={[item.latitude, item.longitude]} icon={markers[item.placeType]} key={index}>
+            <Popup>{item.name}</Popup>
+        </Marker>
+    )), [adjustHospitals]);
 
     const handleSearch = (e) => {
         setSearchKeyword(inputValue);
@@ -120,11 +128,7 @@ function Hospital() {
                         url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
                     />
                     <Marker position={ curPosition || [37.5665, 126.9780] } icon={ currentMarker }></Marker>
-                    { adjustHospitals.map((item, index) => (
-                        <Marker position={ [item.latitude, item.longitude]} icon={ markers[item.placeType] } key={ index }>
-                            <Popup>{ item.name }</Popup>
-                        </Marker>
-                    ))}
+                    { markerElements }
                 </MapContainer>
             </section>
             <section className='hospital-panel'>
