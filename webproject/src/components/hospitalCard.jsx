@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { memo } from 'react';
 import './hospitalCard.css';
 
 const placeConfig = {
@@ -74,4 +74,4 @@ function HospitalCard({ name, tagName, distance, openTime, closeTime, isOpen, pl
     );
 }
 
-export default HospitalCard;
+export default memo(HospitalCard);
