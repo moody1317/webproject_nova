@@ -54,7 +54,21 @@ function Hospital() {
         .catch(error => console.log(error));
     }, [curPosition, sortType]);
 
-    const filteredHospital = hospitals.filter(item =>
+    const adjustHospitals = hospitals.map((item, index) => {
+        if (usedCoords.some(coords => {
+            const latDiff = Math.abs(coords.lat - item.latitude);
+            const lngDiff = Math.abs(coords.lng - item.longitude);
+            return (latDiff < 0.0001 && lngDiff < 0.0001)
+        })) {
+            usedCoords.push({ lat: item.latitude, lng: item.longitude });
+            return {...item, longitude: item.longitude + 0.0001, open: item.placeType === "emergency" ? true : item.open};
+        }
+        usedCoords.push({ lat: item.latitude, lng: item.longitude });
+
+        return {...item, open: item.placeType === "emergency" ? true : item.open};
+    });
+
+    const filteredHospital = adjustHospitals.filter(item =>
         item.tagName.toLowerCase().includes(searchKeyword.toLowerCase()) ||
         item.name.toLowerCase().includes(searchKeyword.toLowerCase())
     ).sort((a,b) => {
@@ -75,19 +89,6 @@ function Hospital() {
             handleSearch();
         }
     };
-
-    const adjustHospitals = hospitals.map((item, index) => {
-        if (usedCoords.some(coords => {
-            const latDiff = Math.abs(coords.lat - item.latitude);
-            const lngDiff = Math.abs(coords.lng - item.longitude);
-            return (latDiff < 0.0001 && lngDiff < 0.0001)
-        })) {
-            usedCoords.push({ lat: item.latitude, lng: item.longitude });
-            return {...item, longitude: item.longitude + 0.0001};
-        }
-        usedCoords.push({ lat: item.latitude, lng: item.longitude });
-        return item;
-    });
 
     return (
         <>
